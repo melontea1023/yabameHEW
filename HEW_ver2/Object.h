@@ -36,13 +36,14 @@ private:
 	 int splitX = 1;
 	 int splitY = 1;
 	 
-	 //”¼Œa—p
-	 float r;
+	
 
 public:
 	//¶‚©‚ç‰½’i–Ú‚ğØ‚è”²‚¢‚Ä•\¦‚·‚é‚©
 	int numU = 0;
 	int numV = 0;
+	//”¼Œa—p
+	float r;
 	
 	void Init(const wchar_t* imgname,int sx=1,int sy=1);  //‰Šú‰»
 	void Draw(void);                       //•`‰æ
