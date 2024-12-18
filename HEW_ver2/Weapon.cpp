@@ -8,7 +8,7 @@ void Weapon::Init(float initFireRate) {
 void Weapon::Fire(const DirectX::XMFLOAT3& position, float angle) {
     if (timeSinceLastShot >= fireRate) {
         Bullet* newBullet = new Bullet();
-        newBullet->Init(L"bullet_texture.png", 1, 1, 300.0f, angle);  // ‘¬“x‚ÆŠp“x‚ðÝ’è
+        newBullet->Init(L"bullet.png", 1, 1, 300.0f, angle);  // ‘¬“x‚ÆŠp“x‚ðÝ’è
         newBullet->SetPos(position.x, position.y, 0.0f);
 
         bullets.push_back(newBullet);

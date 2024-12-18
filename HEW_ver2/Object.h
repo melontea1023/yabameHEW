@@ -2,7 +2,7 @@
 #include"direct3d.h"
 #include"WICTextureLoader.h" //テクスチャ読み込みライブラリ
 class Object {
-private:
+protected:
 	// 頂点データを決める
 	Vertex vertexList[4] =
 	{                       //R,   G,   B,   A
