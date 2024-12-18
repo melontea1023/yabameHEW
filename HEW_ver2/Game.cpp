@@ -6,7 +6,10 @@ std::vector<Object> obj = {};
 void Game::Init(HWND hWnd)
 {
 	//オブジェクトのInit
-
+	bg1.Init(L"asset/bg1.png");   //背景を初期化
+	bg1.SetPos(0.0f, 0.0f, 0.0f);      //位置を設定
+	bg1.SetSize(768.0f, 576.0f, 0.0f); //大きさを設定
+	bg1.SetAngle(0.0f);   //角度を設定
 	
 }
 
