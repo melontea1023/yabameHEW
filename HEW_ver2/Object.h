@@ -36,14 +36,14 @@ private:
 	 int splitX = 1;
 	 int splitY = 1;
 	 
-	
+	 //半径用
+	 float r;
 
 public:
 	//左から何段目を切り抜いて表示するか
 	int numU = 0;
 	int numV = 0;
-	//半径用
-	float r;
+	
 	void Init(const wchar_t* imgname,int sx=1,int sy=1);  //初期化
 	void Draw(void);                       //描画
 	void Uninit(void);                    //終了
