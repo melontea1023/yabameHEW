@@ -1,43 +1,42 @@
 #pragma once
 
-#include <d3d11.h>  // DirectX11‚ğg‚¤‚½‚ß‚Ìƒwƒbƒ_[ƒtƒ@ƒCƒ‹
-#include<DirectXMath.h> //DirectX‚Ì”ŠwŠÖ˜A‚Ìƒwƒbƒ_[ƒtƒ@ƒCƒ‹
+#include <d3d11.h>  // DirectX11ã‚’ä½¿ã†ãŸã‚ã®ãƒ˜ãƒƒãƒ€ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«
+#include<DirectXMath.h> //DirectXã®æ•°å­¦é–¢é€£ã®ãƒ˜ãƒƒãƒ€ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«
 
-#define SCREEN_WIDTH (1980)	// ƒEƒCƒ“ƒhƒE‚Ì•
-#define SCREEN_HEIGHT (1020)	// ƒEƒCƒ“ƒhƒE‚Ì‚‚³
+#define SCREEN_WIDTH (1980)	// ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®å¹…
+#define SCREEN_HEIGHT (1020)	// ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®é«˜ã•
 
-
-// ŠÖ”‚Ìƒvƒƒgƒ^ƒCƒvéŒ¾
+// é–¢æ•°ã®ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
 HRESULT D3D_Create(HWND hwnd);
 void    D3D_Release();
 void    D3D_StartRender();
 void    D3D_FinishRender();
 
-// \‘¢‘Ì‚Ì’è‹`
-// ’¸“_ƒf[ƒ^‚ğ•\‚·\‘¢‘Ì
+// æ§‹é€ ä½“ã®å®šç¾©
+// é ‚ç‚¹ãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ã™æ§‹é€ ä½“
 struct Vertex
 {
-	// ’¸“_‚ÌˆÊ’uÀ•W
+	// é ‚ç‚¹ã®ä½ç½®åº§æ¨™
 	float x, y, z;
 
-	//F
+	//è‰²
 	float r, g, b, a;
 
-	//ƒeƒNƒXƒ`ƒƒÀ•W(UVÀ•W)
+	//ãƒ†ã‚¯ã‚¹ãƒãƒ£åº§æ¨™(UVåº§æ¨™)
 	float u, v;
 
 };
 
-//’è”ƒoƒbƒtƒ@—p\‘¢‘Ì
+//å®šæ•°ãƒãƒƒãƒ•ã‚¡ç”¨æ§‹é€ ä½“
 struct ConstBuffer
 {
-	//’¸“_ƒJƒ‰[s—ñ
+	//é ‚ç‚¹ã‚«ãƒ©ãƒ¼è¡Œåˆ—
 	DirectX::XMFLOAT4 color;
-	//UVÀ•WˆÚ“®s—ñ
+	//UVåº§æ¨™ç§»å‹•è¡Œåˆ—
 	DirectX::XMMATRIX matrixTex;
-	//ƒvƒƒWƒFƒNƒVƒ‡ƒ“•ÏŠ·s—ñ
+	//ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³å¤‰æ›è¡Œåˆ—
 	DirectX::XMMATRIX matrixProj;
-	//ƒ[ƒ‹ƒh•ÏŠ·s—ñ
+	//ãƒ¯ãƒ¼ãƒ«ãƒ‰å¤‰æ›è¡Œåˆ—
 	DirectX::XMMATRIX matrixWorld;
 };
 
@@ -46,5 +45,5 @@ extern ID3D11DeviceContext* g_pDeviceContext;
 extern ID3D11Buffer* g_pConstantBuffer;
 
 
-// Direct3D‰ğ•ú‚ÌŠÈ—ª‰»ƒ}ƒNƒ
+// Direct3Dè§£æ”¾ã®ç°¡ç•¥åŒ–ãƒã‚¯ãƒ­
 #define SAFE_RELEASE(p) { if( NULL != p ) { p->Release(); p = NULL; } }
