@@ -9,10 +9,7 @@
 
 
 
-#define GAME_TITLE (101)
-#define GAME_GAME (102)
-#define GAME_CLEAR (103)
-#define GAME_END (104)
+
 
 class Game {
 

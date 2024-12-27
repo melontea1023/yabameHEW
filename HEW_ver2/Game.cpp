@@ -1,18 +1,18 @@
 #include"Game.h"
-
+#include"Scene.h"
 
 
 std::vector<Object> obj = {};
+Scene scene;
 void Game::Init(HWND hWnd)
 {
-	//オブジェクトのInit
-
+	//全てのオブジェクトのInit
 	
 }
 
 void Game::Update(void)
 {
-
+	scene.MainUpdate();
 	
 }
 
@@ -20,6 +20,9 @@ void Game::Draw(void)
 {
 
 	D3D_StartRender();
+
+	scene.MainDraw();
+
 
 	D3D_FinishRender(); //描画終了
 }
