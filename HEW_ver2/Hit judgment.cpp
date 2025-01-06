@@ -73,7 +73,6 @@ bool Game::Circle_Hit_judgment(Object obj1, Object obj2)
 		return false;
 	}
 
-
 	return true;
 
 
