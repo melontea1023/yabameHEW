@@ -1,39 +1,59 @@
 #include "Player.h"
 
-Player::Player() : currentWeaponIndex(0) {}
+Input input;
 
 void Player::Init(const wchar_t* imgname, int sx, int sy) {
     Object::Init(imgname, sx, sy);
-
-    // 初期武器の追加
-    weapons.push_back(new Weapon(0.5f, -1)); // 無限弾薬の武器
-    weapons.push_back(new Weapon(1.0f, 30)); // 30発の弾薬を持つ武器
 }
 
-void Player::Update(float deltaTime) {
-    // 入力処理（例: キーボード）
-    if (/*発射ボタン*/) {
-        Fire();
+void Player::Update() {
+    //// 入力処理（例: キーボード）
+    //if (Input::GetKeyPress(VK_A) || Input::GetButtonPress(XINPUT_LEFT)) {
+
+    //}
+    //if (Input::GetKeyPress(VK_D) || Input::GetButtonPress(XINPUT_RIGHT)) {
+
+    //}
+    //if (Input::GetKeyPress(VK_W) || Input::GetButtonPress(XINPUT_UP)) {
+
+    //}
+    //if (Input::GetKeyPress(VK_S) || Input::GetButtonPress(XINPUT_DOWN)) {
+
+    //}
+    float moveSpeed = 5.0f; // 移動速度
+
+    if (Input::GetButtonPress(XINPUT_RIGHT_SHOULDER)) {
+        if (stamina > 0.0f) { // スタミナが残っている場合のみ消費
+            stamina -= 0.5f; // スタミナ消費
+            moveSpeed += 2.0f; // 移動速度を上昇
+        }
+        else {
+            stamina = 0.0f; // スタミナが0以下にならないよう制限
+        }
     }
-    if (/*武器切り替えボタン*/) {
-        SwitchWeapon((currentWeaponIndex + 1) % weapons.size());
+    else {
+        stamina += 0.5f; // スタミナの自然回復
+        if (stamina > 100.0f) stamina = 100.0f; // スタミナの上限を100に
     }
+        // 左アナログスティックの入力を取得
+    DirectX::SimpleMath::Vector2 leftStick = Input::GetLeftAnalogStick();
 
-    // 現在の武器を更新
-    weapons[currentWeaponIndex]->Update(deltaTime);
+    // アナログスティックの値でプレイヤーの座標を移動
+
+
+    pos.x += leftStick.x * moveSpeed;
+    pos.y += leftStick.y * moveSpeed;
+
 }
 
-void Player::Fire() {
-    float x = GetPos().x;
-    float y = GetPos().y;
-    float z = GetPos().z;
+void Player::flutter() {
+    const float flutterCost = 20.0f; // flutterのスタミナ消費量
 
-    // 現在の武器で発射
-    weapons[currentWeaponIndex]->Fire(x, y, z, GetAngle());
-}
+    if (stamina >= flutterCost) {
+        stamina -= flutterCost; // スタミナを消費
 
-void Player::SwitchWeapon(int index) {
-    if (index >= 0 && index < weapons.size()) {
-        currentWeaponIndex = index;
+    }
+    else {
+       
     }
 }
