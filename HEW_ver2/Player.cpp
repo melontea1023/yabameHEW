@@ -1,39 +1,121 @@
 #include "Player.h"
-
-Player::Player() : currentWeaponIndex(0) {}
+#include <cmath>
+Input input;
 
 void Player::Init(const wchar_t* imgname, int sx, int sy) {
     Object::Init(imgname, sx, sy);
-
-    // 初期武器の追加
-    weapons.push_back(new Weapon(0.5f, -1)); // 無限弾薬の武器
-    weapons.push_back(new Weapon(1.0f, 30)); // 30発の弾薬を持つ武器
 }
 
-void Player::Update(float deltaTime) {
-    // 入力処理（例: キーボード）
-    if (/*発射ボタン*/) {
-        Fire();
+void Player::Update() {
+    //// 入力処理（例: キーボード）
+    //if (Input::GetKeyPress(VK_A) || Input::GetButtonPress(XINPUT_LEFT)) {
+
+    //}
+    //if (Input::GetKeyPress(VK_D) || Input::GetButtonPress(XINPUT_RIGHT)) {
+
+    //}
+    //if (Input::GetKeyPress(VK_W) || Input::GetButtonPress(XINPUT_UP)) {
+
+    //}
+    //if (Input::GetKeyPress(VK_S) || Input::GetButtonPress(XINPUT_DOWN)) {
+
+    //}
+    float moveSpeed = 5.0f; // 移動速度
+
+    if (Input::GetButtonPress(XINPUT_RIGHT_SHOULDER)) {
+        if (stamina > 0.0f) { // スタミナが残っている場合のみ消費
+            stamina -= 0.5f; // スタミナ消費
+            moveSpeed += 2.0f; // 移動速度を上昇
+        }
+        else {
+            stamina = 0.0f; // スタミナが0以下にならないよう制限
+        }
     }
-    if (/*武器切り替えボタン*/) {
-        SwitchWeapon((currentWeaponIndex + 1) % weapons.size());
+    else {
+        stamina += 0.5f; // スタミナの自然回復
+        if (stamina > 100.0f) stamina = 100.0f; // スタミナの上限を100に
+    }
+        // 左アナログスティックの入力を取得
+    DirectX::SimpleMath::Vector2 leftStick = Input::GetLeftAnalogStick();
+
+    // アナログスティックの値でプレイヤーの座標を移動
+
+
+    pos.x += leftStick.x * moveSpeed;
+    pos.y += leftStick.y * moveSpeed;
+
+    if (Input::GetButtonPress(XINPUT_A)) {
+        Enemy target; // 仮のターゲット
+        Attack(target); 
     }
 
-    // 現在の武器を更新
-    weapons[currentWeaponIndex]->Update(deltaTime);
 }
 
-void Player::Fire() {
-    float x = GetPos().x;
-    float y = GetPos().y;
-    float z = GetPos().z;
+void Player::flutter() {
+    const float flutterCost = 20.0f; // flutterのスタミナ消費量
 
-    // 現在の武器で発射
-    weapons[currentWeaponIndex]->Fire(x, y, z, GetAngle());
-}
-
-void Player::SwitchWeapon(int index) {
-    if (index >= 0 && index < weapons.size()) {
-        currentWeaponIndex = index;
+    if (stamina >= flutterCost) {
+        stamina -= flutterCost; // スタミナを消費
+        Enemy target; //Enemyクラス
+        target.TakeDamage(10);
+    }
+    else {
+       
     }
 }
+
+void Player::flutter() {
+    const float flutterCost = 20.0f; // flutterのスタミナ消費量
+
+    if (stamina >= flutterCost) {
+        stamina -= flutterCost; // スタミナを消費
+    }
+}
+
+void Player::Attack(Enemy& target) {
+    // 攻撃ロジック
+    if (IsTargetInRange(target)) {
+        target.TakeDamage(10); // 例として10ダメージを与える
+    }
+}
+
+bool Player::IsTargetInRange(const Enemy& target) const {
+    float distance = std::sqrt(std::pow(target.GetPosition().x - pos.x, 2) + std::pow(target.GetPosition().y - pos.y, 2));
+    float attackRange = 50.0f; // 攻撃範囲（例として50.0f）
+
+    return distance <= attackRange;
+}
+
+
+
+//enemy.h
+//class Enemy {
+//public:
+//    void TakeDamage(int damage);
+//    int GetHealth() const;
+//    DirectX::SimpleMath::Vector2 GetPosition() const;
+//
+//private:
+//    int health = 100; // 初期体力
+//    DirectX::SimpleMath::Vector2 pos; // 位置情報
+//};
+//
+//
+//enemy.cpp
+//
+//void TargetComponent::TakeDamage(int damage) {
+//    health -= damage;
+//    if (health < 0) {
+//        health = 0;
+//    }
+//}
+//
+//int TargetComponent::GetHealth() const {
+//    return health;
+//}
+//
+//DirectX::SimpleMath::Vector2 TargetComponent::GetPosition() const {
+//    return pos; 
+// }
+
+

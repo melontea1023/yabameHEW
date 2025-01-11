@@ -1,9 +1,15 @@
 #include "input.h"
 
+BYTE Input::keyState[256] = {};
+BYTE Input::keyState_old[256] = {};
+XINPUT_STATE Input::controllerState = {};
+XINPUT_STATE Input::controllerState_old = {};
+int Input::VibrationTime = 0;
+
 //コンストラクタ
 Input::Input()
 {
-	VibrationTime = 0;
+
 }
 
 //デストラクタ
@@ -57,7 +63,7 @@ bool Input::GetKeyRelease(int key) //リリース
 }
 
 //左アナログスティック
-DirectX::XMFLOAT2 Input::GetLeftAnalogStick(void)
+DirectX::SimpleMath::Vector2 Input::GetLeftAnalogStick(void)
 {
 	SHORT x = controllerState.Gamepad.sThumbLX; // -32768～32767
 	SHORT y = controllerState.Gamepad.sThumbLY; // -32768～32767
@@ -68,7 +74,7 @@ DirectX::XMFLOAT2 Input::GetLeftAnalogStick(void)
 	return res;
 }
 //右アナログスティック
-DirectX::XMFLOAT2 Input::GetRightAnalogStick(void)
+DirectX::SimpleMath::Vector2 Input::GetRightAnalogStick(void)
 {
 	SHORT x = controllerState.Gamepad.sThumbRX; // -32768～32767
 	SHORT y = controllerState.Gamepad.sThumbRY; // -32768～32767
