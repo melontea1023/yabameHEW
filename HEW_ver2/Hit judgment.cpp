@@ -53,25 +53,25 @@ bool Game::Box_Hit_judgment(Object obj1, Object obj2)
 
 bool Game::Circle_Hit_judgment(Object obj1, Object obj2)
 {
-	float bottom, height, slope, radius;
+	//float bottom, height, slope, radius;
 
-	DirectX::XMFLOAT3 o1_pos = obj1.GetPos();
-	DirectX::XMFLOAT3 o1_size = obj1.GetSize();
+	//DirectX::XMFLOAT3 o1_pos = obj1.GetPos();
+	//DirectX::XMFLOAT3 o1_size = obj1.GetSize();
 
-	DirectX::XMFLOAT3 o2_pos = obj2.GetPos();
-	DirectX::XMFLOAT3 o2_size = obj2.GetSize();
+	//DirectX::XMFLOAT3 o2_pos = obj2.GetPos();
+	//DirectX::XMFLOAT3 o2_size = obj2.GetSize();
 
-	bottom = pow((o1_pos.x - o2_pos.x), 2.0f);
-	height = pow((o1_pos.y - o2_pos.y), 2.0f);
+	//bottom = pow((o1_pos.x - o2_pos.x), 2.0f);
+	//height = pow((o1_pos.y - o2_pos.y), 2.0f);
 
-	slope = bottom + height;
+	//slope = bottom + height;
 
-	radius = pow((obj1.r + obj2.r), 2.0f);
+	//radius = pow((obj1.r + obj2.r), 2.0f);
 
-	if (slope > radius)
-	{
-		return false;
-	}
+	//if (slope > radius)
+	//{
+	//	return false;
+	//}
 
 
 	return true;
