@@ -39,20 +39,11 @@
     <ClCompile Include="WICTextureLoader.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>ソース ファイル\obje</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>ソース ファイル\obje</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>ソース ファイル\obje</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>ソース ファイル\obje</Filter>
-    </ClCompile>
-    <ClCompile Include="Weapon.cpp">
-      <Filter>ソース ファイル\obje</Filter>
+    <ClCompile Include="Advertisement raining.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,20 +59,11 @@
     <ClInclude Include="WICTextureLoader.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>ヘッダー ファイル\obje</Filter>
-    </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>ヘッダー ファイル\obje</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>ヘッダー ファイル\obje</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>ヘッダー ファイル\obje</Filter>
-    </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>ヘッダー ファイル\obje</Filter>
+    <ClInclude Include="Advertisement raining.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

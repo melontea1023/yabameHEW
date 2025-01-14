@@ -1,6 +1,6 @@
 #pragma once
 #include<iostream>
-#include<vector>
+
 #include<algorithm>
 #include"Object.h"
 #include"input.h"
@@ -17,6 +17,10 @@ private:
 	
 	Object  title;
 	Object bg1;	//background
+
+
+
+	
 
 public:
 	void Init(HWND hWnd);   //‰Šú‰»
