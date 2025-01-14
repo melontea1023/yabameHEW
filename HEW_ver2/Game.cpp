@@ -11,6 +11,11 @@ void Game::Init(HWND hWnd)
 	bg1.SetSize(768.0f, 576.0f, 0.0f); //大きさを設定
 	bg1.SetAngle(0.0f);   //角度を設定
 	
+	//オブジェクトのInit
+	Player.Init(L"asset/Player.png");   //背景を初期化
+	Player.SetPos(0.0f, 0.0f, 0.0f);      //位置を設定
+	Player.SetSize(70.0f, 100.0f, 0.0f); //大きさを設定
+	Player.SetAngle(0.0f);   //角度を設定
 }
 
 void Game::Update(void)
