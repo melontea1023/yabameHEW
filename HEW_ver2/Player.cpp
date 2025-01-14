@@ -2,8 +2,13 @@
 #include <cmath>
 Input input;
 
-void Player::Init(const wchar_t* imgname, int sx, int sy) {
-    Object::Init(imgname, sx, sy);
+Player::Player()
+{
+
+}
+void Player::Player_Init()
+{
+
 }
 
 void Player::Update() {
@@ -44,47 +49,46 @@ void Player::Update() {
     pos.x += leftStick.x * moveSpeed;
     pos.y += leftStick.y * moveSpeed;
 
-    if (Input::GetButtonPress(XINPUT_A)) {
-        Enemy target; // 仮のターゲット
-        Attack(target); 
-    }
-
+    //if (Input::GetButtonPress(XINPUT_A)) {
+    //    Enemy target; // 仮のターゲット
+    //    Attack(target); 
+    //}
 }
 
-void Player::flutter() {
-    const float flutterCost = 20.0f; // flutterのスタミナ消費量
+//void Player::flutter() {
+//    const float flutterCost = 20.0f; // flutterのスタミナ消費量
+//
+//    if (stamina >= flutterCost) {
+//        stamina -= flutterCost; // スタミナを消費
+//        Enemy target; //Enemyクラス
+//        target.TakeDamage(10);
+//    }
+//    else {
+//       
+//    }
+//}
 
-    if (stamina >= flutterCost) {
-        stamina -= flutterCost; // スタミナを消費
-        Enemy target; //Enemyクラス
-        target.TakeDamage(10);
-    }
-    else {
-       
-    }
-}
-
-void Player::flutter() {
-    const float flutterCost = 20.0f; // flutterのスタミナ消費量
-
-    if (stamina >= flutterCost) {
-        stamina -= flutterCost; // スタミナを消費
-    }
-}
-
-void Player::Attack(Enemy& target) {
-    // 攻撃ロジック
-    if (IsTargetInRange(target)) {
-        target.TakeDamage(10); // 例として10ダメージを与える
-    }
-}
-
-bool Player::IsTargetInRange(const Enemy& target) const {
-    float distance = std::sqrt(std::pow(target.GetPosition().x - pos.x, 2) + std::pow(target.GetPosition().y - pos.y, 2));
-    float attackRange = 50.0f; // 攻撃範囲（例として50.0f）
-
-    return distance <= attackRange;
-}
+//void Player::flutter() {
+//    const float flutterCost = 20.0f; // flutterのスタミナ消費量
+//
+//    if (stamina >= flutterCost) {
+//        stamina -= flutterCost; // スタミナを消費
+//    }
+//}
+//
+//void Player::Attack(Enemy& target) {
+//    // 攻撃ロジック
+//    if (IsTargetInRange(target)) {
+//        target.TakeDamage(10); // 例として10ダメージを与える
+//    }
+//}
+//
+//bool Player::IsTargetInRange(const Enemy& target) const {
+//    float distance = std::sqrt(std::pow(target.GetPosition().x - pos.x, 2) + std::pow(target.GetPosition().y - pos.y, 2));
+//    float attackRange = 50.0f; // 攻撃範囲（例として50.0f）
+//
+//    return distance <= attackRange;
+//}
 
 
 
@@ -119,3 +123,8 @@ bool Player::IsTargetInRange(const Enemy& target) const {
 // }
 
 
+//Playerの初期化 Game.cpp保存用
+//player.Init(L"asset/playertest.png", 1, 1);
+//player.SetPos(0.0f, 0.0f, 0.0f);
+//player.SetSize(70.0f, 100.0f, 0.0f);
+//player.SetAngle(0.0f);
