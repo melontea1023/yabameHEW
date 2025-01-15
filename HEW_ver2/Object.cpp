@@ -124,7 +124,6 @@ void Object::SetUV(float u, float v)
 void Object::CutUV(float U, float V)
 {
 	//表示したい画像をセット
-	
 	UV.x = U;
 	UV.y = V;
 }

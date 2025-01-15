@@ -27,8 +27,6 @@ void Game::Init(HWND hWnd) {
     player.SetPos(0.0f, 0.0f, 0.0f);
     player.SetSize(70.0f, 100.0f, 0.0f);
     player.SetAngle(0.0f);
-
-
 }
 
 void Game::Update(void) {
