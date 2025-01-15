@@ -66,11 +66,7 @@ bool Game::Circle_Hit_judgment(Object obj1, Object obj2)
 
 	//slope = bottom + height;
 
-EnemyAction
-	radius = 0;//pow((obj1.r + obj2.r), 2.0f);
-
 	//radius = pow((obj1.r + obj2.r), 2.0f);
-
 
 	//if (slope > radius)
 	//{
