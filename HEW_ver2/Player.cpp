@@ -44,8 +44,6 @@ void Player::Update() {
     DirectX::SimpleMath::Vector2 leftStick = Input::GetLeftAnalogStick();
 
     // アナログスティックの値でプレイヤーの座標を移動
-
-
     pos.x += leftStick.x * moveSpeed;
     pos.y += leftStick.y * moveSpeed;
 
