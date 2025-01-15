@@ -4,9 +4,6 @@
 #include"input.h"
 #include<stdlib.h>
 
-#define Ad_fallingpos_y (810)
-
-#define testpos_y (360)
 
 
 Advertisement ad;
@@ -43,6 +40,7 @@ void Advertisement::Advertisement_raining_Init()
 
 	
 	random = 0;
+	time_count = 0;
 
 	Set_flg = false;
 	random_flg = true;
@@ -53,18 +51,17 @@ void Advertisement::Advertisement_raining_Update(DirectX::XMFLOAT3 _nowpos)
 {
 	//input.Update();
 
-	//if (random_flg)
-	//{
-	//	random = GetRandom();//乱数取得
-	//}
-	random = 2;
+	if (random_flg)
+	{
+		random = GetRandom();//乱数取得
+	}
 
 	now_p_pos = _nowpos;
 	int Advertisement_Type = AdvertisingLocation(now_p_pos);
 	
 		if (!Set_flg)
 		{
-			Advertisement_Attack_Set(Advertisement_Type);
+			Advertisement_Attack_Set(Advertisement_Type, now_p_pos);
 			
 		}
 		Advertisement_move(Advertisement_Type);
@@ -73,7 +70,7 @@ void Advertisement::Advertisement_raining_Update(DirectX::XMFLOAT3 _nowpos)
 void Advertisement::Advertisement_raining_Darw()
 {
 
-	switch (random)
+	switch (random)//乱数に応じて広告を変える
 	{
 	case 1:
 		ad.Draw();
@@ -101,7 +98,7 @@ void Advertisement::Advertisement_raining_Uninit()
 int Advertisement::GetRandom()
 {
 	int r = rand();
-	r = r % 2 + 1;
+	r = (r % 2)+1;
 	random_flg = false;
 	return r;
 }
@@ -129,7 +126,7 @@ int Advertisement::AdvertisingLocation(DirectX::XMFLOAT3 _now_p_pos)
 	Reference_point_CD.x = 0; Reference_point_CD.y = -SCREEN_HEIGHT/2;
 	Reference_point_RD.x = SCREEN_WIDTH/2; Reference_point_RD.y = -SCREEN_HEIGHT/2;
 
-	//左上
+	//左上にプレイヤーが居るかの確認
 	if (px >= Reference_point_LU.x && py <= Reference_point_LU.y&& px <= Reference_point_CU.x && py <= Reference_point_CU.y && px>=Reference_point_L.x&& py>=Reference_point_L.y&&px<= Reference_point_C.x&& py >= Reference_point_C.y) //画面を４分割した際の左上にプレイヤーがいるかの確認
 	{
 		LU_flg = true;
@@ -139,7 +136,7 @@ int Advertisement::AdvertisingLocation(DirectX::XMFLOAT3 _now_p_pos)
 		LU_flg = false;
 	}
 
-	//左下
+	//左下にプレイヤーが居るかの確認
 	if (px >= Reference_point_L.x && py <= Reference_point_L.y && px <= Reference_point_C.x && py <= Reference_point_C.y && px >= Reference_point_LD.x && py >= Reference_point_LD.y && px <= Reference_point_CD.x && py >= Reference_point_CD.y)//画面を４分割した際の左下にプレイヤーがいるかの確認
 	{
 		LD_flg = true;
@@ -149,7 +146,7 @@ int Advertisement::AdvertisingLocation(DirectX::XMFLOAT3 _now_p_pos)
 		LD_flg = false;
 	}
 
-	//右上
+	//右上にプレイヤーが居るかの確認
 	if (px <= Reference_point_RU.x && py <= Reference_point_RU.y && px >= Reference_point_CU.x && py <= Reference_point_CU.y && px <= Reference_point_R.x && py >= Reference_point_R.y && px >= Reference_point_C.x && py >= Reference_point_C.y) //画面を４分割した際の右上にプレイヤーがいるかの確認
 	{
 		RU_flg = true;
@@ -159,7 +156,7 @@ int Advertisement::AdvertisingLocation(DirectX::XMFLOAT3 _now_p_pos)
 		RU_flg = false;
 	}
 
-	//右下
+	//右下にプレイヤーが居るかの確認
 	if (px <= Reference_point_R.x && py <= Reference_point_R.y && px >= Reference_point_C.x && py <= Reference_point_C.y && px <= Reference_point_RD.x && py >= Reference_point_RD.y && px >= Reference_point_CD.x && py >= Reference_point_CD.y)//画面を４分割した際の右下にプレイヤーがいるかの確認
 	{
 		RD_flg = true;
@@ -193,14 +190,16 @@ int Advertisement::AdvertisingLocation(DirectX::XMFLOAT3 _now_p_pos)
 
 }
 
-void  Advertisement::Advertisement_Attack_Set(int _Type)
+void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_pos)
 {
 	int Type = _Type;
-	DirectX::XMFLOAT3 Adpos = ad.GetPos();
+	DirectX::XMFLOAT3 Adpos = ad.GetPos();//動作確認用(動作確認以外ではコメントアウト)
+
+	//DirectX::XMFLOAT3 Adpos = _p_pos;
 
 	switch (Type)//
 	{
-	case 1://左上
+	case 1://左上の時
 
 		Adpos.x = -SCREEN_WIDTH / 2 / 2;
 		Adpos.y = testpos_y;
@@ -209,19 +208,8 @@ void  Advertisement::Advertisement_Attack_Set(int _Type)
 		ad.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
-
-		/*if (random == 1)
-		{
-			ad.SetPos(Adpos.x, Adpos.y, Adpos.z);
-		}
-
-		if (random == 2)
-		{
-			ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
-		}*/
-
 		break;
-	case 2://右上
+	case 2://右上の時
 		Adpos.x = SCREEN_WIDTH / 2 / 2;
 		Adpos.y = testpos_y;
 		Set_flg = true;
@@ -230,18 +218,10 @@ void  Advertisement::Advertisement_Attack_Set(int _Type)
 
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
-		/*if (random == 1)
-		{
-			ad.SetPos(Adpos.x, Adpos.y, Adpos.z);
-		}
-
-		if (random == 2)
-		{
-			ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
-		}*/
+		
 
 		break;
-	case 3://左下
+	case 3://左下の時
 		Adpos.x = -SCREEN_WIDTH / 2 / 2;
 		Adpos.y = testpos_y;
 		Set_flg = true;
@@ -250,18 +230,8 @@ void  Advertisement::Advertisement_Attack_Set(int _Type)
 
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
-		/*if (random == 1)
-		{
-			ad.SetPos(Adpos.x, Adpos.y, Adpos.z);
-		}
-
-		if (random == 2)
-		{
-			ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
-		}*/
-
 		break;
-	case 4://右下
+	case 4://右下の時
 		Adpos.x = SCREEN_WIDTH / 2 / 2;
 		Adpos.y = testpos_y;
 		Set_flg = true;
@@ -269,18 +239,6 @@ void  Advertisement::Advertisement_Attack_Set(int _Type)
 		ad.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
-
-		/*if (random == 1)
-		{
-			ad.SetPos(Adpos.x, Adpos.y, Adpos.z);
-		}
-
-		if (random == 2)
-		{
-			ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
-		}*/
-
-
 		break;
 	}
 
@@ -299,7 +257,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 
 	switch (targetposType)//
 	{
-	case 1://左上
+	case 1://左上の時
 
 		if (adpos.y >= SCREEN_HEIGHT / 2 / 2)
 		{
@@ -323,7 +281,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 			ad2.SetPos(adpos.x, adpos.y, adpos.z);
 
 		break;
-	case 2://右上
+	case 2://右上の時
 
 		if (adpos.y >= SCREEN_HEIGHT / 2 / 2)
 		{
@@ -344,18 +302,10 @@ void Advertisement::Advertisement_move(int _target_pos)
 		ad.SetPos(adpos.x, adpos.y, adpos.z);
 
 		ad2.SetPos(adpos.x, adpos.y, adpos.z);
-		/*if (random == 1)
-		{
-			ad.SetPos(adpos.x, adpos.y, adpos.z);
-		}
-		
-		if (random == 2)
-		{
-			ad2.SetPos(adpos.x, adpos.y, adpos.z);
-		}*/
+
 
 		break;
-	case 3://左下
+	case 3://左下の時
 		if (adpos.y >= -SCREEN_HEIGHT / 2 / 2)
 		{
 			adpos.y--;
@@ -376,19 +326,8 @@ void Advertisement::Advertisement_move(int _target_pos)
 		ad.SetPos(adpos.x, adpos.y, adpos.z);
 
 		ad2.SetPos(adpos.x, adpos.y, adpos.z);
-
-		/*if (random == 1)
-		{
-			ad.SetPos(adpos.x, adpos.y, adpos.z);
-		}
-
-		if (random == 2)
-		{
-			ad2.SetPos(adpos.x, adpos.y, adpos.z);
-		}*/
-
 		break;
-	case 4://右下
+	case 4://右下の時
 		if (adpos.y >= -SCREEN_HEIGHT / 2 / 2)
 		{
 			adpos.y--;
@@ -408,17 +347,6 @@ void Advertisement::Advertisement_move(int _target_pos)
 		ad.SetPos(adpos.x, adpos.y, adpos.z);
 
 		ad2.SetPos(adpos.x, adpos.y, adpos.z);
-
-		/*if (random == 1)
-		{
-			ad.SetPos(adpos.x, adpos.y, adpos.z);
-		}
-
-		if (random == 2)
-		{
-			ad2.SetPos(adpos.x, adpos.y, adpos.z);
-		}*/
-
 		break;
 	}
 
