@@ -12,7 +12,6 @@ public:
     Player();
     void Player_Init();
     void Update(); // プレイヤーの更新処理
-    void Reflect();//反射
     //void flutter();
     //void Attack(Enemy& target); // 攻撃メソッド
     //bool IsTargetInRange(const Enemy& target) const; // 距離計算メソッド
