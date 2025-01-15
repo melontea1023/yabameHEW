@@ -1,6 +1,7 @@
 #pragma once
 #include <d3d11.h>  // DirectX11を使うためのヘッダーファイル
-#include <DirectXMath.h> // DirextXの数学関連のヘッダーファイル
+//#include <DirectXMath.h> // DirextXの数学関連のヘッダーファイル
+#include <SimpleMath.h>
 
 #include <Xinput.h> //XInputを使うためのヘッダーファイル
 #pragma comment (lib, "xinput.lib") //XInputを使うために必要
@@ -60,14 +61,14 @@
 class Input {
 private:
 	//キー入力情報を保存する変数
-	BYTE keyState[256] = {};
-	BYTE keyState_old[256] = {};
+	static BYTE keyState[256];
+	static BYTE keyState_old[256];
 
 	//コントローラー入力情報を保存する変数
-	XINPUT_STATE controllerState = {};
-	XINPUT_STATE controllerState_old = {};
+	static XINPUT_STATE controllerState;
+	static XINPUT_STATE controllerState_old;
 
-	int VibrationTime; //振動継続時間をカウントする変数
+	static int VibrationTime; //振動継続時間をカウントする変数
 
 public:
 
@@ -76,26 +77,26 @@ public:
 	void Update(); //更新
 
 	//キー入力
-	bool GetKeyPress(int key);   //プレス(押している間ずっと)
-	bool GetKeyTrigger(int key); //トリガー(押し始めた時)
-	bool GetKeyRelease(int key); //リリース(押し終わった時)
+	static bool GetKeyPress(int key);   //プレス(押している間ずっと)
+	static bool GetKeyTrigger(int key); //トリガー(押し始めた時)
+	static bool GetKeyRelease(int key); //リリース(押し終わった時)
 
 	//アナログスティック(コントローラー)
-	DirectX::XMFLOAT2 GetLeftAnalogStick(void);
-	DirectX::XMFLOAT2 GetRightAnalogStick(void);
+	static DirectX::SimpleMath::Vector2 GetLeftAnalogStick(void);
+	static DirectX::SimpleMath::Vector2 GetRightAnalogStick(void);
 
 	//トリガー(コントローラー)
-	float GetLeftTrigger(void);
-	float GetRightTrigger(void);
+	static float GetLeftTrigger(void);
+	static float GetRightTrigger(void);
 
 	//ボタン入力(コントローラー)
-	bool GetButtonPress(WORD btn);   //プレス(押している間ずっと)
-	bool GetButtonTrigger(WORD btn); //トリガー(押し始めた時)
-	bool GetButtonRelease(WORD btn); //リリース(押し終わった時)
-	
+	static bool GetButtonPress(WORD btn);   //プレス(押している間ずっと)
+	static bool GetButtonTrigger(WORD btn); //トリガー(押し始めた時)
+	static bool GetButtonRelease(WORD btn); //リリース(押し終わった時)
+
 	//振動(コントローラー)
 	//flame：振動を継続する時間(単位：フレーム)
 	//powoe：振動の強さ(0～1)
-	void SetVibration(int frame = 1, float powor = 1);
+	static void SetVibration(int frame = 1, float powor = 1);
 };
 

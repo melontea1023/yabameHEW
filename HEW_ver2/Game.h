@@ -17,6 +17,7 @@ private:
 	
 	Object  title;
 	Object bg1;	//background
+	Object Player;
 
 
 
