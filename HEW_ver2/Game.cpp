@@ -29,6 +29,7 @@ void Game::Init(HWND hWnd) {
     player.SetAngle(0.0f);
 }
 
+
 void Game::Update(void) {
 
     //一旦スペースで全部シーン遷移
