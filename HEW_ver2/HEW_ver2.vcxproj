@@ -133,23 +133,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Advertisement raining.cpp" />
     <ClCompile Include="direct3d.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Hit judgment.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+ EnemyAction
+=======
     <ClCompile Include="Player.cpp" />
+main
     <ClCompile Include="WICTextureLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Advertisement raining.h" />
     <ClInclude Include="direct3d.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="Object.h" />
+ EnemyAction
+=======
     <ClInclude Include="Player.h" />
+ main
     <ClInclude Include="WICTextureLoader.h" />
   </ItemGroup>
   <ItemGroup>

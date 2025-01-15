@@ -1,10 +1,28 @@
+EnemyAction
+#include"Game.h"
+#include<vector>
+
+std::vector<Object> obj = {};
+
+void Game::Init(HWND hWnd)
+{
+	D3D_Create(hWnd); //DirectXåˆæœŸåŒ–
+
+	//ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Init
+	bg1.Init(L"asset/background01_test.png");   //èƒŒæ™¯ã‚’åˆæœŸåŒ–
+	bg1.SetPos(0.0f, 0.0f, 0.0f);      //ä½ç½®ã‚’è¨­å®š
+	bg1.SetSize(768.0f, 576.0f, 0.0f); //å¤§ãã•ã‚’è¨­å®š
+	bg1.SetAngle(0.0f);   //è§’åº¦ã‚’è¨­å®š
+	obj.push_back(bg1);
+}
+=======
 #include "Game.h"
 #include "Player.h"
 
 std::vector<Object> obj = {};
-Player player; // PlayerƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+Player player; // Playerã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 
-//—ñ‹“Œ^‚ÅƒV[ƒ“‘JˆÚ
+//åˆ—æŒ™å‹ã§ã‚·ãƒ¼ãƒ³é·ç§»
 enum GameState
 { TITLE, 
   GAME, 
@@ -15,14 +33,14 @@ GameState State = TITLE;
 void Game::Init(HWND hWnd) {
 
     D3D_Create(hWnd);
-    // ”wŒi‚Ì‰Šú‰»
+    // èƒŒæ™¯ã®åˆæœŸåŒ–
     bg1.Init(L"asset/title2.png");
     bg1.SetPos(0.0f, 0.0f, 0.0f);
     bg1.SetSize(768.0f, 576.0f, 0.0f);
     bg1.SetAngle(0.0f);
     obj.push_back(bg1);
 
-    // Player‚Ì‰Šú‰»
+    // Playerã®åˆæœŸåŒ–
     player.Init(L"asset/playertest.png",1,1);
     player.SetPos(0.0f, 0.0f, 0.0f);
     player.SetSize(70.0f, 100.0f, 0.0f);
@@ -33,7 +51,7 @@ void Game::Init(HWND hWnd) {
 
 void Game::Update(void) {
 
-    //ˆê’UƒXƒy[ƒX‚Å‘S•”ƒV[ƒ“‘JˆÚ
+    //ä¸€æ—¦ã‚¹ãƒšãƒ¼ã‚¹ã§å…¨éƒ¨ã‚·ãƒ¼ãƒ³é·ç§»
     switch (State) {
     case TITLE:
         if (Input::GetKeyTrigger(VK_SPACE)) {
@@ -41,7 +59,7 @@ void Game::Update(void) {
         }
         break;
     case GAME:
-        // ƒvƒŒƒCƒ„[‚ÌXVˆ—
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ›´æ–°å‡¦ç†
         player.Update();
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
@@ -54,6 +72,13 @@ void Game::Update(void) {
         break;
     }
 
+EnemyAction
+	bg1.Draw();
+
+
+	D3D_FinishRender(); //æç”»çµ‚äº†
+
+main
 }
 
 void Game::Draw(void) {
@@ -63,7 +88,7 @@ void Game::Draw(void) {
         bg1.Draw();
         break;
     case GAME:
-        // ƒvƒŒƒC‰æ–Ê‚Ì•`‰æ 
+        // ãƒ—ãƒ¬ã‚¤ç”»é¢ã®æç”» 
         player.Draw();
         break;
     case LAST:
@@ -79,5 +104,5 @@ void Game::Uninit(void) {
     for (int i = 0; i < number; i++) {
         obj[i].Uninit();
     }
-    D3D_Release(); // DirectX‚ğI—¹
+    D3D_Release(); // DirectXã‚’çµ‚äº†
 }
