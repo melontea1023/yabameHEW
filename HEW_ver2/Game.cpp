@@ -1,8 +1,7 @@
 #include "Game.h"
 #include "Player.h"
 
-std::vector<Object> obj = {};
-Player player; // Playerクラスのインスタンス
+std::vector<Object> objs = {};
 
 //列挙型でシーン遷移
 enum GameState
@@ -20,13 +19,14 @@ void Game::Init(HWND hWnd) {
     bg1.SetPos(0.0f, 0.0f, 0.0f);
     bg1.SetSize(768.0f, 576.0f, 0.0f);
     bg1.SetAngle(0.0f);
-    obj.push_back(bg1);
+    objs.push_back(bg1);
 
     // Playerの初期化
     player.Init(L"asset/playertest.png",1,1);
     player.SetPos(0.0f, 0.0f, 0.0f);
     player.SetSize(70.0f, 100.0f, 0.0f);
     player.SetAngle(0.0f);
+    objs.push_back(player);
 }
 
 
@@ -73,10 +73,14 @@ void Game::Draw(void) {
 }
 
 void Game::Uninit(void) {
-    int number = obj.size();
 
-    for (int i = 0; i < number; i++) {
-        obj[i].Uninit();
+    for (auto& i : objs) {
+        i.Uninit();
     }
+    //int number = objs.size();
+
+    //for (int i = 0; i < number; i++) {
+    //    objs[i].Uninit();
+    //}
     D3D_Release(); // DirectXを終了
 }

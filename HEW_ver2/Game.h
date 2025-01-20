@@ -17,7 +17,7 @@ private:
 	
 	Object  title;
 	Object bg1;	//background
-	Object Player;
+	Player player;
 
 public:
 	void Init(HWND hWnd);   //‰Šú‰»

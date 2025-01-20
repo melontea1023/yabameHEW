@@ -48,6 +48,15 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>ソース ファイル\obje</Filter>
     </ClCompile>
+    <ClCompile Include="Advertisement raining.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_DemonOfSmartphone.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>ソース ファイル\obje</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="direct3d.h">
@@ -69,6 +78,15 @@
       <Filter>ヘッダー ファイル\obje</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
+      <Filter>ヘッダー ファイル\obje</Filter>
+    </ClInclude>
+    <ClInclude Include="Advertisement raining.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_DemonOfSmartphone.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
       <Filter>ヘッダー ファイル\obje</Filter>
     </ClInclude>
   </ItemGroup>

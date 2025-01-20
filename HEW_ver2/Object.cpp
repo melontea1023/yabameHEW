@@ -128,7 +128,7 @@ void Object::CutUV(float U, float V)
 	UV.y = V;
 }
 
-DirectX::XMFLOAT3 Object::GetPos(void)
+DirectX::XMFLOAT3 Object::GetPos(void)const
 {
 	return pos; //À•W‚ğƒQƒbƒg
 }
