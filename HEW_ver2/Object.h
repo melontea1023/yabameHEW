@@ -31,6 +31,8 @@ protected:
 	//
 	 DirectX::XMFLOAT2 UV = { 0.0f,1.0f};
 
+	 DirectX::XMFLOAT2 position = { 0.0f, 0.0f };
+
 
 	 //テクスチャが縦横にに何分割されているか
 	 int splitX = 1;

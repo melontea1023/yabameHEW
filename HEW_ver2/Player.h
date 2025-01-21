@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "Input.h"
 #include <vector>
+#include "Advertisement raining.h"
 
 class Player : public Object {
 private:
@@ -10,6 +11,7 @@ private:
     float attackRange;            // 範囲
     float attackDamage;           // ダメージ
 
+    float detectionRange = 100.0f; // 範囲の設定
 public:
     float stamina;                // プレイヤーのスタミナ
     float health;                 // プレイヤーの体力
@@ -17,7 +19,7 @@ public:
     Player();
     void Init(const wchar_t* textureFile, int sx = 1, int sy = 1); // 初期化
     void Update();                 // 更新処理
-    void Reflect();                // 反射処理
+    void Reflect(Advertisement& adObject);                // 反射処理
     void Attack(Object& target); // 攻撃処理
     bool IsTargetInRange(const Object& target) const; // 対象が攻撃範囲内か判定
 };

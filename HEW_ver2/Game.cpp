@@ -42,6 +42,8 @@ void Game::Update(void) {
     case GAME:
         // プレイヤーの更新処理
         player.Update();
+        player.Reflect(adObject); // Player による反射処理
+        adObject.UpdatePosition(); // Advertisement の位置更新
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }

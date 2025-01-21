@@ -4,6 +4,7 @@
 #include<algorithm>
 #include"Object.h"
 #include"input.h"
+#include "Advertisement raining.h"
 
 #define GAME_TITLE (101)
 #define GAME_GAME (102)
@@ -18,7 +19,7 @@ private:
 	Object  title;
 	Object bg1;	//background
 	Player player;
-
+	Advertisement adObject; // 広告オブジェクト
 public:
 	void Init(HWND hWnd);   //初期化
 	void Update(void);
@@ -26,7 +27,4 @@ public:
 	void Uninit(void);          //終了
 
 	bool Box_Hit_judgment(Object, Object);
-	bool Circle_Hit_judgment(Object, Object);
-	
-
 };

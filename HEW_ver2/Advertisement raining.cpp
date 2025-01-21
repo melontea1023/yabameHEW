@@ -352,3 +352,12 @@ void Advertisement::Advertisement_move(int _target_pos)
 
 
 }
+
+void Advertisement::SetVelocity(const DirectX::XMFLOAT2& velocity) {
+	this->velocity = velocity;
+}
+
+void Advertisement::UpdatePosition() {
+	position.x += velocity.x;
+	position.y += velocity.y;
+}

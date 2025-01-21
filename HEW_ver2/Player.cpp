@@ -39,7 +39,7 @@ void Player::Update() {
     }
 }
 
-void Player::Reflect() {//反射角度調整
+void Player::Reflect(Advertisement& adObject) {//反射角度調整
     if (Input::GetButtonPress(XINPUT_A)) {
         velocity = { 1.0f, 1.0f }; // 右上
     }
@@ -50,15 +50,10 @@ void Player::Reflect() {//反射角度調整
         velocity = { 1.0f, -1.0f }; // 右下
     }
 
-    // 正規化して速度を設定
-    float length = std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
-    if (length != 0.0f) {
-        velocity.x = (velocity.x / length) * reflectSpeed;
-        velocity.y = (velocity.y / length) * reflectSpeed;
+    // Advertisement オブジェクトが範囲内の場合のみ処理
+    if (IsTargetInRange(adObject)) {
+        adObject.SetVelocity(velocity); // 広告オブジェクトの速度を設定
     }
-
-    pos.x += velocity.x;
-    pos.y += velocity.y;
 }
 
 void Player::Attack(Object& target) {
@@ -69,12 +64,8 @@ void Player::Attack(Object& target) {
 }
 
 bool Player::IsTargetInRange(const Object& target) const {
-    // 距離を計算
-    DirectX::XMFLOAT3 targetPos = target.GetPos();
-    float dx = targetPos.x - pos.x;
-    float dy = targetPos.y - pos.y;
-    float distance = std::sqrt(dx * dx + dy * dy);
-
-    // 攻撃範囲内なら true を返す
-    return distance <= attackRange;
+    float dx = target.GetPos().x - position.x;
+    float dy = target.GetPos().y - position.y;
+    float distanceSquared = dx * dx + dy * dy;
+    return distanceSquared <= (attackRange * attackRange);
 }
