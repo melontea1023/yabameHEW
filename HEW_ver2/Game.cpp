@@ -16,7 +16,7 @@ void Game::Init(HWND hWnd) {
 
     D3D_Create(hWnd);
     // ”wŒi‚Ì‰Šú‰»
-    bg1.Init(L"asset/title2.png");
+    bg1.Init(L"asset/bg1.png");
     bg1.SetPos(0.0f, 0.0f, 0.0f);
     bg1.SetSize(768.0f, 576.0f, 0.0f);
     bg1.SetAngle(0.0f);
