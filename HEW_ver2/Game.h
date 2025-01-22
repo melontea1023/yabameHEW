@@ -9,6 +9,13 @@
 #define GAME_GAME (102)
 #define GAME_CLEAR (103)
 #define GAME_END (104)
+//—ñ‹“Œ^‚ÅƒV[ƒ“‘JˆÚ
+enum GameState
+{
+	TITLE,
+	GAME,
+	LAST
+};
 
 class Game {
 
@@ -19,7 +26,12 @@ private:
 	Object bg1;	//background
 	Object Player;
 
+	GameState State = TITLE;
+	
 public:
+
+	Game() : State(TITLE) {}
+
 	void Init(HWND hWnd);   //‰Šú‰»
 	void Update(void);
 	void Draw(void);            //•`‰æ
@@ -27,6 +39,6 @@ public:
 
 	bool Box_Hit_judgment(Object, Object);
 	bool Circle_Hit_judgment(Object, Object);
-	
+
 
 };
