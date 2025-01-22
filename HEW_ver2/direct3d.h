@@ -4,8 +4,8 @@
 #include<DirectXMath.h> //DirectXの数学関連のヘッダーファイル
 #include "input.h"
 
-#define SCREEN_WIDTH (1980)	// ウインドウの幅
-#define SCREEN_HEIGHT (1020)	// ウインドウの高さ
+#define SCREEN_WIDTH (1920)	// ウインドウの幅
+#define SCREEN_HEIGHT (1080)	// ウインドウの高さ
 
 // 関数のプロトタイプ宣言
 HRESULT D3D_Create(HWND hwnd);
