@@ -69,8 +69,7 @@ void Player::Update() {
 //}
 
 //void Player::flutter() {
-//    const float flutterCost = 20.0f; // flutterのスタミナ消費量
-//
+
 //    if (stamina >= flutterCost) {
 //        stamina -= flutterCost; // スタミナを消費
 //    }
@@ -121,10 +120,3 @@ void Player::Update() {
 //DirectX::SimpleMath::Vector2 TargetComponent::GetPosition() const {
 //    return pos; 
 // }
-
-
-//Playerの初期化 Game.cpp保存用
-//player.Init(L"asset/playertest.png", 1, 1);
-//player.SetPos(0.0f, 0.0f, 0.0f);
-//player.SetSize(70.0f, 100.0f, 0.0f);
-//player.SetAngle(0.0f);
