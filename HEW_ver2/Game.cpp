@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Player.h"
 
+
 std::vector<Object> obj = {};
 Player player; // Playerクラスのインスタンス
 
@@ -23,6 +24,8 @@ void Game::Init(HWND hWnd) {
     player.SetAngle(0.0f);
 
 
+    testenemy.CharacterInit();
+
 }
 
 void Game::Update(void) {
@@ -34,6 +37,8 @@ void Game::Update(void) {
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = GAME;
             player.Update();
+            testenemy.test_Update(player.GetPos(), testenemy.GetPos());
+
         }
         break;
     case GAME:

@@ -3,6 +3,7 @@
 #include<vector>
 #include<algorithm>
 #include"Object.h"
+#include"testEnemy.h"
 #include"input.h"
 
 #define GAME_TITLE (101)
@@ -25,6 +26,8 @@ private:
 	Object  title;
 	Object bg1;	//background
 	Object Player;
+
+	TestEnemy testenemy;
 
 	GameState State = TITLE;
 	
