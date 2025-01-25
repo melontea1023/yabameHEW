@@ -124,12 +124,11 @@ void Object::SetUV(float u, float v)
 void Object::CutUV(float U, float V)
 {
 	//表示したい画像をセット
-	
 	UV.x = U;
 	UV.y = V;
 }
 
-DirectX::XMFLOAT3 Object::GetPos(void)
+DirectX::XMFLOAT3 Object::GetPos(void)const
 {
 	return pos; //座標をゲット
 }

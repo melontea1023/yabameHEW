@@ -1,8 +1,7 @@
 #include "Game.h"
 #include "Player.h"
 
-std::vector<Object> obj = {};
-Player player; // Playerクラスのインスタンス
+std::vector<Object> objs = {};
 
 
 
@@ -14,16 +13,16 @@ void Game::Init(HWND hWnd) {
     bg1.SetPos(0.0f, 0.0f, 0.0f);
     bg1.SetSize(1980.0f, 1080.0f, 0.0f);
     bg1.SetAngle(0.0f);
-    obj.push_back(bg1);
+    objs.push_back(bg1);
 
     // Playerの初期化
     player.Init(L"asset/movesprite.png",3,1);
     player.SetPos(0.0f, 0.0f, 0.0f);
     player.SetSize(100.0f, 150.0f, 0.0f);
     player.SetAngle(0.0f);
-
-
+    objs.push_back(player);
 }
+
 
 void Game::Update(void) {
 
@@ -39,6 +38,12 @@ void Game::Update(void) {
     case GAME:
         // プレイヤーの更新処理
         player.Update();
+        player.Update();
+        for (Bullet& bullet : bullets) { // 複数のBulletに対応
+            player.Reflect(bullet);
+            bullet.Update(deltaTime); // Bullet の移動更新
+        }
+        adObject.UpdatePosition(); // Advertisement の位置更新
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }
@@ -71,10 +76,14 @@ void Game::Draw(void) {
 }
 
 void Game::Uninit(void) {
-    int number = obj.size();
 
-    for (int i = 0; i < number; i++) {
-        obj[i].Uninit();
+    for (auto& i : objs) {
+        i.Uninit();
     }
+    //int number = objs.size();
+
+    //for (int i = 0; i < number; i++) {
+    //    objs[i].Uninit();
+    //}
     D3D_Release(); // DirectXを終了
 }

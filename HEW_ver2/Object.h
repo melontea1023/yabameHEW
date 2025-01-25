@@ -31,6 +31,8 @@ protected:
 	//
 	 DirectX::XMFLOAT2 UV = { 0.0f,1.0f};
 
+	 DirectX::XMFLOAT2 position = { 0.0f, 0.0f };
+
 
 	 //テクスチャが縦横にに何分割されているか
 	 int splitX = 1;
@@ -53,11 +55,9 @@ public:
 	void SetColor(float r, float g, float b, float a); //色をセット
 	void SetUV(float u, float v);
 	void CutUV(float U, float V);
-	DirectX::XMFLOAT3 GetPos(void); //座標をゲット
+	DirectX::XMFLOAT3 GetPos(void)const; //座標をゲット
 	DirectX::XMFLOAT3 GetSize(void); //大きさをゲット
 	float GetAngle(void);            //角度をゲット
 	DirectX::XMFLOAT4 GetColor(void); //色をゲット
 	DirectX::XMFLOAT2 GetUV(void); //切り取りの値ゲット
-
-
 };

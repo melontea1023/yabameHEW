@@ -13,6 +13,7 @@ protected:
 
 
 	DirectX::XMFLOAT3 now_p_pos = { 0.0f,0.0f,0.0f };
+	DirectX::XMFLOAT2 velocity = { 0.0f, 0.0f };
 
 	int random;
 
@@ -25,7 +26,6 @@ protected:
 	bool Check_flg=false;//広告降ろしが作動したかどうかのフラグ(関数が起動する際に使用)
 
 public:
-
 	void Advertisement_raining_Init();
 	void Advertisement_raining_Update(DirectX::XMFLOAT3);
 	void Advertisement_raining_Darw();  //Drawの中の処理の一番下
@@ -36,4 +36,8 @@ public:
 	int AdvertisingLocation(DirectX::XMFLOAT3);
 	void Advertisement_Attack_Set(int, DirectX::XMFLOAT3);
 	void Advertisement_move(int);
+
+	void SetVelocity(const DirectX::XMFLOAT2& velocity);
+	void UpdatePosition();
+
 };
