@@ -39,7 +39,7 @@ void Player::Update() {
     }
 }
 
-void Player::Reflect(Advertisement& adObject) {//反射角度調整
+void Player::Reflect(Bullet& bullet) {//反射角度調整
     if (Input::GetButtonPress(XINPUT_A)) {
         velocity = { 1.0f, 1.0f }; // 右上
     }
@@ -49,10 +49,8 @@ void Player::Reflect(Advertisement& adObject) {//反射角度調整
     else if (Input::GetButtonPress(XINPUT_X)) {
         velocity = { 1.0f, -1.0f }; // 右下
     }
-
-    // Advertisement オブジェクトが範囲内の場合のみ処理
-    if (IsTargetInRange(adObject)) {
-        adObject.SetVelocity(velocity); // 広告オブジェクトの速度を設定
+    if (IsTargetInRange(bullet)) {
+        bullet.SetVelocity(velocity.x * reflectSpeed, velocity.y * reflectSpeed); // Bulletの速度を設定
     }
 }
 

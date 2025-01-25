@@ -2,7 +2,7 @@
 #include "Object.h"
 #include "Input.h"
 #include <vector>
-#include "Advertisement raining.h"
+#include "Bullet.h"
 
 class Player : public Object {
 private:
@@ -19,7 +19,7 @@ public:
     Player();
     void Init(const wchar_t* textureFile, int sx = 1, int sy = 1); // ‰Šú‰»
     void Update();                 // XVˆ—
-    void Reflect(Advertisement& adObject);                // ”½Ëˆ—
+    void Reflect(Bullet& bullet);;                // ”½Ëˆ—
     void Attack(Object& target); // UŒ‚ˆ—
     bool IsTargetInRange(const Object& target) const; // ‘ÎÛ‚ªUŒ‚”ÍˆÍ“à‚©”»’è
 };
