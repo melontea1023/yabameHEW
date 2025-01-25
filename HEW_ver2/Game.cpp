@@ -42,7 +42,11 @@ void Game::Update(void) {
     case GAME:
         // プレイヤーの更新処理
         player.Update();
-        player.Reflect(adObject); // Player による反射処理
+        player.Update();
+        for (Bullet& bullet : bullets) { // 複数のBulletに対応
+            player.Reflect(bullet);
+            bullet.Update(deltaTime); // Bullet の移動更新
+        }
         adObject.UpdatePosition(); // Advertisement の位置更新
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
