@@ -3,28 +3,22 @@
 
 std::vector<Object> objs = {};
 
-//列挙型でシーン遷移
-enum GameState
-{ TITLE, 
-  GAME, 
-  LAST
-};
-GameState State = TITLE;
+
 
 void Game::Init(HWND hWnd) {
 
     D3D_Create(hWnd);
     // 背景の初期化
-    bg1.Init(L"asset/title2.png");
+    bg1.Init(L"asset/bg1.png");
     bg1.SetPos(0.0f, 0.0f, 0.0f);
-    bg1.SetSize(768.0f, 576.0f, 0.0f);
+    bg1.SetSize(1980.0f, 1080.0f, 0.0f);
     bg1.SetAngle(0.0f);
     objs.push_back(bg1);
 
     // Playerの初期化
-    player.Init(L"asset/playertest.png",1,1);
+    player.Init(L"asset/movesprite.png",3,1);
     player.SetPos(0.0f, 0.0f, 0.0f);
-    player.SetSize(70.0f, 100.0f, 0.0f);
+    player.SetSize(100.0f, 150.0f, 0.0f);
     player.SetAngle(0.0f);
     objs.push_back(player);
 }
@@ -32,11 +26,13 @@ void Game::Init(HWND hWnd) {
 
 void Game::Update(void) {
 
+    input.Update();
     //一旦スペースで全部シーン遷移
     switch (State) {
     case TITLE:
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = GAME;
+            player.Update();
         }
         break;
     case GAME:
@@ -66,6 +62,7 @@ void Game::Draw(void) {
     switch (State) {
     case TITLE:
         bg1.Draw();
+        player.Draw();
         break;
     case GAME:
         // プレイ画面の描画 

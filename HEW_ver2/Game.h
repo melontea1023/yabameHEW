@@ -10,6 +10,13 @@
 #define GAME_GAME (102)
 #define GAME_CLEAR (103)
 #define GAME_END (104)
+//åˆ—æŒ™å‹ã§ã‚·ãƒ¼ãƒ³é·ç§»
+enum GameState
+{
+	TITLE,
+	GAME,
+	LAST
+};
 
 class Game {
 
@@ -18,13 +25,19 @@ private:
 	
 	Object  title;
 	Object bg1;	//background
+
 	Player player;
-	Advertisement adObject; // LƒIƒuƒWƒFƒNƒg
+
+	GameState State = TITLE;
+
 public:
-	void Init(HWND hWnd);   //‰Šú‰»
+
+	Game() : State(TITLE) {}
+
+	void Init(HWND hWnd);   //åˆæœŸåŒ–
 	void Update(void);
-	void Draw(void);            //•`‰æ
-	void Uninit(void);          //I—¹
+	void Draw(void);            //æç”»
+	void Uninit(void);          //çµ‚äº†
 
 	bool Box_Hit_judgment(Object, Object);
 };

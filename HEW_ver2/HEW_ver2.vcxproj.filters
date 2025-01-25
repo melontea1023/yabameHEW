@@ -41,6 +41,9 @@
     <ClCompile Include="WICTextureLoader.cpp">
       <Filter>NewFilter1</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>ソース ファイル\obje</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Advertisement raining.h">
@@ -72,6 +75,9 @@
     </ClInclude>
     <ClInclude Include="WICTextureLoader.h">
       <Filter>NewFilter2</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>ヘッダー ファイル\obje</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

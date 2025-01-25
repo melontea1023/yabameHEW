@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <cmath>
 
-Player::Player()//’l’²®
+Player::Player()//å€¤èª¿æ•´
     : stamina(100.0f), health(100.0f), reflectSpeed(10.0f), attackRange(100.0f), attackDamage(10.0f) {
     velocity = { 0.0f, 0.0f };//imakannkeinasi
 }
@@ -16,48 +16,48 @@ void Player::Init(const wchar_t* textureFile, int sx, int sy) {
 void Player::Update() {
     float moveSpeed = 5.0f;
 
-    // ƒXƒ^ƒ~ƒi‚É‰‚¶‚½ˆÚ“®‘¬“x’²®
+    // ã‚¹ã‚¿ãƒŸãƒŠã«å¿œã˜ãŸç§»å‹•é€Ÿåº¦èª¿æ•´
     if (Input::GetButtonPress(XINPUT_RIGHT_SHOULDER)) {
         if (stamina > 0.0f) {
-            stamina -= 0.5f; // ƒXƒ^ƒ~ƒiÁ”ï
+            stamina -= 0.5f; // ã‚¹ã‚¿ãƒŸãƒŠæ¶ˆè²»
             moveSpeed += 2.0f;
         }
     }
     else {
-        stamina += 0.5f; // ƒXƒ^ƒ~ƒi‰ñ•œ
+        stamina += 0.5f; // ã‚¹ã‚¿ãƒŸãƒŠå›å¾©
         if (stamina > 100.0f) stamina = 100.0f;
     }
 
-    // ¶ƒAƒiƒƒOƒXƒeƒBƒbƒN‚É‚æ‚éˆÚ“®
+    // å·¦ã‚¢ãƒŠãƒ­ã‚°ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã«ã‚ˆã‚‹ç§»å‹•
     DirectX::SimpleMath::Vector2 leftStick = Input::GetLeftAnalogStick();
     pos.x += leftStick.x * moveSpeed;
     pos.y += leftStick.y * moveSpeed;
 
-    // ƒ{ƒ^ƒ““ü—Í‚É‰‚¶‚ÄUŒ‚‚â”½Ë‚ğÀs
+    // ãƒœã‚¿ãƒ³å…¥åŠ›ã«å¿œã˜ã¦æ”»æ’ƒã‚„åå°„ã‚’å®Ÿè¡Œ
     if (Input::GetButtonPress(XINPUT_A) || Input::GetButtonPress(XINPUT_B) || Input::GetButtonPress(XINPUT_X)) {
         Reflect();
     }
 }
 
-void Player::Reflect(Bullet& bullet) {//”½ËŠp“x’²®
+void Player::Reflect(Bullet& bullet) {//åå°„è§’åº¦èª¿æ•´
     if (Input::GetButtonPress(XINPUT_A)) {
-        velocity = { 1.0f, 1.0f }; // ‰Eã
+        velocity = { 1.0f, 1.0f }; // å³ä¸Š
     }
     else if (Input::GetButtonPress(XINPUT_B)) {
-        velocity = { 1.0f, 0.0f }; // ‰E
+        velocity = { 1.0f, 0.0f }; // å³
     }
     else if (Input::GetButtonPress(XINPUT_X)) {
-        velocity = { 1.0f, -1.0f }; // ‰E‰º
+        velocity = { 1.0f, -1.0f }; // å³ä¸‹
     }
     if (IsTargetInRange(bullet)) {
-        bullet.SetVelocity(velocity.x * reflectSpeed, velocity.y * reflectSpeed); // Bullet‚Ì‘¬“x‚ğİ’è
+        bullet.SetVelocity(velocity.x * reflectSpeed, velocity.y * reflectSpeed); // Bulletã®é€Ÿåº¦ã‚’è¨­å®š
     }
 }
 
 void Player::Attack(Object& target) {
     if (IsTargetInRange(target)) {
-        // ƒ_ƒ[ƒWŒn‚Ìˆ—
-        target.SetColor(1.0f, 0.0f, 0.0f, 1.0f); // “GÔ‚­‚·‚é‚â‚Â
+        // ãƒ€ãƒ¡ãƒ¼ã‚¸ç³»ã®å‡¦ç†
+        target.SetColor(1.0f, 0.0f, 0.0f, 1.0f); // æ•µèµ¤ãã™ã‚‹ã‚„ã¤
     }
 }
 

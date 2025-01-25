@@ -16,6 +16,5 @@ protected:
 
 public:
 	void EnemyAtack();
-	
 
 };
