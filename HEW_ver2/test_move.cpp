@@ -14,7 +14,6 @@ void TestEnemy::CharacterInit(void)
 	eb.SetPos(SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2, 0.0f);//ˆÊ’u‚ğİ’è
 	eb.SetSize(750.0f, 375.0f, 0.0f); //‘å‚«‚³‚ğİ’è
 	eb.SetAngle(0.0f);   //Šp“x‚ğİ’è
-
 	ad.Advertisement_raining_Init();
 
 }

@@ -23,6 +23,21 @@ void Game::Init(HWND hWnd) {
     player.SetSize(100.0f, 150.0f, 0.0f);
     player.SetAngle(0.0f);
 
+    testenemy.Init(L"asset/movesprite.png", 3, 1);
+    testenemy.SetPos(0.0f, 0.0f, 0.0f);
+    testenemy.SetSize(SCREEN_WIDTH / 2/2, SCREEN_HEIGHT / 2/2, 0.0f);
+    testenemy.SetAngle(0.0f);
+
+    testenemy_link.Init(L"asset/movesprite.png", 3, 1);
+    testenemy_link.SetPos(SCREEN_WIDTH / 2/2, SCREEN_HEIGHT / 2/2, 0.0f);
+    testenemy_link.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f);
+    testenemy_link.SetAngle(0.0f);
+
+    testenemy_ad.Init(L"asset/movesprite.png", 3, 1);
+    testenemy_ad.SetPos(SCREEN_WIDTH / 2 /2, SCREEN_HEIGHT / 2/2, 0.0f);
+    testenemy_ad.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f);
+    testenemy_ad.SetAngle(0.0f);
+
 
     testenemy.CharacterInit();
     sound.Init(); //ÉTÉEÉìÉhÇÃèâä˙âª
