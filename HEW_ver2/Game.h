@@ -31,6 +31,8 @@ private:
 	Object Player;
 
 	TestEnemy testenemy;
+	TestEnemy testenemy_ad;
+	TestEnemy testenemy_link;
 
 	GameState State = TITLE;
 	
