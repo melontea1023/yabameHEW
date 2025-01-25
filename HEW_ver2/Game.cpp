@@ -25,6 +25,8 @@ void Game::Init(HWND hWnd) {
 
 
     testenemy.CharacterInit();
+    sound.Init(); //サウンドの初期化
+
 
 }
 
@@ -81,5 +83,7 @@ void Game::Uninit(void) {
     for (int i = 0; i < number; i++) {
         obj[i].Uninit();
     }
+
+    sound.Uninit(); //サウンドを終了
     D3D_Release(); // DirectXを終了
 }
