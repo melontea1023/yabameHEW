@@ -70,8 +70,8 @@ void TestEnemy::Enemy_Action_Move(int _eMove_Type, DirectX::XMFLOAT3 _playerPosi
 		}
 		else
 		{
-			link_throwing_Animation();
-			TestEnemy::SetUV(Set_E.x, Set_E.y);
+			link_e=link_throwing_Animation();
+			TestEnemy::SetUV(link_e.x, link_e.y);
 
 		}
 		break;
@@ -88,8 +88,8 @@ void TestEnemy::Enemy_Action_Move(int _eMove_Type, DirectX::XMFLOAT3 _playerPosi
 		}
 		else
 		{
-			Advertisement_raining_Animation();
-			TestEnemy::SetUV(Set_E.x, Set_E.y);
+			ad_e=Advertisement_raining_Animation();
+			TestEnemy::SetUV(ad_e.x, ad_e.y);
 		}
 
 		break;
