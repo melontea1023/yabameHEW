@@ -47,7 +47,7 @@ public:
 	int numV = 0;
 	
 	void Init(const wchar_t* imgname,int sx=1,int sy=1);  //初期化
-	void Draw(void);                       //描画
+	void Draw() const;                       //描画
 	void Uninit(void);                    //終了
 	void SetPos(float x, float y, float z);//座標をセット
 	void SetSize(float x, float y, float z);//大きさをセット

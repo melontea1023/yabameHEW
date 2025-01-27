@@ -41,13 +41,13 @@ void Player::Update() {
 
 void Player::Reflect(Bullet& bullet) {
     if (IsTargetInRange(bullet)) {
-        if (Input::GetButtonPress(XINPUT_A)) {
+        if (Input::GetButtonPress(XINPUT_A)||Input::GetKeyTrigger(VK_Q)) {
             velocity = { 1.0f, 1.0f }; // 右上
         }
-        else if (Input::GetButtonPress(XINPUT_B)) {
+        else if (Input::GetButtonPress(XINPUT_B) || Input::GetKeyTrigger(VK_W)) {
             velocity = { 1.0f, 0.0f }; // 右
         }
-        else if (Input::GetButtonPress(XINPUT_X)) {
+        else if (Input::GetButtonPress(XINPUT_X) || Input::GetKeyTrigger(VK_E)) {
             velocity = { 1.0f, -1.0f }; // 右下
         }
         bullet.SetVelocity(velocity.x * reflectSpeed, velocity.y * reflectSpeed);
