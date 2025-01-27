@@ -5,6 +5,7 @@
 #include"Object.h"
 #include"input.h"
 #include "Advertisement raining.h"
+#include "sound.h"
 
 #define GAME_TITLE (101)
 #define GAME_GAME (102)

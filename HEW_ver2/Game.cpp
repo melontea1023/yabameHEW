@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Player.h"
 
+
 std::vector<Object> objs = {};
 
 
@@ -21,6 +22,9 @@ void Game::Init(HWND hWnd) {
     player.SetSize(100.0f, 150.0f, 0.0f);
     player.SetAngle(0.0f);
     objs.push_back(player);
+
+    sound.Init();
+    sound.Play(SOUND_LABEL_BGM000);
 }
 
 
