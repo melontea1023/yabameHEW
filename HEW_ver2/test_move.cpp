@@ -1,12 +1,10 @@
-//#include"Enemy.h"
-#include<stdlib.h>
-#include"Game.h"
+#include"testenemy.h"
 #include"time.h"
+#include <cstdlib> // rand, srand
+#include <ctime>   // time
+int eb_count = 0;
 
-bool bullet_set_flg = true;
-bool bullet_move_flg = false;
-DirectX::XMFLOAT3 Get_ebpos = { 0.0f,0.0f,0.0f };
-
+//
 void TestEnemy::CharacterInit(void)
 {
 
@@ -22,16 +20,13 @@ void TestEnemy::CharacterInit(void)
 void TestEnemy::test_Update(DirectX::XMFLOAT3 _pos, DirectX::XMFLOAT3 _nowepos)//左からPlayer,Enemyの座標
 {
 
-	if (eb.loop_flg)
-	{
-		bullet_set_flg = true;
-		bullet_move_flg = false;
-	}
 
 	if (bullet_move_flg)
 	{
 		Get_ebpos = eb.MoveBulllet(_pos, eb.GetPos());
 		eb.SetPos(Get_ebpos.x, Get_ebpos.y, Get_ebpos.z);
+		eb_count++;
+		e_Running_flg = eb.GetEndflg();
 	}
 
 	if (bullet_set_flg)
@@ -47,166 +42,154 @@ void TestEnemy::test_Update(DirectX::XMFLOAT3 _pos, DirectX::XMFLOAT3 _nowepos)/
 		eb.loop_flg = false;
 	}
 
-
-
-
-
-
-
 }
 
-void TestEnemy::Enemy_Action_Move(int _eMove_Type, DirectX::XMFLOAT3 _playerPosition)
+void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 {
-	int e_Type = _eMove_Type;
+	if (!e_Running_flg)
+	{
+		e_Type = probability();
+	}
+
+	DirectX::XMFLOAT3 nowpos = TestEnemy::GetPos();
+
 
 	switch (e_Type)
 	{
 	case 1://リンク投げに関係する処理を入れる
-
 		if (Ed_Animation_end_flg) //リンク投げアニメーションが終わっているかの確認
 		{
-			test_Update(_playerPosition, TestEnemy::GetPos());
+			if (bullet_set_flg)
+			{
+				int r = eb.SetTarget(_playerPosition, nowpos);
+				eb.SetAngle(r);
+				eb.SetPos(nowpos.x, nowpos.y, nowpos.z);
+
+				eb.Set_Bullet_Target(_playerPosition, nowpos, eb.GetPos());
+
+				bullet_set_flg = false;
+				bullet_move_flg = true;
+				eb.SetShotfinish(false);
+
+			}
+			if (bullet_move_flg)
+			{
+				Get_ebpos = eb.MoveBulllet(_playerPosition, eb.GetPos());
+				eb.SetPos(Get_ebpos.x, Get_ebpos.y, Get_ebpos.z);
+				if (eb.GetEndflg())
+				{
+					Ed_Animation_end_flg = false; // アニメーション終了フラグをリセット
+					e_Running_flg = false;       // 次の行動を許可
+				}
+			}
+			break;
 		}
 		else
 		{
-			link_e=link_throwing_Animation();
-			TestEnemy::SetUV(link_e.x, link_e.y);
-
+			link_e = link_throwing_Animation();
+			SetUV(link_e.x, link_e.y);
 		}
+		e_Running_flg = true;
 		break;
 	case 2://移動に関係する処理を入れる
+		if (moving_flg)
+		{
+			if (FbossRight)
+			{
+				bossEnemyMoveRight();
+			}
+			else
+			{
+				bossEnemyMoveLeft();
+
+			}
+			SetPos(epos.x, epos.y, epos.z);
+		}
+		e_Running_flg = true;
 
 		break;
 	case 3://広告降らしに関係する処理を入れる
-
-
-
 		if (Ad_Animation_end_flg) //広告降らしアニメーションが終わっているかの確認
 		{
 			ad.Advertisement_raining_Update(_playerPosition);
+			if (ad.GetEndflg())
+			{
+				Ad_Animation_end_flg = false; // アニメーション終了フラグをリセット
+				e_Running_flg = false;       // 次の行動を許可
+			}
 		}
 		else
 		{
-			ad_e=Advertisement_raining_Animation();
-			TestEnemy::SetUV(ad_e.x, ad_e.y);
+			ad_e = Advertisement_raining_Animation();
+			SetUV(ad_e.x, ad_e.y);
 		}
-
+		e_Running_flg = true;
 		break;
 	}
 
 }
-
 
 void TestEnemy::CharacterDraw(void)
 {
 	/*enemy.Draw();*/
 	eb.Draw();
-	ad.Advertisement_raining_Darw();
+	ad.Advertisement_raining_Draw();
 }
-
-
-//ボスの行動パターンメモ---------------------------
-//一回目：リンク投げ50％、広告降らし30％、移動20％
-//二回目：リンク投げ50％、広告降らし20％、移動30％
-//三回目：リンク投げ40％、広告降らし30％、移動30％
-//四回目：リンク投げ30％、広告降らし10％、移動60％
-//五回目：リンク投げ20％、広告降らし00％、移動80％
-//六回目：リンク投げ00％、広告降らし00％、移動100％
+////ボスの行動パターンメモ---------------------------
+////一回目：リンク投げ50％、広告降らし30％、移動20％
+////二回目：リンク投げ50％、広告降らし20％、移動30％
+////三回目：リンク投げ40％、広告降らし30％、移動30％
+////四回目：リンク投げ30％、広告降らし10％、移動60％
+////五回目：リンク投げ20％、広告降らし00％、移動80％
+////六回目：リンク投げ00％、広告降らし00％、移動100％
+////--------------------------------------------
 //
-//--------------------------------------------
-
 int TestEnemy::probability(void)
 {
-	int return_num = 0;
-	srand(time(NULL));
-	int r = (rand() % 10 + 1);
+	srand(static_cast<unsigned int>(time(0)));
 
-	switch (probability_Count)
+	// 各行動の確率
+	int linkThrow = 0;
+	int adRain = 0;
+	int move = 0;
+	// ターンごとの確率設定
+	if (turn == 1) {
+		linkThrow = 50; adRain = 30; move = 20;
+	}
+	else if (turn == 2) {
+		linkThrow = 50; adRain = 20; move = 30;
+	}
+	else if (turn == 3) {
+		linkThrow = 40; adRain = 30; move = 30;
+	}
+	else if (turn == 4) {
+		linkThrow = 30; adRain = 10; move = 60;
+	}
+	else if (turn == 5) {
+		linkThrow = 20; adRain = 0;  move = 80;
+	}
+	else {
+		linkThrow = 0;  adRain = 0;  move = 100;
+	}
+	if (turn == 7)
 	{
-	case 1:
-		if (r <= 5)
-		{
-			return_num = 1;//リンク投げ
-		}
-		else if (r >= 6 && r <= 8)
-		{
-			return_num = 3;
-		}
-		else
-		{
-			return_num = 2;
-		}
-		probability_Count++;
-		break;
-	case 2:
-		if (r <= 5)
-		{
-			return_num = 1;//リンク投げ
-		}
-		else if (r >= 6 && r <= 7)
-		{
-			return_num = 3;
-		}
-		else
-		{
-			return_num = 2;
-		}
-		probability_Count++;
-		break;
-	case 3:
-		if (r <= 4)
-		{
-			return_num = 1;//リンク投げ
-		}
-		else if (r >= 5 && r <= 7)
-		{
-			return_num = 3;
-		}
-		else
-		{
-			return_num = 2;
-		}
-		probability_Count++;
-		break;
-	case 4:
-		if (r <= 3)
-		{
-			return_num = 1;//リンク投げ
-		}
-		else if (r == 4)
-		{
-			return_num = 3;
-		}
-		else
-		{
-			return_num = 2;
-		}
-		probability_Count++;
-		break;
-	case 5:
-		if (r <= 2)
-		{
-			return_num = 1; //リンク投げ
-		}
-
-		else
-		{
-			return_num = 2;
-		}
-		probability_Count++;
-		break;
-	case 6:
-		return_num = 2;
-		probability_Count++;
-		break;
+		turn = 0;
+	}
+	else
+	{
+		turn++;
 	}
 
 
-
-
-	if (probability_Count >= 7)
-	{
-		probability_Count = 1;
+	// ランダムで行動を決定
+	int randomValue = rand() % 100 + 1; // 1～100のランダム値
+	if (randomValue < linkThrow) {
+		return 1; // リンク投げ
 	}
-	return return_num;
+	else if (randomValue < linkThrow + adRain) {
+		return 3; // 広告降らし
+	}
+	else {
+		return 2; // 移動
+	}
 }

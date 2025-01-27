@@ -23,9 +23,9 @@ void Game::Init(HWND hWnd) {
     player.SetSize(100.0f, 150.0f, 0.0f);
     player.SetAngle(0.0f);
 
-    testenemy.Init(L"asset/movesprite.png", 1, 1);
-    testenemy.SetPos(0.0f, 0.0f, 0.0f);
-    testenemy.SetSize(SCREEN_WIDTH / 2/2, SCREEN_HEIGHT / 2/2, 0.0f);
+    testenemy.Init(L"asset/linkmove.png", 4, 1);
+    testenemy.SetPos(SCREEN_WIDTH / 2 / 2, 270, 0.0f);
+    testenemy.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f);
     testenemy.SetAngle(0.0f);
 
     //testenemy_link.Init(L"asset/adneofx.png", 4, 1);
@@ -56,13 +56,13 @@ void Game::Update(void) {
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = GAME;
             player.Update();
-            testenemy.test_Update(player.GetPos(), testenemy.GetPos());
 
         }
         break;
     case GAME:
         // プレイヤーの更新処理
         player.Update();
+        testenemy.test_Update(player.GetPos(), testenemy.GetPos());
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }
@@ -85,7 +85,10 @@ void Game::Draw(void) {
         break;
     case GAME:
         // プレイ画面の描画 
+        bg1.Draw();
         player.Draw();
+        testenemy.Draw();
+        testenemy.CharacterDraw();
         break;
     case LAST:
 

@@ -5,6 +5,7 @@ class Test_Bullet :public Object
 {
 protected:
 
+
 	DirectX::XMFLOAT3 eb_pos = { 0.0f,0.0f,0.0f };
 
 	DirectX::XMFLOAT3 target_pos = { 0.0f,0.0f,0.0f };
@@ -35,7 +36,8 @@ protected:
 
 	bool up_flg = false, down_flg = false, left_flg = false, rigt_flg = false;
 
-
+	bool eb_end = false;
+	bool eb_finish = false;
 
 public:
 	bool loop_flg = false;
@@ -45,5 +47,10 @@ public:
 	void Set_Bullet_Target(DirectX::XMFLOAT3, DirectX::XMFLOAT3, DirectX::XMFLOAT3);
 
 	DirectX::XMFLOAT3 MoveBulllet(DirectX::XMFLOAT3, DirectX::XMFLOAT3);
+
+	bool GetEndflg(void);
+
+	void SetShotfinish(bool);
+	bool GetShotfinish(void);
 
 };
