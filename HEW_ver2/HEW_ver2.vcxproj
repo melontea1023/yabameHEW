@@ -154,6 +154,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerAnimation.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="test_move.cpp" />
     <ClCompile Include="t_bullet.cpp" />

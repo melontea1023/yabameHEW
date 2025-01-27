@@ -28,25 +28,17 @@ void Game::Init(HWND hWnd) {
     testenemy.SetSize(SCREEN_WIDTH / 2/2, SCREEN_HEIGHT / 2/2, 0.0f);
     testenemy.SetAngle(0.0f);
 
-    testenemy_link.Init(L"asset/adneofx.png", 4, 1);
-    testenemy_link.SetPos(SCREEN_WIDTH / 2/2, SCREEN_HEIGHT / 2/2, 0.0f);
-    testenemy_link.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f);
-    testenemy_link.SetAngle(0.0f);
+    //testenemy_link.Init(L"asset/adneofx.png", 4, 1);
+    
 
-    testenemy_ad1.Init(L"asset/adweby.png", 4, 1); 
-    testenemy_ad1.SetPos(SCREEN_WIDTH / 2 /2, SCREEN_HEIGHT / 2/2, 0.0f);
-    testenemy_ad1.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f);
-    testenemy_ad1.SetAngle(0.0f);
+    //testenemy_ad1.Init(L"asset/adweby.png", 4, 1); 
+    
 
-    testenemy_ad2.Init(L"asset/adneofx.png", 4, 1);
-    testenemy_ad2.SetPos(SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2, 0.0f);
-    testenemy_ad2.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f);
-    testenemy_ad2.SetAngle(0.0f);
+    //testenemy_ad2.Init(L"asset/adneofx.png", 4, 1);
+   
 
-    testenemy_ad3.Init(L"asset/adwarning.png", 4, 1);
-    testenemy_ad3.SetPos(SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2, 0.0f);
-    testenemy_ad3.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f);
-    testenemy_ad3.SetAngle(0.0f);
+    //testenemy_ad3.Init(L"asset/adwarning.png", 4, 1);
+    
 
 
     testenemy.CharacterInit();
