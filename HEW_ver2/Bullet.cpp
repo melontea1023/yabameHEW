@@ -16,3 +16,7 @@ void Bullet::Update(float deltaTime) {
         isActive = false;
     }
 }
+void Bullet::SetVelocity(float x, float y) { 
+    velocity.x = x;
+    velocity.y = y;
+}

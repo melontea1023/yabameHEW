@@ -4,6 +4,7 @@
 #include<algorithm>
 #include"Object.h"
 #include"input.h"
+#include "sound.h"
 #include "Advertisement raining.h"
 
 #define GAME_TITLE (101)
@@ -22,6 +23,8 @@ class Game {
 
 private:
 	Input input;
+
+	Sound sound;
 	
 	Object  title;
 	Object bg1;	//background

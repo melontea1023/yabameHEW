@@ -3,7 +3,8 @@
 
 std::vector<Object> objs = {};
 
-
+//サウンド追加
+//sound.hの列挙とクラス内にそれぞれ追加
 
 void Game::Init(HWND hWnd) {
 
@@ -21,6 +22,9 @@ void Game::Init(HWND hWnd) {
     player.SetSize(100.0f, 150.0f, 0.0f);
     player.SetAngle(0.0f);
     objs.push_back(player);
+
+    sound.Init();
+    sound.Play(SOUND_LABEL_BGM000);
 }
 
 
@@ -38,12 +42,10 @@ void Game::Update(void) {
     case GAME:
         // プレイヤーの更新処理
         player.Update();
-        player.Update();
-        for (Bullet& bullet : bullets) { // 複数のBulletに対応
-            player.Reflect(bullet);
-            bullet.Update(deltaTime); // Bullet の移動更新
-        }
-        adObject.UpdatePosition(); // Advertisement の位置更新
+        //for (Bullet& bullet : bullets) { // 複数のBulletに対応
+        //    player.Reflect(bullet);
+        //    bullet.Update(deltaTime); // Bullet の移動更新
+        //}
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }

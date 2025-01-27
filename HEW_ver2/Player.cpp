@@ -33,10 +33,6 @@ void Player::Update() {
     pos.x += leftStick.x * moveSpeed;
     pos.y += leftStick.y * moveSpeed;
 
-    // ボタン入力に応じて攻撃や反射を実行
-    if (Input::GetButtonPress(XINPUT_A) || Input::GetButtonPress(XINPUT_B) || Input::GetButtonPress(XINPUT_X)) {
-        Reflect();
-    }
 }
 
 void Player::Reflect(Bullet& bullet) {//反射角度調整
