@@ -19,8 +19,6 @@ void TestEnemy::CharacterInit(void)
 
 void TestEnemy::test_Update(DirectX::XMFLOAT3 _pos, DirectX::XMFLOAT3 _nowepos)//ç∂Ç©ÇÁPlayer,EnemyÇÃç¿ïW
 {
-
-
 	if (bullet_move_flg)
 	{
 		Get_ebpos = eb.MoveBulllet(_pos, eb.GetPos());

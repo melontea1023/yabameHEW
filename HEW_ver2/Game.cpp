@@ -62,7 +62,7 @@ void Game::Update(void) {
     case GAME:
         // プレイヤーの更新処理
         player.Update();
-        testenemy.test_Update(player.GetPos(), testenemy.GetPos());
+        testenemy.Enemy_Action_Move(player.GetPos());
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }
