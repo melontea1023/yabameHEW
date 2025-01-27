@@ -4,6 +4,7 @@
 #include<algorithm>
 #include"Object.h"
 #include"input.h"
+#include "Player.h"
 #include "Advertisement raining.h"
 
 #define GAME_TITLE (101)

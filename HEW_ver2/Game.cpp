@@ -2,8 +2,7 @@
 #include "Player.h"
 
 std::vector<Object> objs = {};
-
-
+std::vector<Bullet> bullets; // 弾丸のリスト
 
 void Game::Init(HWND hWnd) {
 
@@ -21,6 +20,14 @@ void Game::Init(HWND hWnd) {
     player.SetSize(100.0f, 150.0f, 0.0f);
     player.SetAngle(0.0f);
     objs.push_back(player);
+
+    // 弾丸
+    for (int i = 0; i < 5; ++i) {
+        Bullet bullet;
+        bullet.Init(L"asset/bullet.png", 1, 1, 300.0f, i * DirectX::XM_PI / 4);
+        bullet.SetPos(100.0f * i, 100.0f, 0.0f);
+        bullets.push_back(bullet);
+    }
 }
 
 
@@ -32,15 +39,17 @@ void Game::Update(void) {
     case TITLE:
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = GAME;
-            player.Update();
         }
         break;
     case GAME:
         // プレイヤーの更新処理
         player.Update();
-        for (Bullet& bullet : bullets) { // 複数のBulletに対応
-            player.Reflect(bullet);
-            bullet.Update(deltaTime); // Bullet の移動更新
+        // 弾丸の更新処理と反射チェック
+        for (Bullet& bullet : bullets) {
+            if (bullet.IsActive()) {
+                player.Reflect(bullet);
+                bullet.Update(1.0f / 60.0f); // フレームレートを仮定して更新
+            }
         }
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
@@ -63,11 +72,15 @@ void Game::Draw(void) {
         player.Draw();
         break;
     case GAME:
-        // プレイ画面の描画 
+        bg1.Draw();
         player.Draw();
+        for (const Bullet& bullet : bullets) {
+            if (bullet.IsActive()) {
+                bullet.Draw();
+            }
+        }
         break;
     case LAST:
-
         break;
     }
     D3D_FinishRender();
@@ -75,8 +88,11 @@ void Game::Draw(void) {
 
 void Game::Uninit(void) {
 
-    for (auto& i : objs) {
-        i.Uninit();
+    for (auto& obj : objs) {
+        obj.Uninit();
+    }
+    for (Bullet& bullet : bullets) {
+        bullet.Uninit();
     }
     //int number = objs.size();
 

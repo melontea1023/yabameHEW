@@ -39,18 +39,18 @@ void Player::Update() {
     }
 }
 
-void Player::Reflect(Bullet& bullet) {//反射角度調整
-    if (Input::GetButtonPress(XINPUT_A)) {
-        velocity = { 1.0f, 1.0f }; // 右上
-    }
-    else if (Input::GetButtonPress(XINPUT_B)) {
-        velocity = { 1.0f, 0.0f }; // 右
-    }
-    else if (Input::GetButtonPress(XINPUT_X)) {
-        velocity = { 1.0f, -1.0f }; // 右下
-    }
+void Player::Reflect(Bullet& bullet) {
     if (IsTargetInRange(bullet)) {
-        bullet.SetVelocity(velocity.x * reflectSpeed, velocity.y * reflectSpeed); // Bulletの速度を設定
+        if (Input::GetButtonPress(XINPUT_A)) {
+            velocity = { 1.0f, 1.0f }; // 右上
+        }
+        else if (Input::GetButtonPress(XINPUT_B)) {
+            velocity = { 1.0f, 0.0f }; // 右
+        }
+        else if (Input::GetButtonPress(XINPUT_X)) {
+            velocity = { 1.0f, -1.0f }; // 右下
+        }
+        bullet.SetVelocity(velocity.x * reflectSpeed, velocity.y * reflectSpeed);
     }
 }
 

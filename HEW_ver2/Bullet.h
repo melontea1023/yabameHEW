@@ -11,4 +11,5 @@ public:
     void Init(const wchar_t* imgname, int sx, int sy,float speed,float angle);
     void Update(float deltaTime); // ’eŠÛ‚ÌˆÚ“®
     bool IsActive() const { return isActive; }; // ’e‚ª—LŒø‚©‚Ç‚¤‚©
+    void SetVelocity(float velocityX, float velocityY);
 };
