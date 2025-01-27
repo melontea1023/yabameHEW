@@ -17,6 +17,24 @@ void Game::Init(HWND hWnd) {
     bg1.SetAngle(0.0f);
     obj.push_back(bg1);
 
+    title.Init(L"asset/title2.png");
+    title.SetPos(0.0f, 0.0f, 0.0f);
+    title.SetSize(1980.0f, 1080.0f, 0.0f);
+    title.SetAngle(0.0f);
+    obj.push_back(title);
+
+    clear_screen.Init(L"asset/Game Clear.png");
+    clear_screen.SetPos(0.0f, 0.0f, 0.0f);
+    clear_screen.SetSize(1980.0f, 1080.0f, 0.0f);
+    clear_screen.SetAngle(0.0f);
+    obj.push_back(clear_screen);
+
+    game_over_screen.Init(L"asset/Game Over3.png");
+    game_over_screen.SetPos(0.0f, 0.0f, 0.0f);
+    game_over_screen.SetSize(1980.0f, 1080.0f, 0.0f);
+    game_over_screen.SetAngle(0.0f);
+    obj.push_back(game_over_screen);
+
     // Playerの初期化
     player.Init(L"asset/movesprite.png",3,1);
     player.SetPos(0.0f, 0.0f, 0.0f);
@@ -62,6 +80,7 @@ void Game::Update(void) {
     case GAME:
         // プレイヤーの更新処理
         player.Update();
+
         testenemy.Enemy_Action_Move(player.GetPos());
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
@@ -81,7 +100,9 @@ void Game::Draw(void) {
     switch (State) {
     case TITLE:
         bg1.Draw();
+        title.Draw();
         player.Draw();
+
         break;
     case GAME:
         // プレイ画面の描画 
@@ -91,7 +112,10 @@ void Game::Draw(void) {
         testenemy.CharacterDraw();
         break;
     case LAST:
-
+        clear_screen.Draw();
+        break;
+    case END:
+        game_over_screen.Draw();
         break;
     }
     D3D_FinishRender();

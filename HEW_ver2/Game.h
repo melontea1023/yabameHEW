@@ -16,7 +16,8 @@ enum GameState
 {
 	TITLE,
 	GAME,
-	LAST
+	LAST,
+	END
 };
 
 class Game {
@@ -26,15 +27,14 @@ private:
 
 	Sound sound;
 	
+
 	Object  title;
 	Object bg1;	//background
+	Object clear_screen;
+	Object game_over_screen;
 	Object Player;
 
 	TestEnemy testenemy;
-	TestEnemy testenemy_ad1;
-	TestEnemy testenemy_ad2;
-	TestEnemy testenemy_ad3;
-	TestEnemy testenemy_link;
 
 	GameState State = TITLE;
 	
