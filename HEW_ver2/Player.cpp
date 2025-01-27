@@ -36,6 +36,7 @@ void Player::Update() {
     // ボタン入力に応じて攻撃や反射を実行
     if (Input::GetButtonPress(XINPUT_A) || Input::GetButtonPress(XINPUT_B) || Input::GetButtonPress(XINPUT_X)) {
         Reflect();
+        sound.Play(SOUND_LABEL_REFLECT)//////////////////////////////////////////////////////////////////////////////////////
     }
 }
 

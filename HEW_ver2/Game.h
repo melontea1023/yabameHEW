@@ -23,6 +23,8 @@ class Game {
 
 private:
 	Input input;
+
+	Sound sound;
 	
 	Object  title;
 	Object bg1;	//background
