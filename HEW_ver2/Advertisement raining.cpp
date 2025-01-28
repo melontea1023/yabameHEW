@@ -112,7 +112,7 @@ int Advertisement::GetRandom()
 {
 	srand(time(NULL));
 	int r = rand();
-	r = (r % 2) + 1;
+	r = (r % 3) + 1;
 	random_flg = false;
 	return r;
 }
@@ -289,7 +289,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 				random_flg = true;
 				move_flg = false;
 				m_flg = false;
-				ad_end = false;
+				ad_end = true;
 				//Set_flg = false;
 			}
 		}
@@ -318,7 +318,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 				random_flg = true;
 				move_flg = false;
 				m_flg = false;
-				ad_end = false;
+				ad_end = true;
 				//Set_flg = false;
 			}
 		}
@@ -347,7 +347,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 				move_flg = false;
 				m_flg = false;
 				ad_end = true;
-				ad_end = false;
+				ad_end = true;
 				//Set_flg = false;
 			}
 		}
@@ -374,7 +374,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 				random_flg = true;
 				move_flg = false;
 				m_flg = false;
-				ad_end = false;
+				ad_end = true;
 				//Set_flg = false;
 			}
 		}

@@ -25,7 +25,7 @@ void TestEnemy::bossEnemyMoveLeft()
     else {
        
         isWaiting = false;
-        epos = TestEnemy::GetPos();  // ボスの現在位置を取得
+
     }
 
     // ボスの位置を設定
@@ -60,7 +60,7 @@ void TestEnemy::bossEnemyMoveRight()
        
         isWaiting = false;
         // ボスの位置を設定
-        epos = TestEnemy::GetPos();  // ボスの現在位置を取得
+
     }
 
   

@@ -82,6 +82,7 @@ void Game::Update(void) {
         player.Update();
 
         testenemy.Enemy_Action_Move(player.GetPos());
+
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }

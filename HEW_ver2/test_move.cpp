@@ -92,6 +92,7 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 	case 2://ˆÚ“®‚ÉŠÖŒW‚·‚éˆ—‚ğ“ü‚ê‚é
 		if (moving_flg)
 		{
+			epos = TestEnemy::GetPos();  // ƒ{ƒX‚ÌŒ»İˆÊ’u‚ğæ“¾
 			if (FbossRight)
 			{
 				bossEnemyMoveRight();
