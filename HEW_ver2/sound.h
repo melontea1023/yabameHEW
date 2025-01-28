@@ -5,10 +5,12 @@
 // サウンドファイル
 typedef enum
 {
-	SOUND_LABEL_BGM000 = 0,		// サンプルBGM
-	SOUND_LABEL_BGM001,			// サンプルBGM
-	SOUND_LABEL_SE000,			// サンプルSE
-	SOUND_LABEL_SE001,			// サンプルSE
+	SOUND_LABEL_TITLE = 0,		// サンプルBGM
+	SOUND_LABEL_BATTLE,			// サンプルBGM
+	SOUND_LABEL_RESULT,			// サンプルSE
+	SOUND_LABEL_ADV,			// サンプルSE
+	SOUND_LABEL_LINK,
+	SOUND_LABEL_FRAP,
 
 
 
@@ -26,10 +28,12 @@ private:
 
 	PARAM m_param[SOUND_LABEL_MAX] =
 	{
-		{"asset/BGM/sample000.wav", true},	// サンプルBGM（ループさせるのでtrue設定）
-		{"asset/BGM/sample001.wav", true},	// サンプルBGM
-		{"asset/SE/laser0.wav", false},  		// サンプルSE（ループしないのでfalse設定）
-		{"asset/SE/shot1.wav", false},		// サンプルSE
+		{"asset/BGM/title.wav", true},	// サンプルBGM（ループさせるのでtrue設定）
+		{"asset/BGM/battle.wav", true},	// サンプルBGM
+		{"asset/BGM/result.wav", true},  		// サンプルSE（ループしないのでfalse設定）
+		{"asset/SE/adv.wav", false},		// サンプルSE
+		{"asset/SE/link.wav", false},
+		{"asset/SE/frap.wav", false}
 
 
 

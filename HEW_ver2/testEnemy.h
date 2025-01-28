@@ -2,6 +2,7 @@
 #include"Object.h"
 #include"Advertisement raining.h"
 #include"t_bullet.h"
+#include "sound.h"
 
 
 class TestEnemy :public Object
@@ -10,6 +11,7 @@ protected:
 
 	Advertisement ad;
 	Test_Bullet eb;
+
 
 	DirectX::XMFLOAT3 epos = { 0.0f,0.0f,0.0f };
 

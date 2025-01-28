@@ -1,12 +1,14 @@
 #include "Game.h"
 #include "Player.h"
 
+
 std::vector<Object> objs = {};
 //std::vector<Bullet> bullets; // 弾丸のリスト
 
 void Game::Init(HWND hWnd) {
 
     D3D_Create(hWnd);
+    sound.Init();
     // 背景の初期化
     bg1.Init(L"asset/bg1.png");
     bg1.SetPos(0.0f, 0.0f, 0.0f);
@@ -21,11 +23,7 @@ void Game::Init(HWND hWnd) {
     player.SetAngle(0.0f);
     objs.push_back(player);
 
-    // 弾丸
-        
-        bullet.Init(L"asset/playertest.png", 1,1,1,1);
-        bullet.SetPos(100.0f, 100.0f, 0.0f);
-        objs.push_back(bullet);
+    enemy.CharacterInit();
 }
 
 
@@ -38,6 +36,9 @@ void Game::Update(void) {
     switch (State) {
     case TITLE:
         player.Update();
+        sound.Stop(SOUND_LABEL_RESULT);
+        sound.Play(SOUND_LABEL_TITLE);
+ 
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = GAME;
         }
@@ -45,15 +46,19 @@ void Game::Update(void) {
     case GAME:
         // プレイヤーの更新処理
         player.Update();
+        sound.Stop(SOUND_LABEL_TITLE);
+        sound.Play(SOUND_LABEL_BATTLE);
         enemy.Enemy_Action_Move(player.GetPos());
         // 弾丸の更新処理と反射チェック
-        player.Reflect(bullet);
-        bullet.Update(1.0f / 60.0f); // フレームレートを仮定して更新
+        player.Reflect();
+        eb.Update(1.0f / 60.0f); // フレームレートを仮定して更新
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }
         break;
     case LAST:
+        sound.Stop(SOUND_LABEL_BATTLE);
+        sound.Play(SOUND_LABEL_RESULT);
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = TITLE;
         }
@@ -72,7 +77,7 @@ void Game::Draw(void) {
     case GAME:
         bg1.Draw();
         player.Draw();
-        bullet.Draw();
+        enemy.CharacterDraw();
         break;
     case LAST:
         break;

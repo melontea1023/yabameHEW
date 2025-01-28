@@ -74,6 +74,7 @@ void Advertisement::Advertisement_raining_Update(DirectX::XMFLOAT3 _nowpos)// ˆø
 		Advertisement_Attack_Set(Advertisement_Type, now_p_pos);
 
 	}
+	//////////////////////////////////////////////////////////////////////////////////////
 	Advertisement_move(Advertisement_Type);
 
 }

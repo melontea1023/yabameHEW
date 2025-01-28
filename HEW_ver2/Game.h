@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Advertisement raining.h"
 #include "testEnemy.h"
+#include "sound.h"
 
 #define GAME_TITLE (101)
 #define GAME_GAME (102)
@@ -24,13 +25,14 @@ class Game {
 
 private:
 	Input input;
+
+	Sound sound;
 	
 	Object  title;
 	Object bg1;	//background
 
 	TestEnemy enemy;
 	Player player;
-	Bullet bullet;
 
 	GameState State = TITLE;
 

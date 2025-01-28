@@ -35,7 +35,7 @@ void Player::Update() {
     pos.y += leftStick.y * moveSpeed;
 }
 
-void Player::Reflect(Bullet& bullet) {
+void Player::Reflect(Test_Bullet& bullet) {
     //if (IsTargetInRange(bullet)) {
     if (Input::GetButtonPress(XINPUT_Y)) {
         velocity = { 10.0f, 10.0f }; // 右上
