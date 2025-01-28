@@ -15,9 +15,6 @@ void Player::Init(const wchar_t* textureFile, int sx, int sy) {
 
 void Player::Update() {
     float moveSpeed = 20.0f;
-    if (Input::GetButtonPress(XINPUT_A)) {
-        pos.x += 50;
-    }
     // スタミナに応じた移動速度調整
     if (Input::GetButtonPress(XINPUT_RIGHT_SHOULDER)) {
         if (stamina > 0.0f) {
@@ -39,18 +36,21 @@ void Player::Update() {
 }
 
 void Player::Reflect(Bullet& bullet) {
-    if (IsTargetInRange(bullet)) {
-        if (Input::GetButtonPress(XINPUT_A)) {
-            velocity = { 1.0f, 1.0f }; // 右上
-        }
-        else if (Input::GetButtonPress(XINPUT_B)) {
-            velocity = { 1.0f, 0.0f }; // 右
-        }
-        else if (Input::GetButtonPress(XINPUT_X)) {
-            velocity = { 1.0f, -1.0f }; // 右下
-        }
-        bullet.SetVelocity(velocity.x * reflectSpeed, velocity.y * reflectSpeed);
+    //if (IsTargetInRange(bullet)) {
+    if (Input::GetButtonPress(XINPUT_Y)) {
+        velocity = { 10.0f, 10.0f }; // 右上
     }
+    if (Input::GetButtonPress(XINPUT_B)) {
+        velocity = { -10.0f, 0.0f }; // 右
+    }
+    if (Input::GetButtonPress(XINPUT_A)) {
+        velocity = { 10.0f, -10.0f }; // 右下
+    }
+    if (Input::GetButtonPress(XINPUT_X)) {
+        velocity = { 10.0f, 0.0f }; // 左
+    }
+        bullet.SetVelocity(velocity.x * reflectSpeed, velocity.y * reflectSpeed);
+    //}
 }
 
 void Player::Attack(Object& target) {

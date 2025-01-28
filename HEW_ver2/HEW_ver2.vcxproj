@@ -145,9 +145,6 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="sound.cpp" />
-    <ClCompile Include="PlayerAnimation.cpp" />
-    <ClCompile Include="test_move.cpp" />
-    <ClCompile Include="t_bullet.cpp" />
     <ClCompile Include="WICTextureLoader.cpp" />
   </ItemGroup>
   <ItemGroup>

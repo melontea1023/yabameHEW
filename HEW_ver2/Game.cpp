@@ -2,7 +2,7 @@
 #include "Player.h"
 
 std::vector<Object> objs = {};
-std::vector<Bullet> bullets; // 弾丸のリスト
+//std::vector<Bullet> bullets; // 弾丸のリスト
 
 void Game::Init(HWND hWnd) {
 
@@ -22,18 +22,16 @@ void Game::Init(HWND hWnd) {
     objs.push_back(player);
 
     // 弾丸
-    for (int i = 0; i < 5; ++i) {
-        Bullet bullet;
-        bullet.Init(L"asset/playertest.png", 1, 1, 300.0f, i * DirectX::XM_PI / 4);
-        bullet.SetPos(100.0f * i, 100.0f, 0.0f);
-        bullets.push_back(bullet);
-    }
+        
+        bullet.Init(L"asset/playertest.png", 1,1,1,1);
+        bullet.SetPos(100.0f, 100.0f, 0.0f);
+        objs.push_back(bullet);
 }
 
 
 void Game::Update(void) {
     if (Input::GetButtonPress(XINPUT_LEFT_THUMB)) {
-        MessageBoxA(NULL,"A","a",MB_OK);
+        MessageBoxA(NULL, "A", "a", MB_OK);
     }
     input.Update();
     //一旦スペースで全部シーン遷移
@@ -48,12 +46,8 @@ void Game::Update(void) {
         // プレイヤーの更新処理
         player.Update();
         // 弾丸の更新処理と反射チェック
-        for (Bullet& bullet : bullets) {
-            if (bullet.IsActive()) {
-                player.Reflect(bullet);
-                bullet.Update(1.0f / 60.0f); // フレームレートを仮定して更新
-            }
-        }
+        player.Reflect(bullet);
+        bullet.Update(1.0f / 60.0f); // フレームレートを仮定して更新
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }
@@ -64,8 +58,8 @@ void Game::Update(void) {
         }
         break;
     }
-
 }
+
 
 void Game::Draw(void) {
     D3D_StartRender();
@@ -77,11 +71,7 @@ void Game::Draw(void) {
     case GAME:
         bg1.Draw();
         player.Draw();
-        for (const Bullet& bullet : bullets) {
-            if (bullet.IsActive()) {
-                bullet.Draw();
-            }
-        }
+        bullet.Draw();
         break;
     case LAST:
         break;
@@ -94,9 +84,7 @@ void Game::Uninit(void) {
     for (auto& obj : objs) {
         obj.Uninit();
     }
-    for (Bullet& bullet : bullets) {
-        bullet.Uninit();
-    }
+
     //int number = objs.size();
 
     //for (int i = 0; i < number; i++) {

@@ -28,6 +28,7 @@ private:
 	Object bg1;	//background
 
 	Player player;
+	Bullet bullet;
 
 	GameState State = TITLE;
 
