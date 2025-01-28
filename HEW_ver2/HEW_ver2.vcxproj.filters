@@ -44,23 +44,6 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>ソース ファイル\obje</Filter>
     </ClCompile>
-    <ClCompile Include="t_bullet.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="test_move.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="sound.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Animation.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerAnimation.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="bossEnemyMove.cpp">
-      <Filter>ソース ファイル</Filter>
     <ClCompile Include="sound.cpp">
       <Filter>NewFilter1</Filter>
     </ClCompile>
@@ -99,17 +82,6 @@
     <ClInclude Include="Enemy.h">
       <Filter>ヘッダー ファイル\obje</Filter>
     </ClInclude>
-    <ClInclude Include="t_bullet.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="test_move.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="testEnemy.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="sound.h">
-      <Filter>ヘッダー ファイル</Filter>
     <ClInclude Include="sound.h">
       <Filter>NewFilter2</Filter>
     </ClInclude>
