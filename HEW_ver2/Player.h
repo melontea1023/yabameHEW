@@ -6,21 +6,39 @@
 
 class Player : public Object {
 private:
-    DirectX::XMFLOAT2 velocity;    // ”½ËƒIƒuƒWƒFƒNƒg‚Ì•ûŒü
-    float reflectSpeed;           // ”½ËƒIƒuƒWƒFƒNƒg‚Ì‘¬“x
-    float attackRange;            // ”ÍˆÍ
-    float attackDamage;           // ƒ_ƒ[ƒW
+    DirectX::XMFLOAT2 velocity;    // åå°„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ–¹å‘
+    float reflectSpeed;           // åå°„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é€Ÿåº¦
+    float attackRange;            // ç¯„å›²
+    float attackDamage;           // ãƒ€ãƒ¡ãƒ¼ã‚¸
 
-    float detectionRange = 100.0f; // ”ÍˆÍ‚Ìİ’è
+    float detectionRange = 100.0f; // ç¯„å›²ã®è¨­å®š
 public:
-    float stamina;                // ƒvƒŒƒCƒ„[‚ÌƒXƒ^ƒ~ƒi
-    float health;                 // ƒvƒŒƒCƒ„[‚Ì‘Ì—Í
+    float stamina;                // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ã‚¿ãƒŸãƒŠ
+    float health;                 // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ä½“åŠ›
+
+    
 
     Player();
-    void Init(const wchar_t* textureFile, int sx = 1, int sy = 1); // ‰Šú‰»
-    void Update();                 // XVˆ—
-    void Reflect(Bullet& bullet);;                // ”½Ëˆ—
-    void Attack(Object& target); // UŒ‚ˆ—
-    bool IsTargetInRange(const Object& target) const; // ‘ÎÛ‚ªUŒ‚”ÍˆÍ“à‚©”»’è
+    void Player_Init();
+    void Update(); // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ›´æ–°å‡¦ç†
+    //void flutter();
+    //void Attack(Enemy& target); // æ”»æ’ƒãƒ¡ã‚½ãƒƒãƒ‰
+    //bool IsTargetInRange(const Enemy& target) const; // è·é›¢è¨ˆç®—ãƒ¡ã‚½ãƒƒãƒ‰
+
+    //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³-------------------
+    int p_aniCount = 0;
+    int p_finish_Count = 0;
+    float p_delta_time = 0.1f;
+    DirectX::XMFLOAT2 p_move = { 0,0 };
+    DirectX::XMFLOAT2 p_hit = { 0,0 };
+    void Player_ani();
+    DirectX::XMFLOAT2 Player_Move_Animation(void);
+    DirectX::XMFLOAT2 Player_Hit_Animation(void);
+    //-----------------------------------------------
+    void Init(const wchar_t* textureFile, int sx = 1, int sy = 1); // åˆæœŸåŒ–
+    void Update();                 // æ›´æ–°å‡¦ç†
+    void Reflect(Bullet& bullet);;                // åå°„å‡¦ç†
+    void Attack(Object& target); // æ”»æ’ƒå‡¦ç†
+    bool IsTargetInRange(const Object& target) const; // å¯¾è±¡ãŒæ”»æ’ƒç¯„å›²å†…ã‹åˆ¤å®š
 };
 

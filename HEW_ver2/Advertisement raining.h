@@ -19,16 +19,21 @@ protected:
 
 	int time_count;
 
-	bool Set_flg;//L~‚ç‚µ‚ÌÀ•Wİ’è‚ğ˜A‘±‚µ‚Äs‚¤‚Ì‚ğ–h‚®ƒtƒ‰ƒO
-	bool random_flg;//—”‚ÌŠl“¾‚ğ˜A‘±‚µ‚Äs‚¤‚Ì‚ğ–h‚®ƒtƒ‰ƒO
+	bool Set_flg;//åºƒå‘Šé™ã‚‰ã—ã®åº§æ¨™è¨­å®šã‚’é€£ç¶šã—ã¦è¡Œã†ã®ã‚’é˜²ããƒ•ãƒ©ã‚°
+	bool random_flg;//ä¹±æ•°ã®ç²å¾—ã‚’é€£ç¶šã—ã¦è¡Œã†ã®ã‚’é˜²ããƒ•ãƒ©ã‚°
 	bool move_flg;
 	bool m_flg;
-	bool Check_flg=false;//L~‚ë‚µ‚ªì“®‚µ‚½‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO(ŠÖ”‚ª‹N“®‚·‚éÛ‚Ég—p)
+	bool Check_flg = false;//åºƒå‘Šé™ã‚ã—ãŒä½œå‹•ã—ãŸã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°(é–¢æ•°ãŒèµ·å‹•ã™ã‚‹éš›ã«ä½¿ç”¨)
 
+	bool ad_end = false;
 public:
+
+
+	bool Running_flg = false;
+
 	void Advertisement_raining_Init();
 	void Advertisement_raining_Update(DirectX::XMFLOAT3);
-	void Advertisement_raining_Darw();  //Draw‚Ì’†‚Ìˆ—‚Ìˆê”Ô‰º
+	void Advertisement_raining_Draw();  //Drawã®ä¸­ã®å‡¦ç†ã®ä¸€ç•ªä¸‹
 	void Advertisement_raining_Uninit();
 
 	int GetRandom();
@@ -36,6 +41,8 @@ public:
 	int AdvertisingLocation(DirectX::XMFLOAT3);
 	void Advertisement_Attack_Set(int, DirectX::XMFLOAT3);
 	void Advertisement_move(int);
+  
+	bool GetEndflg(void);
 
 	void SetVelocity(const DirectX::XMFLOAT2& velocity);
 	void UpdatePosition();
