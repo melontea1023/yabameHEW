@@ -49,8 +49,8 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 		e_Type = probability();
 	}
 
-	DirectX::XMFLOAT3 nowpos = TestEnemy::GetPos();
-
+	//DirectX::XMFLOAT3 nowpos = TestEnemy::GetPos();
+	
 
 	switch (e_Type)
 	{
@@ -59,11 +59,12 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 		{
 			if (bullet_set_flg)
 			{
-				int r = eb.SetTarget(_playerPosition, nowpos);
+				epos = TestEnemy::GetPos();
+				int r = eb.SetTarget(_playerPosition, epos);
 				eb.SetAngle(r);
-				eb.SetPos(nowpos.x, nowpos.y, nowpos.z);
+				eb.SetPos(epos.x, epos.y, epos.z);
 
-				eb.Set_Bullet_Target(_playerPosition, nowpos, eb.GetPos());
+				eb.Set_Bullet_Target(_playerPosition, epos, eb.GetPos());
 
 				bullet_set_flg = false;
 				bullet_move_flg = true;
@@ -137,7 +138,11 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 void TestEnemy::CharacterDraw(void)
 {
 	/*enemy.Draw();*/
-	eb.Draw();
+	if (bullet_move_flg)
+	{
+		eb.Draw();
+	}
+	
 	ad.Advertisement_raining_Draw();
 }
 ////ボスの行動パターンメモ---------------------------
@@ -178,7 +183,7 @@ int TestEnemy::probability(void)
 	}
 	if (turn == 7)
 	{
-		turn = 0;
+		turn = 1;
 	}
 	else
 	{

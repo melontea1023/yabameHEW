@@ -42,6 +42,7 @@ DirectX::XMFLOAT2 TestEnemy::link_throwing_Animation()
 			finish_Count = 0;
 			//ここの下にリンク投げを起動するフラグを起動する----------------------
 			Ed_Animation_end_flg = true;
+			bullet_set_flg = true;
 			//--------------------------------------------------------------------
 		}
 
