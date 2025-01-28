@@ -36,7 +36,7 @@ void Object::Init(const wchar_t* imgname,int sx,int sy)
 	}
 }
 
-void Object::Draw()
+void Object::Draw()const
 {
 	//頂点バッファを設定
 	UINT strides = sizeof(Vertex);

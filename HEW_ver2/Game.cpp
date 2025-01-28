@@ -24,7 +24,7 @@ void Game::Init(HWND hWnd) {
     // 弾丸
     for (int i = 0; i < 5; ++i) {
         Bullet bullet;
-        bullet.Init(L"asset/bullet.png", 1, 1, 300.0f, i * DirectX::XM_PI / 4);
+        bullet.Init(L"asset/playertest.png", 1, 1, 300.0f, i * DirectX::XM_PI / 4);
         bullet.SetPos(100.0f * i, 100.0f, 0.0f);
         bullets.push_back(bullet);
     }
@@ -32,11 +32,14 @@ void Game::Init(HWND hWnd) {
 
 
 void Game::Update(void) {
-
+    if (Input::GetButtonPress(XINPUT_LEFT_THUMB)) {
+        MessageBoxA(NULL,"A","a",MB_OK);
+    }
     input.Update();
     //一旦スペースで全部シーン遷移
     switch (State) {
     case TITLE:
+        player.Update();
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = GAME;
         }

@@ -14,20 +14,24 @@ void Player::Init(const wchar_t* textureFile, int sx, int sy) {
 }
 
 void Player::Update() {
-    float moveSpeed = 5.0f;
-
+    float moveSpeed = 20.0f;
+    if (Input::GetButtonPress(XINPUT_A)) {
+        pos.x += 50;
+    }
     // スタミナに応じた移動速度調整
     if (Input::GetButtonPress(XINPUT_RIGHT_SHOULDER)) {
         if (stamina > 0.0f) {
             stamina -= 0.5f; // スタミナ消費
-            moveSpeed += 2.0f;
+            moveSpeed += 10.0f;
         }
     }
     else {
         stamina += 0.5f; // スタミナ回復
         if (stamina > 100.0f) stamina = 100.0f;
     }
-
+    if (Input::GetKeyTrigger(VK_A)) {
+        //pos.x += 50;
+    }
     // 左アナログスティックによる移動
     DirectX::SimpleMath::Vector2 leftStick = Input::GetLeftAnalogStick();
     pos.x += leftStick.x * moveSpeed;
