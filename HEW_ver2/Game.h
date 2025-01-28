@@ -3,11 +3,9 @@
 #include<vector>
 #include<algorithm>
 #include"Object.h"
-#include"testEnemy.h"
 #include"input.h"
-#include"sound.h"
 #include "Player.h"
-
+#include "Advertisement raining.h"
 
 #define GAME_TITLE (101)
 #define GAME_GAME (102)
@@ -18,28 +16,18 @@ enum GameState
 {
 	TITLE,
 	GAME,
-	LAST,
-	END
+	LAST
 };
 
 class Game {
 
 private:
 	Input input;
-
-	Sound sound;
 	
-
 	Object  title;
 	Object bg1;	//background
 
-	Object clear_screen;
-	Object game_over_screen;
-	Object Player;
-
 	Player player;
-
-	TestEnemy testenemy;
 
 	GameState State = TITLE;
 

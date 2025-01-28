@@ -2,63 +2,26 @@
 #include "Player.h"
 
 std::vector<Object> objs = {};
-std::vector<Bullet> bullets; // å¼¾ä¸¸ã®ãƒªã‚¹ãƒˆ
+std::vector<Bullet> bullets; // ’eŠÛ‚ÌƒŠƒXƒg
 
 void Game::Init(HWND hWnd) {
 
     D3D_Create(hWnd);
-    // èƒŒæ™¯ã®åˆæœŸåŒ–
+    // ”wŒi‚Ì‰Šú‰»
     bg1.Init(L"asset/bg1.png");
     bg1.SetPos(0.0f, 0.0f, 0.0f);
     bg1.SetSize(1980.0f, 1080.0f, 0.0f);
     bg1.SetAngle(0.0f);
     objs.push_back(bg1);
 
-    title.Init(L"asset/title2.png");
-    title.SetPos(0.0f, 0.0f, 0.0f);
-    title.SetSize(1980.0f, 1080.0f, 0.0f);
-    title.SetAngle(0.0f);
-    objs.push_back(title);
-
-    clear_screen.Init(L"asset/Game Clear.png");
-    clear_screen.SetPos(0.0f, 0.0f, 0.0f);
-    clear_screen.SetSize(1980.0f, 1080.0f, 0.0f);
-    clear_screen.SetAngle(0.0f);
-    objs.push_back(clear_screen);
-
-    game_over_screen.Init(L"asset/Game Over3.png");
-    game_over_screen.SetPos(0.0f, 0.0f, 0.0f);
-    game_over_screen.SetSize(1980.0f, 1080.0f, 0.0f);
-    game_over_screen.SetAngle(0.0f);
-    objs.push_back(game_over_screen);
-
-    // Playerã®åˆæœŸåŒ–
+    // Player‚Ì‰Šú‰»
     player.Init(L"asset/movesprite.png",3,1);
     player.SetPos(0.0f, 0.0f, 0.0f);
     player.SetSize(100.0f, 150.0f, 0.0f);
     player.SetAngle(0.0f);
     objs.push_back(player);
 
-    testenemy.Init(L"asset/linkmove.png", 4, 1);
-    testenemy.SetPos(SCREEN_WIDTH / 2 / 2, 270, 0.0f);
-    testenemy.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f);
-    testenemy.SetAngle(0.0f);
-
-    //testenemy_link.Init(L"asset/adneofx.png", 4, 1);
-    
-
-    //testenemy_ad1.Init(L"asset/adweby.png", 4, 1); 
-    
-
-    //testenemy_ad2.Init(L"asset/adneofx.png", 4, 1);
-   
-
-    //testenemy_ad3.Init(L"asset/adwarning.png", 4, 1);
-
-    testenemy.CharacterInit();
-    sound.Init(); //ã‚µã‚¦ãƒ³ãƒ‰ã®åˆæœŸåŒ–
-
-    // å¼¾ä¸¸
+    // ’eŠÛ
     for (int i = 0; i < 5; ++i) {
         Bullet bullet;
         bullet.Init(L"asset/playertest.png", 1, 1, 300.0f, i * DirectX::XM_PI / 4);
@@ -73,7 +36,7 @@ void Game::Update(void) {
         MessageBoxA(NULL,"A","a",MB_OK);
     }
     input.Update();
-    //ä¸€æ—¦ã‚¹ãƒšãƒ¼ã‚¹ã§å…¨éƒ¨ã‚·ãƒ¼ãƒ³é·ç§»
+    //ˆê’UƒXƒy[ƒX‚Å‘S•”ƒV[ƒ“‘JˆÚ
     switch (State) {
     case TITLE:
         player.Update();
@@ -82,16 +45,13 @@ void Game::Update(void) {
         }
         break;
     case GAME:
-        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ›´æ–°å‡¦ç†
+        // ƒvƒŒƒCƒ„[‚ÌXVˆ—
         player.Update();
-        
-        testenemy.Enemy_Action_Move(player.GetPos());
-
-        // å¼¾ä¸¸ã®æ›´æ–°å‡¦ç†ã¨åå°„ãƒã‚§ãƒƒã‚¯
+        // ’eŠÛ‚ÌXVˆ—‚Æ”½Ëƒ`ƒFƒbƒN
         for (Bullet& bullet : bullets) {
             if (bullet.IsActive()) {
                 player.Reflect(bullet);
-                bullet.Update(1.0f / 60.0f); // ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆã‚’ä»®å®šã—ã¦æ›´æ–°
+                bullet.Update(1.0f / 60.0f); // ƒtƒŒ[ƒ€ƒŒ[ƒg‚ğ‰¼’è‚µ‚ÄXV
             }
         }
         if (Input::GetKeyTrigger(VK_SPACE)) {
@@ -112,22 +72,9 @@ void Game::Draw(void) {
     switch (State) {
     case TITLE:
         bg1.Draw();
-        title.Draw();
         player.Draw();
-
         break;
     case GAME:
-        // ãƒ—ãƒ¬ã‚¤ç”»é¢ã®æç”» 
-        bg1.Draw();
-        player.Draw();
-        testenemy.Draw();
-        testenemy.CharacterDraw();
-        break;
-    case LAST:
-        clear_screen.Draw();
-        break;
-    case END:
-        game_over_screen.Draw();
         bg1.Draw();
         player.Draw();
         for (const Bullet& bullet : bullets) {
@@ -150,11 +97,10 @@ void Game::Uninit(void) {
     for (Bullet& bullet : bullets) {
         bullet.Uninit();
     }
-    sound.Uninit(); //ã‚µã‚¦ãƒ³ãƒ‰ã‚’çµ‚äº†
     //int number = objs.size();
 
     //for (int i = 0; i < number; i++) {
     //    objs[i].Uninit();
     //}
-    D3D_Release(); // DirectXã‚’çµ‚äº†
+    D3D_Release(); // DirectX‚ğI—¹
 }
