@@ -2,26 +2,26 @@
 #include "Player.h"
 
 std::vector<Object> objs = {};
-std::vector<Bullet> bullets; // ï¿½eï¿½Û‚Ìƒï¿½ï¿½Xï¿½g
+std::vector<Bullet> bullets; // ’eŠÛ‚ÌƒŠƒXƒg
 
 void Game::Init(HWND hWnd) {
 
     D3D_Create(hWnd);
-    // ï¿½wï¿½iï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+    // ”wŒi‚Ì‰Šú‰»
     bg1.Init(L"asset/bg1.png");
     bg1.SetPos(0.0f, 0.0f, 0.0f);
     bg1.SetSize(1980.0f, 1080.0f, 0.0f);
     bg1.SetAngle(0.0f);
     objs.push_back(bg1);
 
-    // Playerï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+    // Player‚Ì‰Šú‰»
     player.Init(L"asset/movesprite.png",3,1);
     player.SetPos(0.0f, 0.0f, 0.0f);
     player.SetSize(100.0f, 150.0f, 0.0f);
     player.SetAngle(0.0f);
     objs.push_back(player);
 
-    // ï¿½eï¿½ï¿½
+    // ’eŠÛ
     for (int i = 0; i < 5; ++i) {
         Bullet bullet;
         bullet.Init(L"asset/playertest.png", 1, 1, 300.0f, i * DirectX::XM_PI / 4);
@@ -36,7 +36,7 @@ void Game::Update(void) {
         MessageBoxA(NULL,"A","a",MB_OK);
     }
     input.Update();
-    //ï¿½ï¿½Uï¿½Xï¿½yï¿½[ï¿½Xï¿½Å‘Sï¿½ï¿½ï¿½Vï¿½[ï¿½ï¿½ï¿½Jï¿½ï¿½
+    //ˆê’UƒXƒy[ƒX‚Å‘S•”ƒV[ƒ“‘JˆÚ
     switch (State) {
     case TITLE:
         player.Update();
@@ -45,18 +45,15 @@ void Game::Update(void) {
         }
         break;
     case GAME:
-        // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌXï¿½Vï¿½ï¿½ï¿½ï¿½
+        // ƒvƒŒƒCƒ„[‚ÌXVˆ—
         player.Update();
-        // ï¿½eï¿½Û‚ÌXï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Æ”ï¿½ï¿½Ëƒ`ï¿½Fï¿½bï¿½N
+        // ’eŠÛ‚ÌXVˆ—‚Æ”½Ëƒ`ƒFƒbƒN
         for (Bullet& bullet : bullets) {
             if (bullet.IsActive()) {
                 player.Reflect(bullet);
-                bullet.Update(1.0f / 60.0f); // ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½è‚µï¿½ÄXï¿½V
+                bullet.Update(1.0f / 60.0f); // ƒtƒŒ[ƒ€ƒŒ[ƒg‚ğ‰¼’è‚µ‚ÄXV
             }
         }
-
-        testenemy.Enemy_Action_Move(player.GetPos());
-
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }
@@ -105,5 +102,5 @@ void Game::Uninit(void) {
     //for (int i = 0; i < number; i++) {
     //    objs[i].Uninit();
     //}
-    D3D_Release(); // DirectXï¿½ï¿½ï¿½Iï¿½ï¿½
+    D3D_Release(); // DirectX‚ğI—¹
 }
