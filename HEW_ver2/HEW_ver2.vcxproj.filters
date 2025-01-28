@@ -1,58 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="ソース ファイル\obje">
-      <UniqueIdentifier>{916dd9ef-462c-4e88-8e1b-eabb68fa7bbc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\obje">
-      <UniqueIdentifier>{1d0edb0f-2978-45d5-99f6-a69a84c9a6c3}</UniqueIdentifier>
-    </Filter>
+    <FxCompile Include="PixelShader.hlsl" />
+    <FxCompile Include="VertexShader.hlsl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="direct3d.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Hit judgment.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="input.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="WICTextureLoader.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>ソース ファイル\obje</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>ソース ファイル\obje</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>ソース ファイル\obje</Filter>
-    </ClCompile>
     <ClCompile Include="Advertisement raining.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>NewFilter1</Filter>
     </ClCompile>
     <ClCompile Include="Boss_DemonOfSmartphone.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="direct3d.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="Hit judgment.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="WICTextureLoader.cpp">
+      <Filter>NewFilter1</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>ソース ファイル\obje</Filter>
@@ -74,35 +61,40 @@
     </ClCompile>
     <ClCompile Include="bossEnemyMove.cpp">
       <Filter>ソース ファイル</Filter>
+    <ClCompile Include="sound.cpp">
+      <Filter>NewFilter1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="direct3d.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="input.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="WICTextureLoader.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>ヘッダー ファイル\obje</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>ヘッダー ファイル\obje</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>ヘッダー ファイル\obje</Filter>
-    </ClInclude>
     <ClInclude Include="Advertisement raining.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>NewFilter2</Filter>
     </ClInclude>
     <ClInclude Include="Boss_DemonOfSmartphone.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>NewFilter2</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>NewFilter2</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>NewFilter2</Filter>
+    </ClInclude>
+    <ClInclude Include="direct3d.h">
+      <Filter>NewFilter2</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>NewFilter2</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>NewFilter2</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>NewFilter2</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>NewFilter2</Filter>
+    </ClInclude>
+    <ClInclude Include="WICTextureLoader.h">
+      <Filter>NewFilter2</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>ヘッダー ファイル\obje</Filter>
@@ -118,10 +110,16 @@
     </ClInclude>
     <ClInclude Include="sound.h">
       <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="sound.h">
+      <Filter>NewFilter2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="PixelShader.hlsl" />
-    <FxCompile Include="VertexShader.hlsl" />
+    <Filter Include="NewFilter1">
+      <UniqueIdentifier>{ced7e6a6-f1b2-4926-9b6f-718f973ebe4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NewFilter2">
+      <UniqueIdentifier>{c5e36ab1-1fdb-4bcc-8d91-04770802fe1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

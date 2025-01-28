@@ -6,12 +6,14 @@
 #include"testEnemy.h"
 #include"input.h"
 #include"sound.h"
+#include "Player.h"
+
 
 #define GAME_TITLE (101)
 #define GAME_GAME (102)
 #define GAME_CLEAR (103)
 #define GAME_END (104)
-//—ñ‹“Œ^‚ÅƒV[ƒ“‘JˆÚ
+//åˆ—æŒ™å‹ã§ã‚·ãƒ¼ãƒ³é·ç§»
 enum GameState
 {
 	TITLE,
@@ -30,25 +32,25 @@ private:
 
 	Object  title;
 	Object bg1;	//background
+
 	Object clear_screen;
 	Object game_over_screen;
 	Object Player;
 
+	Player player;
+
 	TestEnemy testenemy;
 
 	GameState State = TITLE;
-	
+
 public:
 
 	Game() : State(TITLE) {}
 
-	void Init(HWND hWnd);   //‰Šú‰»
+	void Init(HWND hWnd);   //åˆæœŸåŒ–
 	void Update(void);
-	void Draw(void);            //•`‰æ
-	void Uninit(void);          //I—¹
+	void Draw(void);            //æç”»
+	void Uninit(void);          //çµ‚äº†
 
 	bool Box_Hit_judgment(Object, Object);
-	bool Circle_Hit_judgment(Object, Object);
-
-
 };

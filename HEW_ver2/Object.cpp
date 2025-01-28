@@ -36,7 +36,7 @@ void Object::Init(const wchar_t* imgname,int sx,int sy)
 	}
 }
 
-void Object::Draw()
+void Object::Draw()const
 {
 	//頂点バッファを設定
 	UINT strides = sizeof(Vertex);
@@ -124,12 +124,11 @@ void Object::SetUV(float u, float v)
 void Object::CutUV(float U, float V)
 {
 	//表示したい画像をセット
-	
 	UV.x = U;
 	UV.y = V;
 }
 
-DirectX::XMFLOAT3 Object::GetPos(void)
+DirectX::XMFLOAT3 Object::GetPos(void)const
 {
 	return pos; //座標をゲット
 }

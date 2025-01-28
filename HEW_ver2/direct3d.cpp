@@ -1,5 +1,3 @@
-
-
 #include <d3dcompiler.h>
 #pragma comment (lib, "d3d11.lib")
 #pragma comment(lib, "d3dcompiler.lib")
@@ -139,16 +137,7 @@ HRESULT D3D_Create(HWND hwnd)
 	viewport.MaxDepth = 1.0f;
 	g_pDeviceContext->RSSetViewports(1, &viewport);
 
-	
 
-	
-
-	
-
-	
-	
-	
-	
 
 	
 	// インプットレイアウト作成

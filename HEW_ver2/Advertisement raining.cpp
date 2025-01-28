@@ -12,41 +12,41 @@ Advertisement ad3;
 
 //Input input;
 
-//L–Ú•WÀ•W---------------------------
-// - SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2(¶ã)
+//åºƒå‘Šç›®æ¨™åº§æ¨™---------------------------
+// - SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2(å·¦ä¸Š)
 
-// SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2(‰Eã)
+// SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2(å³ä¸Š)
 
-// - SCREEN_WIDTH / 2 / 2, - SCREEN_HEIGHT / 2 / 2(¶‰º)
+// - SCREEN_WIDTH / 2 / 2, - SCREEN_HEIGHT / 2 / 2(å·¦ä¸‹)
 
-// SCREEN_WIDTH / 2 / 2, - SCREEN_HEIGHT / 2 / 2(‰E‰º)
+// SCREEN_WIDTH / 2 / 2, - SCREEN_HEIGHT / 2 / 2(å³ä¸‹)
 
-//ã‚©‚çL‚ğ~‰º‚³‚¹‚éê‡‚ÌÀ•W‚Í"810"
+//ä¸Šã‹ã‚‰åºƒå‘Šã‚’é™ä¸‹ã•ã›ã‚‹å ´åˆã®åº§æ¨™ã¯"810"
 
 //-------------------------------------
 
 
 
-//“G‚Ì‘å‚«‚³‚Í‰¡‚ªƒvƒŒƒCƒ„[‚Ì2”{c‚Í‚PD‚Q”{
+//æ•µã®å¤§ãã•ã¯æ¨ªãŒãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®2å€ç¸¦ã¯ï¼‘ï¼ï¼’å€
 
 void Advertisement::Advertisement_raining_Init()
 {
 	//
-	ad.Init(L"asset/weby.png");   //L‚ğ‰Šú‰»
-	//ad.SetPos( -SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2, 0.0f);      //ˆÊ’u‚ğİ’è
-	ad.SetPos(1000, 1000, 0.0f);      //ˆÊ’u‚ğİ’è
-	ad.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f); //‘å‚«‚³‚ğİ’è
-	ad.SetAngle(0.0f);   //Šp“x‚ğİ’è
+	ad.Init(L"asset/weby.png");   //åºƒå‘Šã‚’åˆæœŸåŒ–
+	//ad.SetPos( -SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2, 0.0f);      //ä½ç½®ã‚’è¨­å®š
+	ad.SetPos(1000, 1000, 0.0f);      //ä½ç½®ã‚’è¨­å®š
+	ad.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f); //å¤§ãã•ã‚’è¨­å®š
+	ad.SetAngle(0.0f);   //è§’åº¦ã‚’è¨­å®š
 
-	ad2.Init(L"asset/ad.png");   //L‚ğ‰Šú‰»
-	ad2.SetPos(-1000, 1000, 0.0f);      //ˆÊ’u‚ğİ’è
-	ad2.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f); //‘å‚«‚³‚ğİ’è
-	ad2.SetAngle(0.0f);   //Šp“x‚ğİ’è
+	ad2.Init(L"asset/ad.png");   //åºƒå‘Šã‚’åˆæœŸåŒ–
+	ad2.SetPos(-1000, 1000, 0.0f);      //ä½ç½®ã‚’è¨­å®š
+	ad2.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f); //å¤§ãã•ã‚’è¨­å®š
+	ad2.SetAngle(0.0f);   //è§’åº¦ã‚’è¨­å®š
 
-	ad3.Init(L"asset/warning.png");   //L‚ğ‰Šú‰»
-	ad3.SetPos(-1000, 1000, 0.0f);      //ˆÊ’u‚ğİ’è
-	ad3.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f); //‘å‚«‚³‚ğİ’è
-	ad3.SetAngle(0.0f);   //Šp“x‚ğİ’è
+	ad3.Init(L"asset/warning.png");   //åºƒå‘Šã‚’åˆæœŸåŒ–
+	ad3.SetPos(-1000, 1000, 0.0f);      //ä½ç½®ã‚’è¨­å®š
+	ad3.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f); //å¤§ãã•ã‚’è¨­å®š
+	ad3.SetAngle(0.0f);   //è§’åº¦ã‚’è¨­å®š
 
 
 	random = 0;
@@ -57,13 +57,13 @@ void Advertisement::Advertisement_raining_Init()
 	move_flg = false;
 	m_flg = false;
 }
-void Advertisement::Advertisement_raining_Update(DirectX::XMFLOAT3 _nowpos)// ˆø”‚ÍPlayer‚ÌÀ•W
+void Advertisement::Advertisement_raining_Update(DirectX::XMFLOAT3 _nowpos)// å¼•æ•°ã¯Playerã®åº§æ¨™
 {
 	//input.Update();
 
 	if (random_flg)
 	{
-		random = GetRandom();//—”æ“¾
+		random = GetRandom();//ä¹±æ•°å–å¾—
 	}
 
 	now_p_pos = _nowpos;
@@ -80,7 +80,7 @@ void Advertisement::Advertisement_raining_Update(DirectX::XMFLOAT3 _nowpos)// ˆø
 void Advertisement::Advertisement_raining_Draw()
 {
 
-	switch (random)//—”‚É‰‚¶‚ÄL‚ğ•Ï‚¦‚é
+	switch (random)//ä¹±æ•°ã«å¿œã˜ã¦åºƒå‘Šã‚’å¤‰ãˆã‚‹
 	{
 	case 1:
 		ad.Draw();
@@ -141,8 +141,8 @@ int Advertisement::AdvertisingLocation(DirectX::XMFLOAT3 _now_p_pos)
 	Reference_point_CD.x = 0; Reference_point_CD.y = -SCREEN_HEIGHT / 2;
 	Reference_point_RD.x = SCREEN_WIDTH / 2; Reference_point_RD.y = -SCREEN_HEIGHT / 2;
 
-	//¶ã‚ÉƒvƒŒƒCƒ„[‚ª‹‚é‚©‚ÌŠm”F
-	if (px >= Reference_point_LU.x && py <= Reference_point_LU.y && px <= Reference_point_CU.x && py <= Reference_point_CU.y && px >= Reference_point_L.x && py >= Reference_point_L.y && px <= Reference_point_C.x && py >= Reference_point_C.y) //‰æ–Ê‚ğ‚S•ªŠ„‚µ‚½Û‚Ì¶ã‚ÉƒvƒŒƒCƒ„[‚ª‚¢‚é‚©‚ÌŠm”F
+	//å·¦ä¸Šã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå±…ã‚‹ã‹ã®ç¢ºèª
+	if (px >= Reference_point_LU.x && py <= Reference_point_LU.y && px <= Reference_point_CU.x && py <= Reference_point_CU.y && px >= Reference_point_L.x && py >= Reference_point_L.y && px <= Reference_point_C.x && py >= Reference_point_C.y) //ç”»é¢ã‚’ï¼”åˆ†å‰²ã—ãŸéš›ã®å·¦ä¸Šã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã„ã‚‹ã‹ã®ç¢ºèª
 	{
 		LU_flg = true;
 	}
@@ -151,8 +151,8 @@ int Advertisement::AdvertisingLocation(DirectX::XMFLOAT3 _now_p_pos)
 		LU_flg = false;
 	}
 
-	//¶‰º‚ÉƒvƒŒƒCƒ„[‚ª‹‚é‚©‚ÌŠm”F
-	if (px >= Reference_point_L.x && py <= Reference_point_L.y && px <= Reference_point_C.x && py <= Reference_point_C.y && px >= Reference_point_LD.x && py >= Reference_point_LD.y && px <= Reference_point_CD.x && py >= Reference_point_CD.y)//‰æ–Ê‚ğ‚S•ªŠ„‚µ‚½Û‚Ì¶‰º‚ÉƒvƒŒƒCƒ„[‚ª‚¢‚é‚©‚ÌŠm”F
+	//å·¦ä¸‹ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå±…ã‚‹ã‹ã®ç¢ºèª
+	if (px >= Reference_point_L.x && py <= Reference_point_L.y && px <= Reference_point_C.x && py <= Reference_point_C.y && px >= Reference_point_LD.x && py >= Reference_point_LD.y && px <= Reference_point_CD.x && py >= Reference_point_CD.y)//ç”»é¢ã‚’ï¼”åˆ†å‰²ã—ãŸéš›ã®å·¦ä¸‹ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã„ã‚‹ã‹ã®ç¢ºèª
 	{
 		LD_flg = true;
 	}
@@ -161,8 +161,8 @@ int Advertisement::AdvertisingLocation(DirectX::XMFLOAT3 _now_p_pos)
 		LD_flg = false;
 	}
 
-	//‰Eã‚ÉƒvƒŒƒCƒ„[‚ª‹‚é‚©‚ÌŠm”F
-	if (px <= Reference_point_RU.x && py <= Reference_point_RU.y && px >= Reference_point_CU.x && py <= Reference_point_CU.y && px <= Reference_point_R.x && py >= Reference_point_R.y && px >= Reference_point_C.x && py >= Reference_point_C.y) //‰æ–Ê‚ğ‚S•ªŠ„‚µ‚½Û‚Ì‰Eã‚ÉƒvƒŒƒCƒ„[‚ª‚¢‚é‚©‚ÌŠm”F
+	//å³ä¸Šã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå±…ã‚‹ã‹ã®ç¢ºèª
+	if (px <= Reference_point_RU.x && py <= Reference_point_RU.y && px >= Reference_point_CU.x && py <= Reference_point_CU.y && px <= Reference_point_R.x && py >= Reference_point_R.y && px >= Reference_point_C.x && py >= Reference_point_C.y) //ç”»é¢ã‚’ï¼”åˆ†å‰²ã—ãŸéš›ã®å³ä¸Šã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã„ã‚‹ã‹ã®ç¢ºèª
 	{
 		RU_flg = true;
 	}
@@ -171,8 +171,8 @@ int Advertisement::AdvertisingLocation(DirectX::XMFLOAT3 _now_p_pos)
 		RU_flg = false;
 	}
 
-	//‰E‰º‚ÉƒvƒŒƒCƒ„[‚ª‹‚é‚©‚ÌŠm”F
-	if (px <= Reference_point_R.x && py <= Reference_point_R.y && px >= Reference_point_C.x && py <= Reference_point_C.y && px <= Reference_point_RD.x && py >= Reference_point_RD.y && px >= Reference_point_CD.x && py >= Reference_point_CD.y)//‰æ–Ê‚ğ‚S•ªŠ„‚µ‚½Û‚Ì‰E‰º‚ÉƒvƒŒƒCƒ„[‚ª‚¢‚é‚©‚ÌŠm”F
+	//å³ä¸‹ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå±…ã‚‹ã‹ã®ç¢ºèª
+	if (px <= Reference_point_R.x && py <= Reference_point_R.y && px >= Reference_point_C.x && py <= Reference_point_C.y && px <= Reference_point_RD.x && py >= Reference_point_RD.y && px >= Reference_point_CD.x && py >= Reference_point_CD.y)//ç”»é¢ã‚’ï¼”åˆ†å‰²ã—ãŸéš›ã®å³ä¸‹ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã„ã‚‹ã‹ã®ç¢ºèª
 	{
 		RD_flg = true;
 	}
@@ -212,7 +212,7 @@ void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_po
 
 	switch (Type)//
 	{
-	case 1://¶ã‚Ì
+	case 1://å·¦ä¸Šã®æ™‚
 
 		Adpos.x = -SCREEN_WIDTH / 2 / 2;
 		Adpos.y = Ad_falling_pos_y;
@@ -222,7 +222,7 @@ void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_po
 
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
 		break;
-	case 2://‰Eã‚Ì
+	case 2://å³ä¸Šã®æ™‚
 		Adpos.x = SCREEN_WIDTH / 2 / 2;
 		Adpos.y = Ad_falling_pos_y;
 		Set_flg = true;
@@ -234,7 +234,7 @@ void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_po
 
 
 		break;
-	case 3://¶‰º‚Ì
+	case 3://å·¦ä¸‹ã®æ™‚
 		Adpos.x = -SCREEN_WIDTH / 2 / 2;
 		Adpos.y = Ad_falling_pos_y;
 		Set_flg = true;
@@ -244,7 +244,7 @@ void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_po
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
 		break;
-	case 4://‰E‰º‚Ì
+	case 4://å³ä¸‹ã®æ™‚
 		Adpos.x = SCREEN_WIDTH / 2 / 2;
 		Adpos.y = Ad_falling_pos_y;
 		Set_flg = true;
@@ -270,7 +270,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 
 	switch (targetposType)//
 	{
-	case 1://¶ã‚Ì
+	case 1://å·¦ä¸Šã®æ™‚
 
 		if (adpos.y >= SCREEN_HEIGHT / 2 / 2)
 		{
@@ -299,7 +299,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 		ad2.SetPos(adpos.x, adpos.y, adpos.z);
 
 		break;
-	case 2://‰Eã‚Ì
+	case 2://å³ä¸Šã®æ™‚
 
 		if (adpos.y >= SCREEN_HEIGHT / 2 / 2)
 		{
@@ -328,7 +328,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 
 
 		break;
-	case 3://¶‰º‚Ì
+	case 3://å·¦ä¸‹ã®æ™‚
 		if (adpos.y >= -SCREEN_HEIGHT / 2 / 2)
 		{
 			adpos.y--;
@@ -356,7 +356,7 @@ void Advertisement::Advertisement_move(int _target_pos)
 
 		ad2.SetPos(adpos.x, adpos.y, adpos.z);
 		break;
-	case 4://‰E‰º‚Ì
+	case 4://å³ä¸‹ã®æ™‚
 		if (adpos.y >= -SCREEN_HEIGHT / 2 / 2)
 		{
 			adpos.y--;
@@ -387,7 +387,16 @@ void Advertisement::Advertisement_move(int _target_pos)
 
 }
 
+--------------------------------------------------------------------
 bool Advertisement::GetEndflg(void)
 {
 	return ad_end;
+}
+void Advertisement::SetVelocity(const DirectX::XMFLOAT2& velocity) {
+	this->velocity = velocity;
+}
+
+void Advertisement::UpdatePosition() {
+	position.x += velocity.x;
+	position.y += velocity.y;
 }

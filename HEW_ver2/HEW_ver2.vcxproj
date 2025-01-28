@@ -159,6 +159,7 @@
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="test_move.cpp" />
     <ClCompile Include="t_bullet.cpp" />
+    <ClCompile Include="sound.cpp" />
     <ClCompile Include="WICTextureLoader.cpp" />
   </ItemGroup>
   <ItemGroup>

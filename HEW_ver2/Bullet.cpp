@@ -16,3 +16,9 @@ void Bullet::Update(float deltaTime) {
         isActive = false;
     }
 }
+
+void Bullet::SetVelocity(float velocityX, float velocityY) {
+    // 新しい速度と角度を計算
+    speed = sqrt(velocityX * velocityX + velocityY * velocityY);
+    angle = atan2(velocityY, velocityX);
+}

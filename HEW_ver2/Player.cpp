@@ -1,122 +1,68 @@
 #include "Player.h"
 #include <cmath>
-Input input;
 
-Player::Player()
-{
-
+Player::Player()//å€¤èª¿æ•´
+    : stamina(100.0f), health(100.0f), reflectSpeed(10.0f), attackRange(100.0f), attackDamage(10.0f) {
+    velocity = { 0.0f, 0.0f };//imakannkeinasi
 }
-void Player::Player_Init()
-{
 
+void Player::Init(const wchar_t* textureFile, int sx, int sy) {
+    Object::Init(textureFile, sx, sy);
+    SetPos(0.0f, 0.0f, 0.0f);
+    SetSize(70.0f, 100.0f, 0.0f);
+    SetAngle(0.0f);
 }
 
 void Player::Update() {
-    //// “ü—Íˆ—i—á: ƒL[ƒ{[ƒhj
-    //if (Input::GetKeyPress(VK_A) || Input::GetButtonPress(XINPUT_LEFT)) {
-
-    //}
-    //if (Input::GetKeyPress(VK_D) || Input::GetButtonPress(XINPUT_RIGHT)) {
-
-    //}
-    //if (Input::GetKeyPress(VK_W) || Input::GetButtonPress(XINPUT_UP)) {
-
-    //}
-    //if (Input::GetKeyPress(VK_S) || Input::GetButtonPress(XINPUT_DOWN)) {
-
-    //}
-    float moveSpeed = 5.0f; // ˆÚ“®‘¬“x
-
+    float moveSpeed = 20.0f;
+    if (Input::GetButtonPress(XINPUT_A)) {
+        pos.x += 50;
+    }
+    // ã‚¹ã‚¿ãƒŸãƒŠã«å¿œã˜ãŸç§»å‹•é€Ÿåº¦èª¿æ•´
     if (Input::GetButtonPress(XINPUT_RIGHT_SHOULDER)) {
-        if (stamina > 0.0f) { // ƒXƒ^ƒ~ƒi‚ªc‚Á‚Ä‚¢‚éê‡‚Ì‚İÁ”ï
-            stamina -= 0.5f; // ƒXƒ^ƒ~ƒiÁ”ï
-            moveSpeed += 2.0f; // ˆÚ“®‘¬“x‚ğã¸
-        }
-        else {
-            stamina = 0.0f; // ƒXƒ^ƒ~ƒi‚ª0ˆÈ‰º‚É‚È‚ç‚È‚¢‚æ‚¤§ŒÀ
+        if (stamina > 0.0f) {
+            stamina -= 0.5f; // ã‚¹ã‚¿ãƒŸãƒŠæ¶ˆè²»
+            moveSpeed += 10.0f;
         }
     }
     else {
-        stamina += 0.5f; // ƒXƒ^ƒ~ƒi‚Ì©‘R‰ñ•œ
-        if (stamina > 100.0f) stamina = 100.0f; // ƒXƒ^ƒ~ƒi‚ÌãŒÀ‚ğ100‚É
+        stamina += 0.5f; // ã‚¹ã‚¿ãƒŸãƒŠå›å¾©
+        if (stamina > 100.0f) stamina = 100.0f;
     }
-        // ¶ƒAƒiƒƒOƒXƒeƒBƒbƒN‚Ì“ü—Í‚ğæ“¾
+    if (Input::GetKeyTrigger(VK_A)) {
+        //pos.x += 50;
+    }
+    // å·¦ã‚¢ãƒŠãƒ­ã‚°ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã«ã‚ˆã‚‹ç§»å‹•
     DirectX::SimpleMath::Vector2 leftStick = Input::GetLeftAnalogStick();
-
-    // ƒAƒiƒƒOƒXƒeƒBƒbƒN‚Ì’l‚ÅƒvƒŒƒCƒ„[‚ÌÀ•W‚ğˆÚ“®
-
-
     pos.x += leftStick.x * moveSpeed;
     pos.y += leftStick.y * moveSpeed;
-
-    //if (Input::GetButtonPress(XINPUT_A)) {
-    //    Enemy target; // ‰¼‚Ìƒ^[ƒQƒbƒg
-    //    Attack(target); 
-    //}
 }
 
-//void Player::flutter() {
-//    const float flutterCost = 20.0f; // flutter‚ÌƒXƒ^ƒ~ƒiÁ”ï—Ê
-//
-//    if (stamina >= flutterCost) {
-//        stamina -= flutterCost; // ƒXƒ^ƒ~ƒi‚ğÁ”ï
-//        Enemy target; //EnemyƒNƒ‰ƒX
-//        target.TakeDamage(10);
-//    }
-//    else {
-//       
-//    }
-//}
+void Player::Reflect(Bullet& bullet) {
+    if (IsTargetInRange(bullet)) {
+        if (Input::GetButtonPress(XINPUT_A)) {
+            velocity = { 1.0f, 1.0f }; // å³ä¸Š
+        }
+        else if (Input::GetButtonPress(XINPUT_B)) {
+            velocity = { 1.0f, 0.0f }; // å³
+        }
+        else if (Input::GetButtonPress(XINPUT_X)) {
+            velocity = { 1.0f, -1.0f }; // å³ä¸‹
+        }
+        bullet.SetVelocity(velocity.x * reflectSpeed, velocity.y * reflectSpeed);
+    }
+}
 
-//void Player::flutter() {
+void Player::Attack(Object& target) {
+    if (IsTargetInRange(target)) {
+        // ãƒ€ãƒ¡ãƒ¼ã‚¸ç³»ã®å‡¦ç†
+        target.SetColor(1.0f, 0.0f, 0.0f, 1.0f); // æ•µèµ¤ãã™ã‚‹ã‚„ã¤
+    }
+}
 
-//    if (stamina >= flutterCost) {
-//        stamina -= flutterCost; // ƒXƒ^ƒ~ƒi‚ğÁ”ï
-//    }
-//}
-//
-//void Player::Attack(Enemy& target) {
-//    // UŒ‚ƒƒWƒbƒN
-//    if (IsTargetInRange(target)) {
-//        target.TakeDamage(10); // —á‚Æ‚µ‚Ä10ƒ_ƒ[ƒW‚ğ—^‚¦‚é
-//    }
-//}
-//
-//bool Player::IsTargetInRange(const Enemy& target) const {
-//    float distance = std::sqrt(std::pow(target.GetPosition().x - pos.x, 2) + std::pow(target.GetPosition().y - pos.y, 2));
-//    float attackRange = 50.0f; // UŒ‚”ÍˆÍi—á‚Æ‚µ‚Ä50.0fj
-//
-//    return distance <= attackRange;
-//}
-
-
-
-//enemy.h
-//class Enemy {
-//public:
-//    void TakeDamage(int damage);
-//    int GetHealth() const;
-//    DirectX::SimpleMath::Vector2 GetPosition() const;
-//
-//private:
-//    int health = 100; // ‰Šú‘Ì—Í
-//    DirectX::SimpleMath::Vector2 pos; // ˆÊ’uî•ñ
-//};
-//
-//
-//enemy.cpp
-//
-//void TargetComponent::TakeDamage(int damage) {
-//    health -= damage;
-//    if (health < 0) {
-//        health = 0;
-//    }
-//}
-//
-//int TargetComponent::GetHealth() const {
-//    return health;
-//}
-//
-//DirectX::SimpleMath::Vector2 TargetComponent::GetPosition() const {
-//    return pos; 
-// }
+bool Player::IsTargetInRange(const Object& target) const {
+    float dx = target.GetPos().x - position.x;
+    float dy = target.GetPos().y - position.y;
+    float distanceSquared = dx * dx + dy * dy;
+    return distanceSquared <= (attackRange * attackRange);
+}
