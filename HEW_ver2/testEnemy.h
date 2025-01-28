@@ -12,7 +12,12 @@ protected:
 	Test_Bullet eb;
 
 	DirectX::XMFLOAT3 epos = { 0.0f,0.0f,0.0f };
+	//ステータス関連------------------------
+	int Boss_hp = 15;
+	int 
 
+
+	//-----------------------------------
 	int aniCount = 0;
 	int finish_Count = 0;
 	DirectX::XMFLOAT2 ad_e = { 0,0 };

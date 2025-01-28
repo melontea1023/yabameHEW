@@ -3,7 +3,7 @@
 
 
 std::vector<Object> obj = {};
-Player player; // Playerクラスのインスタンス
+
 
 
 
@@ -78,6 +78,10 @@ void Game::Update(void) {
         }
         break;
     case GAME:
+
+        //PlayerとEnemy(BOSS)の当たり判定
+        Box_Hit_judgment(player, testenemy);
+
         // プレイヤーの更新処理
         player.Update();
 

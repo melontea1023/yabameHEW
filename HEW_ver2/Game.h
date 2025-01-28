@@ -7,6 +7,7 @@
 #include"input.h"
 #include"sound.h"
 
+
 #define GAME_TITLE (101)
 #define GAME_GAME (102)
 #define GAME_CLEAR (103)
@@ -32,7 +33,7 @@ private:
 	Object bg1;	//background
 	Object clear_screen;
 	Object game_over_screen;
-	Object Player;
+	Player player; // Playerクラスのインスタンス
 
 	TestEnemy testenemy;
 
