@@ -391,3 +391,8 @@ bool Advertisement::GetEndflg(void)
 {
 	return ad_end;
 }
+
+void Advertisement::SetEndflg(bool _adreset)
+{
+	ad_end = _adreset;
+}

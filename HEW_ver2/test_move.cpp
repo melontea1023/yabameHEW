@@ -78,6 +78,7 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 				{
 					Ed_Animation_end_flg = false; // アニメーション終了フラグをリセット
 					e_Running_flg = false;       // 次の行動を許可
+					eb.SetEndflg(false);
 				}
 			}
 			break;
@@ -100,11 +101,14 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 			else
 			{
 				bossEnemyMoveLeft();
-
 			}
 			SetPos(epos.x, epos.y, epos.z);
 		}
 		e_Running_flg = true;
+		if (TestEnemy::GetEndflg())
+		{
+			e_Running_flg = false;       // 次の行動を許可
+		}
 
 		break;
 	case 3://広告降らしに関係する処理を入れる
@@ -115,6 +119,8 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 			{
 				Ad_Animation_end_flg = false; // アニメーション終了フラグをリセット
 				e_Running_flg = false;       // 次の行動を許可
+				ad.SetEndflg(false);
+				break;
 			}
 		}
 		else

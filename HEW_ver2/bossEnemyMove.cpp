@@ -17,6 +17,7 @@ void TestEnemy::bossEnemyMoveLeft()
             {
                 FbossRight = false;
                 moving_flg = true;
+                move_end = true;
                 time_c = 0;
             }
 
@@ -50,6 +51,8 @@ void TestEnemy::bossEnemyMoveRight()
             if (time_c == 60)
             {
                 FbossRight = true;
+                moving_flg = true;
+                move_end = true;
                 time_c = 0;
             }
 
@@ -64,4 +67,10 @@ void TestEnemy::bossEnemyMoveRight()
     }
 
   
+}
+
+bool TestEnemy::GetEndflg()
+{
+
+    return move_end;
 }

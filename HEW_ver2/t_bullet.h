@@ -49,6 +49,7 @@ public:
 	DirectX::XMFLOAT3 MoveBulllet(DirectX::XMFLOAT3, DirectX::XMFLOAT3);
 
 	bool GetEndflg(void);
+	void SetEndflg(bool);
 
 	void SetShotfinish(bool);
 	bool GetShotfinish(void);

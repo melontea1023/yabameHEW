@@ -40,4 +40,5 @@ public:
 	void Advertisement_Attack_Set(int, DirectX::XMFLOAT3);
 	void Advertisement_move(int);
 	bool GetEndflg(void);
+	void SetEndflg(bool);
 };

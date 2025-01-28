@@ -113,6 +113,11 @@ bool Test_Bullet::GetEndflg(void)
 	return eb_end;
 }
 
+void Test_Bullet::SetEndflg(bool _reset)
+{
+	eb_end = _reset;
+}
+
 bool Test_Bullet::GetShotfinish(void)
 {
 	return eb_finish;

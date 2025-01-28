@@ -37,6 +37,7 @@ protected:
 	bool FbossRight = false;
 	bool isWaiting = false; //移動
 	bool moving_flg = true; //移動した確認用
+	bool move_end = false;
 	int time_c = 0;
 
 	//----------------------
@@ -52,6 +53,7 @@ public:
 
 	void bossEnemyMoveLeft();
 	void bossEnemyMoveRight();
+	bool GetEndflg();
 
 	//エネミーの広告降らしのアニメーション---------------------------------
 	DirectX::XMFLOAT2 Advertisement_raining_Animation();
