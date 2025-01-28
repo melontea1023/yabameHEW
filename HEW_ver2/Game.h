@@ -6,6 +6,7 @@
 #include"input.h"
 #include "Player.h"
 #include "Advertisement raining.h"
+#include "testEnemy.h"
 
 #define GAME_TITLE (101)
 #define GAME_GAME (102)
@@ -27,6 +28,7 @@ private:
 	Object  title;
 	Object bg1;	//background
 
+	TestEnemy enemy;
 	Player player;
 	Bullet bullet;
 

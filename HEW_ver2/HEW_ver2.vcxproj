@@ -134,10 +134,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Advertisement raining.cpp" />
+    <ClCompile Include="bossEnemyMove.cpp" />
     <ClCompile Include="Boss_DemonOfSmartphone.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="direct3d.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Animation.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Hit judgment.cpp" />
     <ClCompile Include="input.cpp" />
@@ -145,6 +147,8 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="sound.cpp" />
+    <ClCompile Include="test_move.cpp" />
+    <ClCompile Include="t_bullet.cpp" />
     <ClCompile Include="WICTextureLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,11 +157,15 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="direct3d.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Animation.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="sound.h" />
+    <ClInclude Include="testEnemy.h" />
+    <ClInclude Include="test_move.h" />
+    <ClInclude Include="t_bullet.h" />
     <ClInclude Include="WICTextureLoader.h" />
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@ class Enemy : public Object {
 protected:
     bool isActive;
 
+
 public:
     float health = 5;
     float stamina = 100;

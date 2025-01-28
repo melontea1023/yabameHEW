@@ -45,6 +45,7 @@ void Game::Update(void) {
     case GAME:
         // プレイヤーの更新処理
         player.Update();
+        enemy.Enemy_Action_Move(player.GetPos());
         // 弾丸の更新処理と反射チェック
         player.Reflect(bullet);
         bullet.Update(1.0f / 60.0f); // フレームレートを仮定して更新
