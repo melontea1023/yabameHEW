@@ -5,6 +5,7 @@
 
 class Player : public Object {
 public:
+    int hp = 4;
     float stamina = 100;
     float atk;
     float health = 5;
@@ -17,6 +18,9 @@ public:
     //void flutter();
     //void Attack(Enemy& target); // 攻撃メソッド
     //bool IsTargetInRange(const Enemy& target) const; // 距離計算メソッド
+
+    void Sethp(int);
+    int Gethp();
 
     //プレイヤーアニメーション-------------------
     int p_aniCount = 0;

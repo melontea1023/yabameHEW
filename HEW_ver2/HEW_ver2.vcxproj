@@ -146,6 +146,7 @@
     <ClCompile Include="bossEnemyMove.cpp" />
     <ClCompile Include="Boss_DemonOfSmartphone.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Damage.cpp" />
     <ClCompile Include="direct3d.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Animation.cpp" />

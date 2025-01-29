@@ -203,3 +203,23 @@ int TestEnemy::probability(void)
 		return 2; // ˆÚ“®
 	}
 }
+
+
+
+
+void TestEnemy::Sethp(int _sethp)
+{
+	Boss_hp = _sethp;
+}
+int TestEnemy::Gethp()
+{
+	return Boss_hp;
+}
+
+
+
+//Object TestEnemy::GetInstance()
+//{
+//
+//	//return eb;
+//}

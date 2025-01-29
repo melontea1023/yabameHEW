@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "Player.h"
+//#include "Player.h"
 
 
 std::vector<Object> obj = {};
@@ -79,8 +79,8 @@ void Game::Update(void) {
         break;
     case GAME:
 
-        //PlayerとEnemy(BOSS)の当たり判定
-        Box_Hit_judgment(player, testenemy);
+        ////PlayerとEnemy(BOSS)の当たり判定&HP管理
+        Damage(player, testenemy);
 
         // プレイヤーの更新処理
         player.Update();

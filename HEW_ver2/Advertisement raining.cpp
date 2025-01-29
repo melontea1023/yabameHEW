@@ -67,11 +67,13 @@ void Advertisement::Advertisement_raining_Update(DirectX::XMFLOAT3 _nowpos)// ˆø
 	}
 
 	now_p_pos = _nowpos;
-	int Advertisement_Type = AdvertisingLocation(now_p_pos);
+	//int Advertisement_Type = AdvertisingLocation(now_p_pos);
 
 	if (!Set_flg)
 	{
+		Advertisement_Type = AdvertisingLocation(now_p_pos);
 		Advertisement_Attack_Set(Advertisement_Type, now_p_pos);
+	
 
 	}
 	Advertisement_move(Advertisement_Type);

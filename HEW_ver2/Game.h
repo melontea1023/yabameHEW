@@ -5,6 +5,7 @@
 #include"Object.h"
 #include"testEnemy.h"
 #include"input.h"
+#include"Player.h"
 #include"sound.h"
 
 
@@ -36,7 +37,6 @@ private:
 	Player player; // Playerクラスのインスタンス
 
 	TestEnemy testenemy;
-
 	GameState State = TITLE;
 	
 public:
@@ -51,5 +51,6 @@ public:
 	bool Box_Hit_judgment(Object, Object);
 	bool Circle_Hit_judgment(Object, Object);
 
+	void Damage(Player, TestEnemy);
 
 };

@@ -120,3 +120,13 @@ void Player::Update() {
 //DirectX::SimpleMath::Vector2 TargetComponent::GetPosition() const {
 //    return pos; 
 // }
+
+
+void Player::Sethp(int _hp)
+{
+    hp = _hp;
+}
+int Player::Gethp()
+{
+    return hp;
+}

@@ -15,7 +15,7 @@ protected:
 	DirectX::XMFLOAT3 now_p_pos = { 0.0f,0.0f,0.0f };
 
 	int random;
-
+	int Advertisement_Type;
 	int time_count;
 
 	bool Set_flg;//広告降らしの座標設定を連続して行うのを防ぐフラグ

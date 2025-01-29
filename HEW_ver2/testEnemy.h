@@ -14,8 +14,7 @@ protected:
 	DirectX::XMFLOAT3 epos = { 0.0f,0.0f,0.0f };
 	//ステータス関連------------------------
 	int Boss_hp = 15;
-	int 
-
+	int Boos_attack = 1;
 
 	//-----------------------------------
 	int aniCount = 0;
@@ -53,12 +52,15 @@ public:
 	void CharacterDraw(void);
 	void Enemy_Action_Move(DirectX::XMFLOAT3);
 	int probability(void);
+	void Sethp(int);
+	int Gethp();
 
 	//void Initialize();
 
 	void bossEnemyMoveLeft();
 	void bossEnemyMoveRight();
 	bool GetEndflg();
+	Object GetInstance();
 
 	//エネミーの広告降らしのアニメーション---------------------------------
 	DirectX::XMFLOAT2 Advertisement_raining_Animation();
