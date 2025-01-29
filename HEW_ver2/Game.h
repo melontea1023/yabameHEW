@@ -57,4 +57,8 @@ public:
 
 	void Damage(Player, TestEnemy);
 
+	void Damage(Player, Test_Bullet);
+
+	void Damage(TestEnemy, Test_Bullet);
+
 };

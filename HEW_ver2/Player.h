@@ -9,7 +9,7 @@ public:
     float stamina = 100;
     float atk;
     float health = 5;
-
+    int AttackType = 0;
     bool attack_flg = false;
     bool Up_a_flg = false;
     bool Center_a_flg = false;
@@ -25,6 +25,7 @@ public:
     void Sethp(int);
     int Gethp();
     bool GetAttack();
+    int GetAttackType();
 
     //プレイヤーアニメーション-------------------
     int p_aniCount = 0;

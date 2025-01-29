@@ -46,6 +46,8 @@ protected:
 
 	//----------------------
 public:
+
+	
 	bool e_Running_flg = false;;
 	void CharacterInit(void);
 	void test_Update(DirectX::XMFLOAT3, DirectX::XMFLOAT3);

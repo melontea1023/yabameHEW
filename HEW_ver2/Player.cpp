@@ -25,9 +25,10 @@ void Player::Update() {
     //if (Input::GetKeyPress(VK_S) || Input::GetButtonPress(XINPUT_DOWN)) {
 
     //}
-    float moveSpeed = 5.0f; // 移動速度
+    float moveSpeed = 3.5f; // 移動速度
 
-    if (Input::GetButtonPress(XINPUT_RIGHT_SHOULDER)) {
+    if (Input::GetButtonPress(XINPUT_RIGHT_SHOULDER)) //Rボタン 
+    {
         if (stamina > 0.0f) { // スタミナが残っている場合のみ消費
             stamina -= 0.5f; // スタミナ消費
             moveSpeed += 2.0f; // 移動速度を上昇
@@ -44,34 +45,26 @@ void Player::Update() {
     DirectX::SimpleMath::Vector2 leftStick = Input::GetLeftAnalogStick();
 
     // アナログスティックの値でプレイヤーの座標を移動
-
-
     pos.x += leftStick.x * moveSpeed;
     pos.y += leftStick.y * moveSpeed;
-
-   
-   
-
-
 
     if (Input::GetButtonTrigger(XINPUT_A)) //下にはたく
     {
         attack_flg = true;
-        Down_a_flg = true;
+        AttackType = 3;
     }
 
     if (Input::GetButtonTrigger(XINPUT_B)) //真ん中にはたく
     {
         attack_flg = true;
-        Center_a_flg = true;
+        AttackType = 2;
     }
 
     if (Input::GetButtonTrigger(XINPUT_Y)) //上にはたく
     {
         attack_flg = true;
-        Up_a_flg = true;
+        AttackType = 1;
     }
-
 
     if (attack_flg)
     {
@@ -167,4 +160,10 @@ int Player::Gethp()
 bool Player::GetAttack()
 {
     return attack_flg;
+}
+
+int Player::GetAttackType()
+{
+
+    return AttackType;
 }

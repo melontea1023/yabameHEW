@@ -37,7 +37,7 @@ void Game::Init(HWND hWnd) {
 
     // Playerの初期化
     player.Init(L"asset/PMove_Attack.png",4,1);
-    player.SetPos(0.0f, 0.0f, 0.0f);
+    player.SetPos(-600.0f, -100.0f, 0.0f);
     player.SetSize(200.0f, 250.0f, 0.0f);
     player.SetAngle(0.0f);
 
@@ -82,6 +82,8 @@ void Game::Update(void) {
         ////PlayerとEnemy(BOSS)の当たり判定&HP管理
         Damage(player, testenemy);
 
+        //Damage(player, eb);
+
         // プレイヤーの更新処理
         player.Update();
 
@@ -94,6 +96,11 @@ void Game::Update(void) {
             State = END;
         }
 
+        if (GAME_CLEAR_flg)
+        {
+            State = LAST;
+        }
+
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }
@@ -102,6 +109,7 @@ void Game::Update(void) {
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = TITLE;
         }
+        GAME_CLEAR_flg = false; 
         break;
 
     case END:
