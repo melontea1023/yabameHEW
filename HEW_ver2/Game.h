@@ -8,11 +8,6 @@
 #include"Player.h"
 #include"sound.h"
 
-
-#define GAME_TITLE (101)
-#define GAME_GAME (102)
-#define GAME_CLEAR (103)
-#define GAME_END (104)
 //—ñ‹“Œ^‚ÅƒV[ƒ“‘JˆÚ
 enum GameState
 {
@@ -28,8 +23,6 @@ private:
 	Input input;
 
 	Sound sound;
-	
-
 	Object  title;
 	Object bg1;	//background
 	Object clear_screen;
@@ -41,6 +34,8 @@ private:
 
 	bool GAME_CLEAR_flg = false;
 	bool GAME_END_flg = false;
+	bool Loop_flg = false;
+	bool Scene_Change_flg = false;
 	
 public:
 
@@ -61,4 +56,5 @@ public:
 
 	void Damage(TestEnemy, Test_Bullet);
 
+	bool Any_Button();
 };

@@ -43,6 +43,9 @@ void Player::Update() {
     }
         // 左アナログスティックの入力を取得
     DirectX::SimpleMath::Vector2 leftStick = Input::GetLeftAnalogStick();
+    p_move = Player_Move_Animation();
+    Player::SetUV(p_move.x, p_move.y);
+
 
     // アナログスティックの値でプレイヤーの座標を移動
     pos.x += leftStick.x * moveSpeed;
@@ -51,18 +54,21 @@ void Player::Update() {
     if (Input::GetButtonTrigger(XINPUT_A)) //下にはたく
     {
         attack_flg = true;
+        Player_Type = true;
         AttackType = 3;
     }
 
     if (Input::GetButtonTrigger(XINPUT_B)) //真ん中にはたく
     {
         attack_flg = true;
+        Player_Type = true;
         AttackType = 2;
     }
 
     if (Input::GetButtonTrigger(XINPUT_Y)) //上にはたく
     {
         attack_flg = true;
+        Player_Type = true;
         AttackType = 1;
     }
 
@@ -166,4 +172,8 @@ int Player::GetAttackType()
 {
 
     return AttackType;
+}
+bool Player::GetPlayerType()
+{
+    return Player_Type;
 }

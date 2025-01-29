@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Advertisement raining.cpp" />
+    <ClCompile Include="AnyButton.cpp" />
     <ClCompile Include="bossEnemyMove.cpp" />
     <ClCompile Include="Boss_DemonOfSmartphone.cpp" />
     <ClCompile Include="Bullet.cpp" />

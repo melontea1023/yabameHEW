@@ -71,11 +71,26 @@ void Game::Update(void) {
     //一旦スペースで全部シーン遷移
     switch (State) {
     case TITLE:
-        if (Input::GetKeyTrigger(VK_SPACE)) {
+        if (Loop_flg)
+        {
+            //初期化
+
+
+
+        }
+
+
+
+
+        if (Any_Button()) {
             State = GAME;
+            Scene_Change_flg = false;
             player.Update();
 
         }
+
+
+
         break;
     case GAME:
 
@@ -89,6 +104,18 @@ void Game::Update(void) {
 
         testenemy.Enemy_Action_Move(player.GetPos());
 
+        if (0)
+        {
+            if (player.GetPlayerType())
+            {
+
+            }
+            else
+            {
+                player.Init(L"asset/PMove_Attack.png", 4, 1);
+            }
+        }
+        
 
 
         if (GAME_END_flg)
@@ -101,20 +128,23 @@ void Game::Update(void) {
             State = LAST;
         }
 
-        if (Input::GetKeyTrigger(VK_SPACE)) {
+        if (Any_Button()) {
             State = LAST;
+            Scene_Change_flg = false;
         }
         break;
     case LAST:
-        if (Input::GetKeyTrigger(VK_SPACE)) {
+        if (Any_Button()) {
             State = TITLE;
+            Scene_Change_flg = false;
         }
         GAME_CLEAR_flg = false; 
         break;
 
     case END:
-        if (Input::GetKeyTrigger(VK_SPACE)) {
+        if (Any_Button()) {
             State = TITLE;
+            Scene_Change_flg = false;
         }
         GAME_END_flg = false;
 
@@ -129,7 +159,6 @@ void Game::Draw(void) {
     case TITLE:
         bg1.Draw();
         title.Draw();
-        player.Draw();
 
         break;
     case GAME:

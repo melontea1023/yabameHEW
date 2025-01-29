@@ -10,6 +10,7 @@ public:
     float atk;
     float health = 5;
     int AttackType = 0;
+    bool Player_Type = false;
     bool attack_flg = false;
     bool Up_a_flg = false;
     bool Center_a_flg = false;
@@ -26,7 +27,7 @@ public:
     int Gethp();
     bool GetAttack();
     int GetAttackType();
-
+    bool GetPlayerType();
     //プレイヤーアニメーション-------------------
     int p_aniCount = 0;
     int p_finish_Count = 0;
