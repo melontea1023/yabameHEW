@@ -28,6 +28,7 @@ private:
 	Object clear_screen;
 	Object game_over_screen;
 	Player player; // Playerクラスのインスタンス
+	Player Action_player;
 
 	TestEnemy testenemy;
 	GameState State = TITLE;

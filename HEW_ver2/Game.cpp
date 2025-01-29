@@ -41,6 +41,12 @@ void Game::Init(HWND hWnd) {
     player.SetSize(200.0f, 250.0f, 0.0f);
     player.SetAngle(0.0f);
 
+    //// Playerの初期化
+    //Action_player.Init(L"asset/Pmove.png", 3, 1);
+    //Action_player.SetPos(-600.0f, -100.0f, 0.0f);
+    //Action_player.SetSize(200.0f, 250.0f, 0.0f);
+    //Action_player.SetAngle(0.0f);
+
     testenemy.Init(L"asset/linkmove.png", 4, 1);
     testenemy.SetPos(SCREEN_WIDTH / 2 / 2, 270, 0.0f);
     testenemy.SetSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.0f);
@@ -69,34 +75,41 @@ void Game::Update(void) {
 
     input.Update();
     //一旦スペースで全部シーン遷移
-    switch (State) {
+    switch (State) 
+    {
     case TITLE:
         if (Loop_flg)
         {
             //初期化
-
-
+            testenemy.Sethp(15);
+            player.SetPos(-600.0f, -100.0f, 0.0f);
+            testenemy.SetPos(SCREEN_WIDTH / 2 / 2, 270, 0.0f);
+            GAME_CLEAR_flg = false;
+            GAME_END_flg = false;
+            Loop_flg = false;
+            Scene_Change_flg = false;
 
         }
 
 
 
 
-        if (Any_Button()) {
+        if (Any_Button()) 
+        {
             State = GAME;
             Scene_Change_flg = false;
-            player.Update();
+            //player.Update();
 
         }
 
-
+        //Action_player;
 
         break;
     case GAME:
 
         ////PlayerとEnemy(BOSS)の当たり判定&HP管理
         Damage(player, testenemy);
-
+        testenemy.p_eb_check(player);
         //Damage(player, eb);
 
         // プレイヤーの更新処理
@@ -104,17 +117,6 @@ void Game::Update(void) {
 
         testenemy.Enemy_Action_Move(player.GetPos());
 
-        if (0)
-        {
-            if (player.GetPlayerType())
-            {
-                player.Init(L"asset/PMove_Attack.png", 4, 1);
-            }
-            else
-            {
-                player.Init(L"asset/Pmove.png", 4, 1);
-            }
-        }
         
 
 
@@ -128,15 +130,13 @@ void Game::Update(void) {
             State = LAST;
         }
 
-        if (Input::GetButtonTrigger(VK_SPACE)) {
-            State = LAST;
-            Scene_Change_flg = false;
-        }
+      
         break;
     case LAST:
         if (Any_Button()) {
             State = TITLE;
             Scene_Change_flg = false;
+            Loop_flg = true;
         }
         GAME_CLEAR_flg = false; 
         break;
@@ -145,6 +145,7 @@ void Game::Update(void) {
         if (Any_Button()) {
             State = TITLE;
             Scene_Change_flg = false;
+            Loop_flg = true;
         }
         GAME_END_flg = false;
 
@@ -164,7 +165,11 @@ void Game::Draw(void) {
     case GAME:
         // プレイ画面の描画 
         bg1.Draw();
-        player.Draw();
+       
+     
+            player.Draw();
+   
+      
         testenemy.Draw();
         testenemy.CharacterDraw();
         break;

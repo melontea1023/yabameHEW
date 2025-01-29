@@ -2,7 +2,7 @@
 #include"Object.h"
 #include"Advertisement raining.h"
 #include"t_bullet.h"
-
+#include"Player.h"
 
 class TestEnemy :public Object
 {
@@ -43,8 +43,14 @@ protected:
 	bool moving_flg = true; //ˆÚ“®‚µ‚½Šm”F—p
 	bool move_end = false;
 	int time_c = 0;
-
 	//----------------------
+
+	//“–‚½‚è”»’è‚Ì•Ï”ŒQ--------------------------------------
+	int Playerhp = 0;
+	int Hit_time_count = 0;
+	bool SetFlg = false;
+
+	//------------------------------------
 public:
 
 	
@@ -53,6 +59,8 @@ public:
 	void CharacterDraw(void);
 	void Enemy_Action_Move(DirectX::XMFLOAT3);
 	int probability(void);
+	void p_eb_check(Player);
+	bool Box_Hit_judgment(Object, Object);
 	void Sethp(int);
 	int Gethp();
 	int Getatk();

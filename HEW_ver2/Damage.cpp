@@ -4,6 +4,7 @@
 
 int playerhp = 0;
 int enemyhp = 0;
+int hit_time_count = 0;
 bool Setting_flg = false;
 
 void Game::Damage(Player obj1, TestEnemy obj2) //左からPlayer Enemy;
@@ -20,9 +21,14 @@ void Game::Damage(Player obj1, TestEnemy obj2) //左からPlayer Enemy;
 		if (obj1.GetAttack())//playerが攻撃中かどうかを確認
 		{
 			//playerが攻撃中ならば
-			
-				enemyhp-=obj2.Getatk();
+			hit_time_count++;
+			if (hit_time_count % 60 == 1)
+			{
+				enemyhp -= obj2.Getatk();
+				//hit_time_count =0;
 				Setting_flg = true;
+			}
+				
 		}
 		else
 		{
@@ -52,28 +58,66 @@ void Game::Damage(Player obj1, TestEnemy obj2) //左からPlayer Enemy;
 
 void Game::Damage(Player obj1, Test_Bullet obj2)//左からPlayer Bullet
 {
+	//if (!Setting_flg)
+	//{
+	//	playerhp = obj1.Gethp();
+	//}
 
-	if (Box_Hit_Judgment(obj1, obj2)) //プレイヤーと弾が接触しているかどうかの確認
-	{
-		playerhp = 0;
+	//if (Box_Hit_Judgment(obj1, obj2)) //プレイヤーと弾が接触しているかどうかの確認
+	//{
+	//	if (obj1.GetAttack())//playerが攻撃中かどうかを確認
+	//	{
+	//		hit_time_count++;
+	//		if (hit_time_count % 60 == 1)
+	//		{
+	//			//enemyhp -= obj2.Getatk();
+	//			hit_time_count = 0;
+	//			Setting_flg = true;
+	//		}
+	//	}
+	//		
 
 
-	}
+	//}
 
-	if (playerhp <= 0)
-	{
-		GAME_END_flg = true;
-	}
+	//if (playerhp <= 0)
+	//{
+	//	GAME_END_flg = true;
+	//}
 
 }
 
 
 void Game::Damage(TestEnemy obj1, Test_Bullet obj2)//左からEnemy Bullet
 {
-	if (Box_Hit_Judgment(obj1, obj2)) //エネミーと弾が接触しているかどうかの確認
-	{
+	//if (!Setting_flg)
+	//{
+	//	enemyhp = obj1.Gethp();
+	//}
 
-	}
+	//
+	//if (Box_Hit_Judgment(obj1, obj2)) //エネミーと弾が接触しているかどうかの確認
+	//{
+	//	if (1)//playerの跳ね返しかどうかを確認
+	//	{
+	//		hit_time_count++;
+	//		if (hit_time_count % 60 == 1)
+	//		{
+	//			//enemyhp -= obj2.Getatk();
+	//			hit_time_count = 0;
+	//			Setting_flg = true;
+	//		}
+	//	}
+	//	else //Playerの跳ね返しではない
+	//	{
+
+	//	}
+	//}
+	//if (playerhp <= 0)
+	//{
+	//	GAME_END_flg = true;
+	//}
+	//
 
 
 

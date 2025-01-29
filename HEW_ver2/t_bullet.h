@@ -48,6 +48,8 @@ public:
 
 	DirectX::XMFLOAT3 MoveBulllet(DirectX::XMFLOAT3, DirectX::XMFLOAT3);
 
+	bool Box_Hit_judgment(Object, Object);
+
 	bool GetEndflg(void);
 	void SetEndflg(bool);
 

@@ -74,3 +74,5 @@ bool TestEnemy::GetEndflg()
 
     return move_end;
 }
+
+

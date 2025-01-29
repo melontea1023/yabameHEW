@@ -43,8 +43,8 @@ void Player::Update() {
     }
         // 左アナログスティックの入力を取得
     DirectX::SimpleMath::Vector2 leftStick = Input::GetLeftAnalogStick();
-    p_move = Player_Move_Animation();
-    Player::SetUV(p_move.x, p_move.y);
+  /*  p_move = Player_Move_Animation();
+    Player::SetUV(p_move.x, p_move.y);*/
 
 
     // アナログスティックの値でプレイヤーの座標を移動

@@ -156,6 +156,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Damage.cpp" />
     <ClCompile Include="direct3d.cpp" />
+    <ClCompile Include="Enemy Hit Jubgment.cpp" />
     <ClCompile Include="Enemy_Animation.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Hit judgment.cpp" />
