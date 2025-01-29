@@ -53,6 +53,7 @@ DirectX::XMFLOAT2 Player::Player_Hit_Animation(void) //はたくアニメーション
 		if (ad_finish_count >= 60)
 		{
 			p_hit.x = 0;
+			attack_flg = false;
 			ad_finish_count = 0;
 			elapsed_time = 0.0f;
 		}

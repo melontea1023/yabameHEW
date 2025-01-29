@@ -79,3 +79,11 @@ bool Game::Circle_Hit_judgment(Object obj1, Object obj2)
 
 
 }
+
+
+bool Game::Box_Hit_Judgment(Object obj1, Object obj2)
+{
+
+
+
+}

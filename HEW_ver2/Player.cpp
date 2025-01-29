@@ -49,6 +49,38 @@ void Player::Update() {
     pos.x += leftStick.x * moveSpeed;
     pos.y += leftStick.y * moveSpeed;
 
+   
+   
+
+
+
+    if (Input::GetButtonTrigger(XINPUT_A)) //下にはたく
+    {
+        attack_flg = true;
+        Down_a_flg = true;
+    }
+
+    if (Input::GetButtonTrigger(XINPUT_B)) //真ん中にはたく
+    {
+        attack_flg = true;
+        Center_a_flg = true;
+    }
+
+    if (Input::GetButtonTrigger(XINPUT_Y)) //上にはたく
+    {
+        attack_flg = true;
+        Up_a_flg = true;
+    }
+
+
+    if (attack_flg)
+    {
+        p_hit=Player_Hit_Animation();
+        Player::SetUV(p_hit.x, p_hit.y);
+    }
+
+
+
     //if (Input::GetButtonPress(XINPUT_A)) {
     //    Enemy target; // 仮のターゲット
     //    Attack(target); 
@@ -129,4 +161,10 @@ void Player::Sethp(int _hp)
 int Player::Gethp()
 {
     return hp;
+}
+
+
+bool Player::GetAttack()
+{
+    return attack_flg;
 }

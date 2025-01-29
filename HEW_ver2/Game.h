@@ -38,6 +38,9 @@ private:
 
 	TestEnemy testenemy;
 	GameState State = TITLE;
+
+	bool GAME_CLEAR_flg = false;
+	bool GAME_END_flg = false;
 	
 public:
 
@@ -49,6 +52,7 @@ public:
 	void Uninit(void);          //èIóπ
 
 	bool Box_Hit_judgment(Object, Object);
+	bool Box_Hit_Judgment(Object, Object);
 	bool Circle_Hit_judgment(Object, Object);
 
 	void Damage(Player, TestEnemy);

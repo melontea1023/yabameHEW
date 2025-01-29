@@ -36,9 +36,9 @@ void Game::Init(HWND hWnd) {
     obj.push_back(game_over_screen);
 
     // PlayerÇÃèâä˙âª
-    player.Init(L"asset/movesprite.png",3,1);
+    player.Init(L"asset/PMove_Attack.png",4,1);
     player.SetPos(0.0f, 0.0f, 0.0f);
-    player.SetSize(100.0f, 150.0f, 0.0f);
+    player.SetSize(200.0f, 250.0f, 0.0f);
     player.SetAngle(0.0f);
 
     testenemy.Init(L"asset/linkmove.png", 4, 1);
@@ -87,6 +87,13 @@ void Game::Update(void) {
 
         testenemy.Enemy_Action_Move(player.GetPos());
 
+
+
+        if (GAME_END_flg)
+        {
+            State = END;
+        }
+
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }
@@ -95,6 +102,14 @@ void Game::Update(void) {
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = TITLE;
         }
+        break;
+
+    case END:
+        if (Input::GetKeyTrigger(VK_SPACE)) {
+            State = TITLE;
+        }
+        GAME_END_flg = false;
+
         break;
     }
 
