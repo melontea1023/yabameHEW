@@ -108,11 +108,11 @@ void Game::Update(void) {
         {
             if (player.GetPlayerType())
             {
-
+                player.Init(L"asset/PMove_Attack.png", 4, 1);
             }
             else
             {
-                player.Init(L"asset/PMove_Attack.png", 4, 1);
+                player.Init(L"asset/Pmove.png", 4, 1);
             }
         }
         
@@ -128,7 +128,7 @@ void Game::Update(void) {
             State = LAST;
         }
 
-        if (Any_Button()) {
+        if (Input::GetButtonTrigger(VK_SPACE)) {
             State = LAST;
             Scene_Change_flg = false;
         }

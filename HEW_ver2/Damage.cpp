@@ -1,14 +1,19 @@
 #include"Game.h"
+#include"testEnemy.h"
 
-bool P_E_Touchflg = false;
 
 int playerhp = 0;
 int enemyhp = 0;
+bool Setting_flg = false;
 
 void Game::Damage(Player obj1, TestEnemy obj2) //左からPlayer Enemy;
 {
-	playerhp = obj1.Gethp();
-	enemyhp = obj2.Gethp();
+	if (!Setting_flg)
+	{
+		playerhp = obj1.Gethp();
+		enemyhp = obj2.Gethp();
+	}
+	
 
 	if (Box_Hit_Judgment(obj1, obj2)) //プレイヤーとエネミーが接触しているかどうかの確認
 	{
@@ -16,7 +21,8 @@ void Game::Damage(Player obj1, TestEnemy obj2) //左からPlayer Enemy;
 		{
 			//playerが攻撃中ならば
 			
-				enemyhp=0;
+				enemyhp-=obj2.Getatk();
+				Setting_flg = true;
 		}
 		else
 		{
@@ -31,11 +37,13 @@ void Game::Damage(Player obj1, TestEnemy obj2) //左からPlayer Enemy;
 	if (playerhp<=0)
 	{
 		GAME_END_flg = true;
+		Setting_flg = false;
 	}
 
 	if (enemyhp <= 0)
 	{
 		GAME_CLEAR_flg = true;
+		Setting_flg = false;
 	}
 	obj1.Sethp(playerhp);
 	obj2.Sethp(enemyhp);

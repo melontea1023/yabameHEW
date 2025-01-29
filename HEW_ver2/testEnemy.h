@@ -50,19 +50,19 @@ public:
 	
 	bool e_Running_flg = false;;
 	void CharacterInit(void);
-	void test_Update(DirectX::XMFLOAT3, DirectX::XMFLOAT3);
 	void CharacterDraw(void);
 	void Enemy_Action_Move(DirectX::XMFLOAT3);
 	int probability(void);
 	void Sethp(int);
 	int Gethp();
+	int Getatk();
 
 	//void Initialize();
 
 	void bossEnemyMoveLeft();
 	void bossEnemyMoveRight();
 	bool GetEndflg();
-	Object GetInstance();
+	//Object GetInstance();
 
 	//エネミーの広告降らしのアニメーション---------------------------------
 	DirectX::XMFLOAT2 Advertisement_raining_Animation();

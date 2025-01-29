@@ -16,32 +16,6 @@ void TestEnemy::CharacterInit(void)
 
 }
 
-
-void TestEnemy::test_Update(DirectX::XMFLOAT3 _pos, DirectX::XMFLOAT3 _nowepos)//ç∂Ç©ÇÁPlayer,EnemyÇÃç¿ïW
-{
-	if (bullet_move_flg)
-	{
-		Get_ebpos = eb.MoveBulllet(_pos, eb.GetPos());
-		eb.SetPos(Get_ebpos.x, Get_ebpos.y, Get_ebpos.z);
-		eb_count++;
-		e_Running_flg = eb.GetEndflg();
-	}
-
-	if (bullet_set_flg)
-	{
-		int r = eb.SetTarget(_pos, _nowepos);
-		eb.SetAngle(r);
-		eb.SetPos(_nowepos.x, _nowepos.y, _nowepos.z);
-
-		eb.Set_Bullet_Target(_pos, _nowepos, eb.GetPos());
-
-		bullet_set_flg = false;
-		bullet_move_flg = true;
-		eb.loop_flg = false;
-	}
-
-}
-
 void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 {
 	if (!e_Running_flg)
@@ -181,13 +155,14 @@ int TestEnemy::probability(void)
 	else {
 		linkThrow = 0;  adRain = 0;  move = 100;
 	}
+
 	if (turn == 7)
 	{
 		turn = 1;
 	}
 	else
 	{
-		turn++;
+		turn+=1;
 	}
 
 
@@ -216,6 +191,10 @@ int TestEnemy::Gethp()
 	return Boss_hp;
 }
 
+int TestEnemy::Getatk()
+{
+	return Boos_attack;
+}
 
 
 //Object TestEnemy::GetInstance()

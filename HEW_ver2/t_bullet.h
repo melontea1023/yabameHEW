@@ -1,12 +1,12 @@
 #pragma once
 #include"Object.h"
-
 class Test_Bullet :public Object
 {
 protected:
 
 
 	DirectX::XMFLOAT3 eb_pos = { 0.0f,0.0f,0.0f };
+
 
 	DirectX::XMFLOAT3 target_pos = { 0.0f,0.0f,0.0f };
 
