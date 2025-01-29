@@ -50,6 +50,8 @@ protected:
 	int Hit_time_count = 0;
 	bool SetFlg = false;
 
+	bool Testhitflg = false;
+
 	//------------------------------------
 public:
 
@@ -64,6 +66,8 @@ public:
 	void Sethp(int);
 	int Gethp();
 	int Getatk();
+
+	bool GetHit();
 
 	//void Initialize();
 

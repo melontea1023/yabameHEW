@@ -118,7 +118,10 @@ void Game::Update(void) {
         testenemy.Enemy_Action_Move(player.GetPos());
 
         
-
+        if (testenemy.GetHit())
+        {
+            State = END;
+        }
 
         if (GAME_END_flg)
         {

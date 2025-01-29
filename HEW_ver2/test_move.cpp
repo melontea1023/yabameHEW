@@ -196,8 +196,18 @@ int TestEnemy::Getatk()
 	return Boos_attack;
 }
 
+bool TestEnemy::GetHit()
+{
+	return Testhitflg;
+}
+
 void TestEnemy::p_eb_check(Player obj1) 
 {
+
+	if (!SetFlg)
+	{
+		Playerhp = obj1.Gethp();
+	}
 
 	if (Box_Hit_judgment(obj1, eb)) //プレイヤーとエネミーが接触しているかどうかの確認
 	{
@@ -212,6 +222,7 @@ void TestEnemy::p_eb_check(Player obj1)
 		}
 		else
 		{
+			Testhitflg = true;
 			//playerが攻撃中で無いなら
 			Hit_time_count++;
 			if (Hit_time_count % 60 == 1)
