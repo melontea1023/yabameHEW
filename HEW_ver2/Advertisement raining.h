@@ -10,8 +10,6 @@
 class Advertisement :public Object
 {
 protected:
-
-
 	DirectX::XMFLOAT3 now_p_pos = { 0.0f,0.0f,0.0f };
 
 	int random;

@@ -35,30 +35,44 @@ void Game::Update(void) {
     //一旦スペースで全部シーン遷移
     switch (State) {
     case TITLE:
-        player.Update();
-        sound.Stop(SOUND_LABEL_RESULT);
-        sound.Play(SOUND_LABEL_TITLE);
+        //sound.Stop(SOUND_LABEL_RESULT);
+       /* sound.Play(SOUND_LABEL_TITLE);*/
  
-        if (Input::GetKeyTrigger(VK_SPACE)) {
+        if (Input::GetKeyPress(VK_SPACE)) {
             State = GAME;
         }
         break;
     case GAME:
         // プレイヤーの更新処理
         player.Update();
-        sound.Stop(SOUND_LABEL_TITLE);
-        sound.Play(SOUND_LABEL_BATTLE);
+       ///* sound.Stop(SOUND_LABEL_TITLE);
+       // sound.Play(SOUND_LABEL_BATTLE);*/
         enemy.Enemy_Action_Move(player.GetPos());
-        // 弾丸の更新処理と反射チェック
-        player.Reflect();
-        eb.Update(1.0f / 60.0f); // フレームレートを仮定して更新
+        //// 弾丸の更新処理と反射チェック
+        //player.Reflect(bullet);
+        //bullet.Update(1.0f / 60.0f); // フレームレートを仮定して更新
+                // 反射判定
+        player.Reflect(bullet);
+        if (player.Reflect(bullet)) {
+            // Reflectされたら、MoveReflectedBulletを有効にする
+            bullet.SetReflected(true);
+        }
+
+        // 反射されていれば、新しい移動処理を適用
+        //if (bullet.IsReflected()) {
+            bullet.MoveReflectedBullet();
+        //}
+        //else {
+        //    // 通常の弾の移動（敵から発射される時）
+        //    bullet.SetPos(bullet.MoveBulllet(player.GetPos(), bullet.GetPos()));
+        //}
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
         }
         break;
     case LAST:
-        sound.Stop(SOUND_LABEL_BATTLE);
-        sound.Play(SOUND_LABEL_RESULT);
+      /*  sound.Stop(SOUND_LABEL_BATTLE);
+        sound.Play(SOUND_LABEL_RESULT);*/
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = TITLE;
         }
@@ -90,7 +104,7 @@ void Game::Uninit(void) {
     for (auto& obj : objs) {
         obj.Uninit();
     }
-
+    sound.Uninit();
     //int number = objs.size();
 
     //for (int i = 0; i < number; i++) {

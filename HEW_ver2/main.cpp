@@ -72,7 +72,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	Game game;
 	game.Init(hWnd);
 	
-
+	//sound.Play(SOUND_LABEL_TITLE);
 	
 
 	MSG msg;

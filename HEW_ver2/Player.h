@@ -19,7 +19,7 @@ public:
     Player();
     void Init(const wchar_t* textureFile, int sx = 1, int sy = 1); // ‰Šú‰»
     void Update();                 // XVˆ—
-    void Reflect(Test_Bullet& bullet);;                // ”½Ëˆ—
+    bool Reflect(Test_Bullet& bullet);;                // ”½Ëˆ—
     void Attack(Object& target); // UŒ‚ˆ—
     bool IsTargetInRange(const Object& target) const; // ‘ÎÛ‚ªUŒ‚”ÍˆÍ“à‚©”»’è
 };

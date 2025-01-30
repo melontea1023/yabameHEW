@@ -9,7 +9,7 @@ void TestEnemy::CharacterInit(void)
 {
 
 	eb.Init(L"asset/link.png");   //リンクを初期化
-	eb.SetPos(SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2, 0.0f);//位置を設定
+	eb.SetPos(epos);//位置を設定
 	eb.SetSize(750.0f, 375.0f, 0.0f); //大きさを設定
 	eb.SetAngle(0.0f);   //角度を設定
 	ad.Advertisement_raining_Init();
@@ -22,7 +22,7 @@ void TestEnemy::test_Update(DirectX::XMFLOAT3 _pos, DirectX::XMFLOAT3 _nowepos)/
 	if (bullet_move_flg)
 	{
 		Get_ebpos = eb.MoveBulllet(_pos, eb.GetPos());
-		eb.SetPos(Get_ebpos.x, Get_ebpos.y, Get_ebpos.z);
+		eb.SetPos(Get_ebpos);
 		eb_count++;
 		e_Running_flg = eb.GetEndflg();
 	}
@@ -31,7 +31,7 @@ void TestEnemy::test_Update(DirectX::XMFLOAT3 _pos, DirectX::XMFLOAT3 _nowepos)/
 	{
 		int r = eb.SetTarget(_pos, _nowepos);
 		eb.SetAngle(r);
-		eb.SetPos(_nowepos.x, _nowepos.y, _nowepos.z);
+		eb.SetPos(_nowepos);
 
 		eb.Set_Bullet_Target(_pos, _nowepos, eb.GetPos());
 
@@ -59,10 +59,11 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 		{
 			if (bullet_set_flg)
 			{
+		//esound.Play(SOUND_LABEL_LINK);
 				epos = TestEnemy::GetPos();
 				int r = eb.SetTarget(_playerPosition, epos);
 				eb.SetAngle(r);
-				eb.SetPos(epos.x, epos.y, epos.z);
+				eb.SetPos(epos);
 
 				eb.Set_Bullet_Target(_playerPosition, epos, eb.GetPos());
 
@@ -74,7 +75,7 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 			if (bullet_move_flg)
 			{
 				Get_ebpos = eb.MoveBulllet(_playerPosition, eb.GetPos());
-				eb.SetPos(Get_ebpos.x, Get_ebpos.y, Get_ebpos.z);
+				eb.SetPos(Get_ebpos);
 				if (eb.GetEndflg())
 				{
 					Ed_Animation_end_flg = false; // アニメーション終了フラグをリセット
@@ -115,6 +116,7 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 	case 3://広告降らしに関係する処理を入れる
 		if (Ad_Animation_end_flg) //広告降らしアニメーションが終わっているかの確認
 		{
+			//esound.Play(SOUND_LABEL_ADVAGO);
 			ad.Advertisement_raining_Update(_playerPosition);
 			if (ad.GetEndflg())
 			{

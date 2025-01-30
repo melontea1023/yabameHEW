@@ -10,8 +10,7 @@ protected:
 
 	DirectX::XMFLOAT3 target_pos = { 0.0f,0.0f,0.0f };
 
-	DirectX::XMFLOAT3 e_now_pos = { 0.0f,0.0f,0.0f };
-
+	
 	DirectX::XMFLOAT3 eb_now_pos = { 0.0f,0.0f,0.0f };
 
 	DirectX::XMFLOAT3 divisionpos = { 0.0f,0.0f,0.0f };
@@ -22,7 +21,8 @@ protected:
 
 	DirectX::XMFLOAT3 current_target = { 0.0f,0.0f,0.0f };
 
-
+	DirectX::XMFLOAT2 velocity = { 0.0f, 0.0f };
+	//DirectX::XMFLOAT3 e_now_pos = { 0.0f, 0.0f, 0.0f };
 
 	float send_r = 0;
 	float off_screen_pos = 0;
@@ -39,7 +39,11 @@ protected:
 	bool eb_end = false;
 	bool eb_finish = false;
 
+	bool reflected = false;
+
 public:
+	DirectX::XMFLOAT3 e_now_pos = { SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2, 0.0f };
+
 	bool loop_flg = false;
 
 	float SetTarget(DirectX::XMFLOAT3, DirectX::XMFLOAT3);
@@ -54,4 +58,10 @@ public:
 	void SetShotfinish(bool);
 	bool GetShotfinish(void);
 
+	void MoveReflectedBullet();
+	void SetVelocity(float vx,float vy);
+
+	void SetPos(DirectX::XMFLOAT3 pos);
+	void SetReflected(bool value) { reflected = value; }
+	bool IsReflected() const { return reflected; }
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include"direct3d.h"
 #include"WICTextureLoader.h" //テクスチャ読み込みライブラリ
+#include "sound.h"
 class Object {
 protected:
 	// 頂点データを決める
@@ -11,6 +12,8 @@ protected:
 		{ -0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f },
 		{  0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f },
 	};
+
+	Sound esound;
 	
 	// 頂点バッファ
 	ID3D11Buffer* m_pVertexBuffer;

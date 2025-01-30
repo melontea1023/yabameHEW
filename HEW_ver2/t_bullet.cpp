@@ -123,7 +123,23 @@ bool Test_Bullet::GetShotfinish(void)
 	return eb_finish;
 }
 
+
 void Test_Bullet::SetShotfinish(bool _check)
 {
 	eb_finish = _check;
+}
+
+void Test_Bullet::MoveReflectedBullet() {	// ”½ŽËŒã‚Ì’e‚ÌˆÚ“®
+	e_now_pos.x += velocity.x;
+	e_now_pos.y += velocity.y;
+	SetPos(e_now_pos);
+}
+void Test_Bullet::SetVelocity(float vx, float vy) {
+	velocity.x = vx;
+	velocity.y = vy;
+
+}
+
+void Test_Bullet::SetPos(DirectX::XMFLOAT3 pos) {
+	e_now_pos = pos;
 }

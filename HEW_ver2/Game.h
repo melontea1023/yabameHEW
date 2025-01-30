@@ -31,6 +31,7 @@ private:
 	Object  title;
 	Object bg1;	//background
 
+	Test_Bullet bullet;
 	TestEnemy enemy;
 	Player player;
 

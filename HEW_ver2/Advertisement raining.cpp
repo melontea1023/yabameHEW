@@ -74,7 +74,7 @@ void Advertisement::Advertisement_raining_Update(DirectX::XMFLOAT3 _nowpos)// ˆø
 		Advertisement_Attack_Set(Advertisement_Type, now_p_pos);
 
 	}
-	//////////////////////////////////////////////////////////////////////////////////////
+	//esound.Play(SOUND_LABEL_ADV);
 	Advertisement_move(Advertisement_Type);
 
 }
@@ -104,7 +104,7 @@ void Advertisement::Advertisement_raining_Uninit()
 
 	ad2.Uninit();
 
-
+	esound.Uninit();
 
 }
 
