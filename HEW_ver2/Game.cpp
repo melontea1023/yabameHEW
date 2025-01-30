@@ -107,6 +107,7 @@ void Game::Update(void) {
         break;
     case GAME:
 
+        
         ////PlayerとEnemy(BOSS)の当たり判定&HP管理
         Damage(player, testenemy);
         testenemy.p_eb_check(player);
@@ -116,6 +117,18 @@ void Game::Update(void) {
         player.Update();
 
         testenemy.Enemy_Action_Move(player.GetPos());
+        DirectX::XMFLOAT3 CheckEpos = testenemy.GetPos();
+
+        if (CheckEpos.x < 0)
+        {
+            pbullet.Setboss_pos_right(false);
+        }
+        else
+        {
+            pbullet.Setboss_pos_right(true);
+        }
+
+        pbullet.Move_Update(player);
 
         
         if (testenemy.GetHit())
@@ -195,4 +208,12 @@ void Game::Uninit(void) {
 
     sound.Uninit(); //サウンドを終了
     D3D_Release(); // DirectXを終了
+}
+
+
+void Game::Now_Enemy_Pos()
+{
+    testenemy.GetPos();
+
+
 }

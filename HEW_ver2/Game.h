@@ -49,6 +49,9 @@ public:
 	void Draw(void);            //•`‰æ
 	void Uninit(void);          //I—¹
 
+	//“G‚ª¶‰E‚Ç‚¿‚ç‚É‹‚é‚©‚Ì‚Ìˆ—
+	void Now_Enemy_Pos();
+
 	bool Box_Hit_judgment(Object, Object);
 	bool Box_Hit_Judgment(Object, Object);
 	bool Circle_Hit_judgment(Object, Object);
