@@ -7,6 +7,8 @@ class Player : public Object {
 public:
     int hp = 4;
     float stamina = 100;
+    int attack = 1;
+
     float atk;
     float health = 5;
     int AttackType = 0;
@@ -28,6 +30,14 @@ public:
     bool GetAttack();
     int GetAttackType();
     bool GetPlayerType();
+
+    //Reflection関係の処理-----------------------------------------------
+    int GetReflectionAtk(void);
+
+
+
+    //-----------------------------------------------
+
     //プレイヤーアニメーション-------------------
     int p_aniCount = 0;
     int p_finish_Count = 0;

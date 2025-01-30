@@ -177,3 +177,9 @@ bool Player::GetPlayerType()
 {
     return Player_Type;
 }
+
+
+int Player::GetReflectionAtk(void)
+{
+    return attack;
+}

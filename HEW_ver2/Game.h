@@ -6,6 +6,7 @@
 #include"testEnemy.h"
 #include"input.h"
 #include"Player.h"
+#include"Player_Bullet.h"
 #include"sound.h"
 
 //列挙型でシーン遷移
@@ -29,6 +30,7 @@ private:
 	Object game_over_screen;
 	Player player; // Playerクラスのインスタンス
 	Player Action_player;
+	PlayerBullet pbullet;
 
 	TestEnemy testenemy;
 	GameState State = TITLE;
@@ -55,7 +57,7 @@ public:
 
 	void Damage(Player, Test_Bullet);
 
-	void Damage(TestEnemy, Test_Bullet);
+	void Damage(TestEnemy, PlayerBullet);
 
 	bool Any_Button();
 };

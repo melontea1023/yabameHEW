@@ -1,5 +1,5 @@
 #include"Game.h"
-#include"testEnemy.h"
+
 
 
 int playerhp = 0;
@@ -88,36 +88,32 @@ void Game::Damage(Player obj1, Test_Bullet obj2)//左からPlayer Bullet
 }
 
 
-void Game::Damage(TestEnemy obj1, Test_Bullet obj2)//左からEnemy Bullet
+void Game::Damage(TestEnemy obj1, PlayerBullet obj2)//左からEnemy Bullet
 {
-	//if (!Setting_flg)
-	//{
-	//	enemyhp = obj1.Gethp();
-	//}
+	if (!Setting_flg)
+	{
+		enemyhp = obj1.Gethp();
+	}
 
-	//
-	//if (Box_Hit_Judgment(obj1, obj2)) //エネミーと弾が接触しているかどうかの確認
-	//{
-	//	if (1)//playerの跳ね返しかどうかを確認
-	//	{
-	//		hit_time_count++;
-	//		if (hit_time_count % 60 == 1)
-	//		{
-	//			//enemyhp -= obj2.Getatk();
-	//			hit_time_count = 0;
-	//			Setting_flg = true;
-	//		}
-	//	}
-	//	else //Playerの跳ね返しではない
-	//	{
+	
+	if (Box_Hit_Judgment(obj1, obj2)) //エネミーと弾が接触しているかどうかの確認
+	{
+		hit_time_count++;
+		if (hit_time_count % 60 == 1)
+		{
+			enemyhp -= player.GetReflectionAtk();
+			hit_time_count = 0;
+			Setting_flg = true;
+		}
 
-	//	}
-	//}
-	//if (playerhp <= 0)
-	//{
-	//	GAME_END_flg = true;
-	//}
-	//
+			
+	}
+	if (enemyhp <= 0)
+	{
+		GAME_CLEAR_flg = true;
+		Setting_flg = false;
+	}
+	
 
 
 
