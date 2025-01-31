@@ -8,7 +8,23 @@ std::vector<Object> objs = {};
 void Game::Init(HWND hWnd) {
 
     D3D_Create(hWnd);
+
     sound.Init();
+    // 前の状態の初期化
+    int prevState = -1;
+
+    if (State == TITLE) {
+        sound.Stop(SOUND_LABEL_RESULT);
+        sound.Play(SOUND_LABEL_TITLE);
+    }
+    if (State == GAME) {
+        sound.Stop(SOUND_LABEL_TITLE);
+        sound.Play(SOUND_LABEL_BATTLE);
+    }
+    if (State == LAST) {
+        sound.Stop(SOUND_LABEL_BATTLE);
+        sound.Play(SOUND_LABEL_RESULT);
+    }
     // 背景の初期化
     bg1.Init(L"asset/bg1.png");
     bg1.SetPos(0.0f, 0.0f, 0.0f);
@@ -28,25 +44,37 @@ void Game::Init(HWND hWnd) {
 
 
 void Game::Update(void) {
-    if (Input::GetButtonPress(XINPUT_LEFT_THUMB)) {
-        MessageBoxA(NULL, "A", "a", MB_OK);
-    }
+
     input.Update();
-    //一旦スペースで全部シーン遷移
+    // 状態が変わったときだけ音楽を再生
+    if (State != prevState) {
+        switch (State) {
+        case TITLE:
+            sound.Stop(SOUND_LABEL_RESULT);
+            sound.Play(SOUND_LABEL_TITLE);
+            break;
+        case GAME:
+            sound.Stop(SOUND_LABEL_TITLE);
+            sound.Play(SOUND_LABEL_BATTLE);
+            break;
+        case LAST:
+            sound.Stop(SOUND_LABEL_BATTLE);
+            sound.Play(SOUND_LABEL_RESULT);
+            break;
+        }
+    }
+
     switch (State) {
     case TITLE:
-        //sound.Stop(SOUND_LABEL_RESULT);
-       /* sound.Play(SOUND_LABEL_TITLE);*/
- 
-        if (Input::GetKeyPress(VK_SPACE)) {
+        
+
+        if (Input::GetKeyTrigger(VK_SPACE)) {
             State = GAME;
         }
         break;
     case GAME:
         // プレイヤーの更新処理
         player.Update();
-       ///* sound.Stop(SOUND_LABEL_TITLE);
-       // sound.Play(SOUND_LABEL_BATTLE);*/
         enemy.Enemy_Action_Move(player.GetPos());
         //// 弾丸の更新処理と反射チェック
         //player.Reflect(bullet);
@@ -71,8 +99,6 @@ void Game::Update(void) {
         }
         break;
     case LAST:
-      /*  sound.Stop(SOUND_LABEL_BATTLE);
-        sound.Play(SOUND_LABEL_RESULT);*/
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = TITLE;
         }

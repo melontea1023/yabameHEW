@@ -37,6 +37,9 @@ private:
 
 	GameState State = TITLE;
 
+
+	int prevState=-1;
+
 public:
 
 	Game() : State(TITLE) {}

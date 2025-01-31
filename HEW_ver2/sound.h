@@ -5,16 +5,16 @@
 // サウンドファイル
 typedef enum
 {
-	SOUND_LABEL_TITLE = 0,		// サンプルBGM
-	SOUND_LABEL_BATTLE,			// サンプルBGM
-	SOUND_LABEL_RESULT,			// サンプルSE
-	SOUND_LABEL_ADVAGO,
-	SOUND_LABEL_ADV,			// サンプルSE
-	SOUND_LABEL_LINK,
-	SOUND_LABEL_FRAP,
-	SOUND_LABEL_FRAPBOSS,
-
-
+	SOUND_LABEL_TITLE = 0,		// タイトル
+	SOUND_LABEL_BATTLE,			// バトル
+	SOUND_LABEL_RESULT,			// リザルト
+	SOUND_LABEL_ADVANM,
+	SOUND_LABEL_ADVRAIN,			// サンプルSE
+	SOUND_LABEL_LINK,//リンク
+	SOUND_LABEL_FRAP,//はたく
+	SOUND_LABEL_FRAPBOSS,//当たった
+	SOUND_LABEL_WIN,
+	SOUND_LABEL_LOSE,
 
 	SOUND_LABEL_MAX,
 } SOUND_LABEL;
@@ -30,14 +30,16 @@ private:
 
 	PARAM m_param[SOUND_LABEL_MAX] =
 	{
-		{"asset/BGM/title.mp3", true},	// サンプルBGM（ループさせるのでtrue設定）
-		{"asset/BGM/battle.mp3", true},	// サンプルBGM
-		{"asset/BGM/result.mp3", true},  		// サンプルSE（ループしないのでfalse設定）
-		{"asset/SE/advago.mp3", false},
-		{"asset/SE/adv.mp3", false},		// サンプルSE
-		{"asset/SE/link.mp3", false},
-		{"asset/SE/frap.mp3", false},
-		{"asset/SE/frapb.mp3", false}
+		{"asset/BGM/TITLE.wav", true},	// サンプルBGM（ループさせるのでtrue設定）
+		{"asset/BGM/BATTLE.wav", true},	// サンプルBGM
+		{"asset/BGM/RESULT.wav", true},  		// サンプルSE（ループしないのでfalse設定）
+		{"asset/SE/ADVANIM.wav", false},
+		{"asset/SE/ADVRAIN.wav", false},		// サンプルSE
+		{"asset/SE/LINKSOOT.wav", false},
+		{"asset/SE/FLAP.wav", false},
+		{"asset/SE/FLAPHIT.wav", false},
+		{"asset/SE/WIN.wav", false},
+		{"asset/SE/LOSE.wav", false}
 
 
 	};

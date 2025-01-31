@@ -13,7 +13,7 @@ protected:
 		{  0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f },
 	};
 
-	Sound esound;
+	//Sound se;
 	
 	// 頂点バッファ
 	ID3D11Buffer* m_pVertexBuffer;

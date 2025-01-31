@@ -104,7 +104,7 @@ void Advertisement::Advertisement_raining_Uninit()
 
 	ad2.Uninit();
 
-	esound.Uninit();
+	//esound.Uninit();
 
 }
 
