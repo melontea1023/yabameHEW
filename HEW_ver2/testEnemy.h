@@ -52,7 +52,12 @@ protected:
 
 	bool Testhitflg = false;
 
+	bool Chek_Reflection = false;
+
 	//------------------------------------
+
+
+
 public:
 
 	
@@ -62,6 +67,7 @@ public:
 	void Enemy_Action_Move(DirectX::XMFLOAT3);
 	int probability(void);
 	void p_eb_check(Player);
+	bool GetReflection();
 	
 	bool Box_Hit_judgment(Object, Object);
 	void Sethp(int);

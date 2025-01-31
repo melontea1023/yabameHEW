@@ -39,6 +39,7 @@ private:
 	bool GAME_END_flg = false;
 	bool Loop_flg = false;
 	bool Scene_Change_flg = false;
+	bool Reflection_flg = false;
 	
 public:
 
@@ -51,6 +52,7 @@ public:
 
 	//“G‚ª¶‰E‚Ç‚¿‚ç‚É‹‚é‚©‚Ì‚Ìˆ—
 	void Now_Enemy_Pos();
+
 
 	bool Box_Hit_judgment(Object, Object);
 	bool Box_Hit_Judgment(Object, Object);

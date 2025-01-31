@@ -9,7 +9,7 @@ void TestEnemy::CharacterInit(void)
 {
 
 	eb.Init(L"asset/link.png");   //リンクを初期化
-	eb.SetPos(SCREEN_WIDTH / 2 / 2, SCREEN_HEIGHT / 2 / 2, 0.0f);//位置を設定
+	eb.SetPos(1000.0f, 1000.0f, 0.0f);//位置を設定
 	eb.SetSize(750.0f, 375.0f, 0.0f); //大きさを設定
 	//eb.SetSize(600.0f, 30.0f, 0.0f); //大きさを設定
 	eb.SetAngle(0.0f);   //角度を設定
@@ -40,7 +40,7 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 				eb.SetPos(epos.x, epos.y, epos.z);
 
 				eb.Set_Bullet_Target(_playerPosition, epos, eb.GetPos());
-
+				Chek_Reflection = false;
 				bullet_set_flg = false;
 				bullet_move_flg = true;
 				eb.SetShotfinish(false);
@@ -113,7 +113,7 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 void TestEnemy::CharacterDraw(void)
 {
 	/*enemy.Draw();*/
-	if (bullet_move_flg)
+	if (bullet_move_flg&& !Chek_Reflection)
 	{
 		eb.Draw();
 	}
@@ -210,26 +210,26 @@ void TestEnemy::p_eb_check(Player obj1)
 		Playerhp = obj1.Gethp();
 	}
 
-	if (Box_Hit_judgment(obj1, eb)) //プレイヤーとエネミーが接触しているかどうかの確認
+	if (Box_Hit_judgment(obj1, eb) && !Chek_Reflection) //プレイヤーとエネミーが接触しているかどうかの確認
 	{
 
 		if (obj1.GetAttack())//playerが攻撃中かどうかを確認
 		{
 			//playerが攻撃中ならば
 
-			//はたき返す関連の処理
-
+			//はたき返す関連の処理を起動するフラグ
+			Chek_Reflection = true;
 
 		}
 		else
 		{
-			Testhitflg = true;
+			//Testhitflg = true;
+			Chek_Reflection = false;
 			//playerが攻撃中で無いなら
 			Hit_time_count++;
 			if (Hit_time_count % 60 == 1)
 			{
-				Playerhp -= 1;
-
+				//Playerhp -= 1;
 				SetFlg = true;
 			}
 
@@ -244,6 +244,10 @@ void TestEnemy::p_eb_check(Player obj1)
 
 }
 
+bool TestEnemy::GetReflection()
+{
+	return Chek_Reflection;
+}
 
 
 

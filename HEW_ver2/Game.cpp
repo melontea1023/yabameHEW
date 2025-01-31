@@ -41,6 +41,11 @@ void Game::Init(HWND hWnd) {
     player.SetSize(200.0f, 250.0f, 0.0f);
     player.SetAngle(0.0f);
 
+    pbullet.Init(L"asset/link.png");
+    pbullet.SetPos(-1000.0f, -1000.0f, 0.0f);
+    pbullet.SetSize(750.0f, 375.0f, 0.0f);
+    pbullet.SetAngle(0.0f);
+
     //// PlayerÇÃèâä˙âª
     //Action_player.Init(L"asset/Pmove.png", 3, 1);
     //Action_player.SetPos(-600.0f, -100.0f, 0.0f);
@@ -128,7 +133,11 @@ void Game::Update(void) {
             pbullet.Setboss_pos_right(true);
         }
 
+        pbullet.Set_p_starting(testenemy.GetReflection());
+        pbullet.SetBulletType(player.GetAttackType());
         pbullet.Move_Update(player);
+
+        
 
         
         if (testenemy.GetHit())
@@ -181,11 +190,11 @@ void Game::Draw(void) {
     case GAME:
         // ÉvÉåÉCâÊñ ÇÃï`âÊ 
         bg1.Draw();
-       
+        player.Draw();
+
+        pbullet.P_BDraw();
      
-            player.Draw();
-   
-      
+           
         testenemy.Draw();
         testenemy.CharacterDraw();
         break;

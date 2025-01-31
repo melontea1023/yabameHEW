@@ -5,35 +5,43 @@ void PlayerBullet::Move_Update(Player _obj)
 {
 	if (p_starting)
 	{
-		if (++Life_Time >= 420)
+		if (!p_b_Setflg)
+		{
+			PBulletpos = _obj.GetPos();
+			p_b_Setflg = true;
+		}
+
+		if (++Life_Time >= 300)
 		{
 			PBulletpos = _obj.GetPos();
 			player_bulletType = 0;
 			p_starting = false;
+			p_b_Setflg = false;
 		}
 		switch (player_bulletType)
 		{
 		case 1: //上方向
 			if (boss_pos_right) //BOSSの現在地が右ならば
 			{
+
 				PBulletpos.x++;
 				PBulletpos.y++;
 			}
 			else
 			{
-				PBulletpos.x--;
-				PBulletpos.y++;
+				PBulletpos.x-=10;
+				PBulletpos.y+=10;
 			}
 			break;
 
 		case 2: //中央方向
 			if (boss_pos_right) //BOSSの現在地が右ならば
 			{
-				PBulletpos.x++;
+				PBulletpos.x+=10;
 			}
 			else
 			{
-				PBulletpos.x--;
+				PBulletpos.x-=10;
 			}
 			break;
 
@@ -54,11 +62,6 @@ void PlayerBullet::Move_Update(Player _obj)
 		}
 		PlayerBullet::SetPos(PBulletpos.x,PBulletpos.y,PBulletpos.z);
 	}
-
-
-
-
-
 }
 
 void PlayerBullet::p_BulletMove()

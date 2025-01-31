@@ -7,6 +7,7 @@ class PlayerBullet : public Object
 protected:
 	DirectX::XMFLOAT3 PBulletpos = { 0.0f,0.0f,0.0f };
 
+	bool p_b_Setflg = false;
 	bool p_starting = false;
 	bool boss_pos_right = false;
 	int player_bulletType = 0;
