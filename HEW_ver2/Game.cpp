@@ -10,21 +10,12 @@ void Game::Init(HWND hWnd) {
     D3D_Create(hWnd);
 
     sound.Init();
+    sound.Play(SOUND_LABEL_TITLE);
     // 前の状態の初期化
     int prevState = -1;
+    isMusicPlaying = false;
 
-    if (State == TITLE) {
-        sound.Stop(SOUND_LABEL_RESULT);
-        sound.Play(SOUND_LABEL_TITLE);
-    }
-    if (State == GAME) {
-        sound.Stop(SOUND_LABEL_TITLE);
-        sound.Play(SOUND_LABEL_BATTLE);
-    }
-    if (State == LAST) {
-        sound.Stop(SOUND_LABEL_BATTLE);
-        sound.Play(SOUND_LABEL_RESULT);
-    }
+
     // 背景の初期化
     bg1.Init(L"asset/bg1.png");
     bg1.SetPos(0.0f, 0.0f, 0.0f);
@@ -46,33 +37,18 @@ void Game::Init(HWND hWnd) {
 void Game::Update(void) {
 
     input.Update();
-    // 状態が変わったときだけ音楽を再生
-    if (State != prevState) {
-        switch (State) {
-        case TITLE:
-            sound.Stop(SOUND_LABEL_RESULT);
-            sound.Play(SOUND_LABEL_TITLE);
-            break;
-        case GAME:
-            sound.Stop(SOUND_LABEL_TITLE);
-            sound.Play(SOUND_LABEL_BATTLE);
-            break;
-        case LAST:
-            sound.Stop(SOUND_LABEL_BATTLE);
-            sound.Play(SOUND_LABEL_RESULT);
-            break;
-        }
-    }
 
     switch (State) {
     case TITLE:
-        
 
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = GAME;
+            sound.Stop(SOUND_LABEL_TITLE);
+            sound.Play(SOUND_LABEL_BATTLE);
         }
         break;
     case GAME:
+
         // プレイヤーの更新処理
         player.Update();
         enemy.Enemy_Action_Move(player.GetPos());
@@ -96,14 +72,19 @@ void Game::Update(void) {
         //}
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = LAST;
+            sound.Stop(SOUND_LABEL_BATTLE);
+            sound.Play(SOUND_LABEL_RESULT);
         }
         break;
     case LAST:
         if (Input::GetKeyTrigger(VK_SPACE)) {
             State = TITLE;
+            sound.Stop(SOUND_LABEL_RESULT);
+            sound.Play(SOUND_LABEL_TITLE);
         }
         break;
     }
+    prevState = State;
 }
 
 

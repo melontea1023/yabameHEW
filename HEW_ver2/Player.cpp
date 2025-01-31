@@ -11,6 +11,7 @@ void Player::Init(const wchar_t* textureFile, int sx, int sy) {
     SetPos(0.0f, 0.0f, 0.0f);
     SetSize(70.0f, 100.0f, 0.0f);
     SetAngle(0.0f);
+
 }
 
 void Player::Update() {

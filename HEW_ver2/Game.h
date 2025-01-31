@@ -37,7 +37,7 @@ private:
 
 	GameState State = TITLE;
 
-
+	bool isMusicPlaying;
 	int prevState=-1;
 
 public:
