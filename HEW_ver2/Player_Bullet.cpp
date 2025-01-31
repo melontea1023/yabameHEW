@@ -11,9 +11,10 @@ void PlayerBullet::Move_Update(Player _obj)
 			p_b_Setflg = true;
 		}
 
-		if (++Life_Time >= 300)
+		if (++Life_Time >= 200)
 		{
 			PBulletpos = _obj.GetPos();
+			Life_Time = 0;
 			player_bulletType = 0;
 			p_starting = false;
 			p_b_Setflg = false;

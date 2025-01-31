@@ -101,7 +101,8 @@ void Game::Damage(TestEnemy obj1, PlayerBullet obj2)//ç∂Ç©ÇÁEnemy Bullet
 		hit_time_count++;
 		if (hit_time_count % 60 == 1)
 		{
-			enemyhp -= player.GetReflectionAtk();
+			//enemyhp -= player.GetReflectionAtk();
+			enemyhp = 0;
 			hit_time_count = 0;
 			Setting_flg = true;
 		}
