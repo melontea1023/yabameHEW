@@ -10,6 +10,9 @@ std::vector<Object> obj = {};
 void Game::Init(HWND hWnd) {
 
     D3D_Create(hWnd);
+
+    sound.Init();
+    sound.Play(SOUND_LABEL_TITLE);
     // îwåiÇÃèâä˙âª
     bg1.Init(L"asset/bg1.png");
     bg1.SetPos(0.0f, 0.0f, 0.0f);
@@ -107,6 +110,8 @@ void Game::Update(void) {
         if (Any_Button()) 
         {
             State = GAME;
+            sound.Stop(SOUND_LABEL_TITLE);
+            sound.Play(SOUND_LABEL_BATTLE);
             Scene_Change_flg = false;
             //player.Update();
 
@@ -151,16 +156,22 @@ void Game::Update(void) {
         if (testenemy.GetHit())
         {
             State = END;
+            sound.Stop(SOUND_LABEL_BATTLE);
+            sound.Play(SOUND_LABEL_LOSE);
         }
 
         if (GAME_END_flg)
         {
             State = END;
+            sound.Stop(SOUND_LABEL_BATTLE);
+            sound.Play(SOUND_LABEL_LOSE);
         }
 
         if (GAME_CLEAR_flg)
         {
             State = LAST;
+            sound.Stop(SOUND_LABEL_BATTLE);
+            sound.Play(SOUND_LABEL_LOSE);
         }
 
       
@@ -168,6 +179,8 @@ void Game::Update(void) {
     case LAST:
         if (Any_Button()) {
             State = TITLE;
+            sound.Stop(SOUND_LABEL_RESULT);
+            sound.Play(SOUND_LABEL_TITLE);
             Scene_Change_flg = false;
             Loop_flg = true;
         }
@@ -177,6 +190,8 @@ void Game::Update(void) {
     case END:
         if (Any_Button()) {
             State = TITLE;
+            sound.Stop(SOUND_LABEL_LOSE);
+            sound.Play(SOUND_LABEL_TITLE);
             Scene_Change_flg = false;
             Loop_flg = true;
         }

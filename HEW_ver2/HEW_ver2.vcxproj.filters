@@ -51,9 +51,6 @@
     <ClCompile Include="Advertisement raining.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Boss_DemonOfSmartphone.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="t_bullet.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
