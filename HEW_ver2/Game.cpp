@@ -88,7 +88,12 @@ void Game::Update(void) {
             //初期化
             testenemy.Sethp(15);
             player.SetPos(-600.0f, -100.0f, 0.0f);
+            pbullet.SetPos(-1000.0f, -1000.0f, 0.0f);
+            pbullet.Set_p_starting(false);
+            pbullet.Setp_b(false);
+            testenemy.SetReflection(false);
             testenemy.SetPos(SCREEN_WIDTH / 2 / 2, 270, 0.0f);
+            testenemy.ReSet();
             GAME_CLEAR_flg = false;
             GAME_END_flg = false;
             Loop_flg = false;
@@ -113,9 +118,7 @@ void Game::Update(void) {
     case GAME:
 
         
-        ////PlayerとEnemy(BOSS)の当たり判定&HP管理
-        Damage(player, testenemy);
-        testenemy.p_eb_check(player);
+      
         //Damage(player, eb);
 
         // プレイヤーの更新処理
@@ -133,11 +136,16 @@ void Game::Update(void) {
             pbullet.Setboss_pos_right(true);
         }
 
+
         pbullet.Set_p_starting(testenemy.GetReflection());
         pbullet.SetBulletType(player.GetAttackType());
         pbullet.Move_Update(player);
+        testenemy.SetReflection(pbullet.Get_p_starting());
 
-        
+        ////PlayerとEnemy(BOSS)の当たり判定&HP管理
+        Damage(player, testenemy);
+        Damage(testenemy, pbullet);
+        testenemy.p_eb_check(player);
 
         
         if (testenemy.GetHit())
@@ -163,7 +171,7 @@ void Game::Update(void) {
             Scene_Change_flg = false;
             Loop_flg = true;
         }
-        GAME_CLEAR_flg = false; 
+        //GAME_CLEAR_flg = false; 
         break;
 
     case END:
@@ -172,7 +180,7 @@ void Game::Update(void) {
             Scene_Change_flg = false;
             Loop_flg = true;
         }
-        GAME_END_flg = false;
+        //GAME_END_flg = false;
 
         break;
     }

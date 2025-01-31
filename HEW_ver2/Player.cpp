@@ -57,6 +57,7 @@ void Player::Update() {
         Player_Type = true;
         AttackType = 3;
     }
+   
 
     if (Input::GetButtonTrigger(XINPUT_B)) //ê^ÇÒíÜÇ…ÇÕÇΩÇ≠
     {
@@ -64,13 +65,14 @@ void Player::Update() {
         Player_Type = true;
         AttackType = 2;
     }
-
+    
     if (Input::GetButtonTrigger(XINPUT_Y)) //è„Ç…ÇÕÇΩÇ≠
     {
         attack_flg = true;
         Player_Type = true;
         AttackType = 1;
     }
+   
 
     if (attack_flg)
     {

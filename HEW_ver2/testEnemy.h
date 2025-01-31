@@ -60,13 +60,15 @@ protected:
 
 public:
 
-	
+	void ReSet();
 	bool e_Running_flg = false;;
 	void CharacterInit(void);
 	void CharacterDraw(void);
 	void Enemy_Action_Move(DirectX::XMFLOAT3);
 	int probability(void);
 	void p_eb_check(Player);
+
+	void SetReflection(bool);
 	bool GetReflection();
 	
 	bool Box_Hit_judgment(Object, Object);

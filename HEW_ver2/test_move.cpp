@@ -229,7 +229,7 @@ void TestEnemy::p_eb_check(Player obj1)
 			Hit_time_count++;
 			if (Hit_time_count % 60 == 1)
 			{
-				//Playerhp -= 1;
+				Playerhp -= 1;
 				SetFlg = true;
 			}
 
@@ -244,11 +244,24 @@ void TestEnemy::p_eb_check(Player obj1)
 
 }
 
+void TestEnemy::SetReflection(bool _Reflection)
+{
+	Chek_Reflection = _Reflection;
+}
+
 bool TestEnemy::GetReflection()
 {
 	return Chek_Reflection;
 }
 
+
+void TestEnemy::ReSet()
+{
+	eb.SetPos(1000.0f, 1000.0f, 0.0f);//位置を設定
+	Ed_Animation_end_flg = false; // アニメーション終了フラグをリセット
+	e_Running_flg = false;       // 次の行動を許可
+	eb.SetEndflg(false);
+}
 
 
 

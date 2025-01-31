@@ -32,10 +32,17 @@ void Game::Damage(Player obj1, TestEnemy obj2) //左からPlayer Enemy;
 		}
 		else
 		{
-			//playerが攻撃中で無いなら
-			//playerhp=0;
-			//enemyhp = 0;
-
+			hit_time_count++;
+			if (hit_time_count % 60 == 1)
+			{
+				enemyhp -= obj2.Getatk();
+				//hit_time_count =0;
+				Setting_flg = true;
+			}
+		}
+		if (hit_time_count == 362)
+		{
+			hit_time_count = 0;
 		}
 
 	}
@@ -99,15 +106,18 @@ void Game::Damage(TestEnemy obj1, PlayerBullet obj2)//左からEnemy Bullet
 	if (Box_Hit_Judgment(obj1, obj2)) //エネミーと弾が接触しているかどうかの確認
 	{
 		hit_time_count++;
-		if (hit_time_count % 60 == 1)
+		if (hit_time_count % 59 == 1)
 		{
 			//enemyhp -= player.GetReflectionAtk();
 			enemyhp = 0;
 			hit_time_count = 0;
 			Setting_flg = true;
 		}
-
-			
+		
+		if (hit_time_count == 362)
+		{
+			hit_time_count = 0;
+		}
 	}
 	if (enemyhp <= 0)
 	{
