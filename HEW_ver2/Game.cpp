@@ -6,7 +6,6 @@ std::vector<Object> obj = {};
 
 
 
-
 void Game::Init(HWND hWnd) {
 
     D3D_Create(hWnd);
@@ -74,7 +73,7 @@ void Game::Init(HWND hWnd) {
 
 
     testenemy.CharacterInit();
-    sound.Init(); //サウンドの初期化
+    //sound.Init(); //サウンドの初期化
 
 
 }
@@ -90,6 +89,7 @@ void Game::Update(void) {
         {
             //初期化
             testenemy.Sethp(15);
+            player.Sethp(4);
             player.SetPos(-600.0f, -100.0f, 0.0f);
             pbullet.SetPos(-1000.0f, -1000.0f, 0.0f);
             pbullet.Set_p_starting(false);
@@ -141,8 +141,12 @@ void Game::Update(void) {
             pbullet.Setboss_pos_right(true);
         }
 
+       
 
+       
+       
         pbullet.Set_p_starting(testenemy.GetReflection());
+       
         pbullet.SetBulletType(player.GetAttackType());
         pbullet.Move_Update(player);
         testenemy.SetReflection(pbullet.Get_p_starting());
@@ -152,8 +156,20 @@ void Game::Update(void) {
         Damage(testenemy, pbullet);
         testenemy.p_eb_check(player);
 
+     
+       /* if (player.GetAttack())
+        {
+            sound.Play(SOUND_LABEL_FRAPBOSS);
+        }*/
         
         if (testenemy.GetHit())
+        {
+            State = END;
+            sound.Stop(SOUND_LABEL_BATTLE);
+            sound.Play(SOUND_LABEL_LOSE);
+        }
+
+        if (testenemy.GetDied_Player())
         {
             State = END;
             sound.Stop(SOUND_LABEL_BATTLE);
@@ -171,7 +187,7 @@ void Game::Update(void) {
         {
             State = LAST;
             sound.Stop(SOUND_LABEL_BATTLE);
-            sound.Play(SOUND_LABEL_LOSE);
+            sound.Play(SOUND_LABEL_RESULT);
         }
 
       
@@ -190,7 +206,7 @@ void Game::Update(void) {
     case END:
         if (Any_Button()) {
             State = TITLE;
-            sound.Stop(SOUND_LABEL_LOSE);
+            sound.Stop(SOUND_LABEL_RESULT);
             sound.Play(SOUND_LABEL_TITLE);
             Scene_Change_flg = false;
             Loop_flg = true;
@@ -204,7 +220,8 @@ void Game::Update(void) {
 
 void Game::Draw(void) {
     D3D_StartRender();
-    switch (State) {
+    switch (State) 
+    {
     case TITLE:
         bg1.Draw();
         title.Draw();

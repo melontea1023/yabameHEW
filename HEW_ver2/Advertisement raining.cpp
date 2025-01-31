@@ -10,6 +10,9 @@ Advertisement ad;
 Advertisement ad2;
 Advertisement ad3;
 
+DirectX::XMFLOAT3 adpos = { 0.0f,0.0f,0.0f };
+int targetposType = 0;
+
 //Input input;
 
 //広告目標座標---------------------------
@@ -223,6 +226,8 @@ void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_po
 		ad.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
+
+		ad3.SetPos(Adpos.x, Adpos.y, Adpos.z);
 		break;
 	case 2://右上の時
 		Adpos.x = SCREEN_WIDTH / 2 / 2;
@@ -232,6 +237,8 @@ void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_po
 		ad.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
+
+		ad3.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
 
 
@@ -245,6 +252,8 @@ void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_po
 
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
+		ad3.SetPos(Adpos.x, Adpos.y, Adpos.z);
+
 		break;
 	case 4://右下の時
 		Adpos.x = SCREEN_WIDTH / 2 / 2;
@@ -254,6 +263,8 @@ void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_po
 		ad.SetPos(Adpos.x, Adpos.y, Adpos.z);
 
 		ad2.SetPos(Adpos.x, Adpos.y, Adpos.z);
+
+		ad3.SetPos(Adpos.x, Adpos.y, Adpos.z);
 		break;
 	}
 
@@ -266,9 +277,9 @@ void  Advertisement::Advertisement_Attack_Set(int _Type, DirectX::XMFLOAT3 _p_po
 
 void Advertisement::Advertisement_move(int _target_pos)
 {
-	int targetposType = _target_pos;
+	targetposType = _target_pos;
 
-	DirectX::XMFLOAT3 adpos = ad.GetPos();
+	adpos = ad.GetPos();
 
 	switch (targetposType)//
 	{
@@ -300,6 +311,8 @@ void Advertisement::Advertisement_move(int _target_pos)
 
 		ad2.SetPos(adpos.x, adpos.y, adpos.z);
 
+		ad3.SetPos(adpos.x, adpos.y, adpos.z);
+
 		break;
 	case 2://右上の時
 
@@ -327,6 +340,8 @@ void Advertisement::Advertisement_move(int _target_pos)
 		ad.SetPos(adpos.x, adpos.y, adpos.z);
 
 		ad2.SetPos(adpos.x, adpos.y, adpos.z);
+
+		ad3.SetPos(adpos.x, adpos.y, adpos.z);
 
 
 		break;
@@ -357,6 +372,9 @@ void Advertisement::Advertisement_move(int _target_pos)
 		ad.SetPos(adpos.x, adpos.y, adpos.z);
 
 		ad2.SetPos(adpos.x, adpos.y, adpos.z);
+
+		ad3.SetPos(adpos.x, adpos.y, adpos.z);
+
 		break;
 	case 4://右下の時
 		if (adpos.y >= -SCREEN_HEIGHT / 2 / 2)
@@ -383,6 +401,9 @@ void Advertisement::Advertisement_move(int _target_pos)
 		ad.SetPos(adpos.x, adpos.y, adpos.z);
 
 		ad2.SetPos(adpos.x, adpos.y, adpos.z);
+
+		ad3.SetPos(adpos.x, adpos.y, adpos.z);
+
 		break;
 	}
 
@@ -397,4 +418,23 @@ bool Advertisement::GetEndflg(void)
 void Advertisement::SetEndflg(bool _adreset)
 {
 	ad_end = _adreset;
+}
+
+void Advertisement::AdReset()
+{
+	adpos.x = -SCREEN_WIDTH / 2 / 2;
+	adpos.y = Ad_falling_pos_y;
+	time_count = 0;
+	targetposType = 0;
+	Set_flg = false;
+	random_flg = true;
+	move_flg = false;
+	m_flg = false;
+	ad_end = true;
+	ad.SetPos(adpos.x, adpos.y, adpos.z);
+
+	ad2.SetPos(adpos.x, adpos.y, adpos.z);
+
+	ad3.SetPos(adpos.x, adpos.y, adpos.z);
+
 }

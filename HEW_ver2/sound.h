@@ -8,13 +8,14 @@ typedef enum
 	SOUND_LABEL_TITLE = 0,		// タイトル
 	SOUND_LABEL_BATTLE,			// バトル
 	SOUND_LABEL_RESULT,			// リザルト
+	SOUND_LABEL_LOSE,
 	SOUND_LABEL_ADVANM,
 	SOUND_LABEL_ADVRAIN,			// サンプルSE
 	SOUND_LABEL_LINK,//リンク
 	SOUND_LABEL_FRAP,//はたく
 	SOUND_LABEL_FRAPBOSS,//当たった
 	SOUND_LABEL_WIN,
-	SOUND_LABEL_LOSE,
+	
 
 	SOUND_LABEL_MAX,
 } SOUND_LABEL;
@@ -33,13 +34,14 @@ private:
 		{"asset/BGM/TITLE.wav", true},	// サンプルBGM（ループさせるのでtrue設定）
 		{"asset/BGM/BATTLE.wav", true},	// サンプルBGM
 		{"asset/BGM/RESULT.wav", true},  		// サンプルSE（ループしないのでfalse設定）
-		{"asset/SE/ADVANIM.wav", false},
+		{"asset/SE/LOSE.wav", true},  //ゲームオーバー
+		{"asset/SE/ADVANIM.wav", false},        //広告
 		{"asset/SE/ADVRAIN.wav", false},		// サンプルSE
 		{"asset/SE/LINKSOOT.wav", false},
-		{"asset/SE/FLAP.wav", false},
+		{"asset/SE/FRAP.wav", false},
 		{"asset/SE/FLAPHIT.wav", false},
-		{"asset/SE/WIN.wav", false},
-		{"asset/SE/LOSE.wav", false}
+		{"asset/SE/WIN.wav", false}
+		
 
 
 	};

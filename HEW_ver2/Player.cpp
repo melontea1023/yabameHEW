@@ -164,6 +164,11 @@ int Player::Gethp()
     return hp;
 }
 
+//void Player::SetAttack(bool _set)
+//{
+//    attack_flg = false;
+//}
+
 
 bool Player::GetAttack()
 {

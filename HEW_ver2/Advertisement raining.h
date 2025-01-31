@@ -29,6 +29,7 @@ public:
 
 
 	bool Running_flg = false;
+	void AdReset();
 	void Advertisement_raining_Init();
 	void Advertisement_raining_Update(DirectX::XMFLOAT3);
 	void Advertisement_raining_Draw();  //Draw‚Ì’†‚Ìˆ—‚Ìˆê”Ô‰º

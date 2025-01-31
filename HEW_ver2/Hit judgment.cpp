@@ -92,10 +92,10 @@ bool Game::Box_Hit_Judgment(Object obj1, Object obj2)
 	DirectX::XMFLOAT3 ef_pos = obj2.GetPos();
 	DirectX::XMFLOAT3 ef_size = obj2.GetSize();
 
-	p_up = p_pos.y - p_size.y / 2;
-	p_down = p_pos.y + p_size.y / 2;
-	p_left = p_pos.x - p_size.x / 2;
-	p_right = p_pos.x + p_size.x / 2;
+	p_up = p_pos.y - p_size.y / 2/2;
+	p_down = p_pos.y + p_size.y / 2/2;
+	p_left = p_pos.x - p_size.x / 2/2;
+	p_right = p_pos.x + p_size.x / 2/2;
 
 	f_up = ef_pos.y - ef_size.y / 2/2;
 	f_down = ef_pos.y + ef_size.y / 2/2;

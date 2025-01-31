@@ -52,6 +52,8 @@ protected:
 
 	bool Testhitflg = false;
 
+	bool Died_Player = false;
+
 	bool Chek_Reflection = false;
 
 	//------------------------------------
@@ -77,6 +79,8 @@ public:
 	int Getatk();
 
 	bool GetHit();
+
+	bool GetDied_Player();
 
 	//void Initialize();
 

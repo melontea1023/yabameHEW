@@ -38,7 +38,6 @@ void TestEnemy::Enemy_Action_Move(DirectX::XMFLOAT3 _playerPosition)
 				int r = eb.SetTarget(_playerPosition, epos);
 				eb.SetAngle(r);
 				eb.SetPos(epos.x, epos.y, epos.z);
-
 				eb.Set_Bullet_Target(_playerPosition, epos, eb.GetPos());
 				Chek_Reflection = false;
 				bullet_set_flg = false;
@@ -233,12 +232,23 @@ void TestEnemy::p_eb_check(Player obj1)
 				SetFlg = true;
 			}
 
-			if (Hit_time_count == 370)
+			if (Hit_time_count == 90)
 			{
 				Hit_time_count = 0;
 			}
 
 		}
+
+		if (Playerhp == 0)
+		{
+			Died_Player = true;
+		}
+		else
+		{
+			Died_Player = false;
+		}
+
+		obj1.Sethp(Playerhp);
 
 	}
 
@@ -258,12 +268,23 @@ bool TestEnemy::GetReflection()
 void TestEnemy::ReSet()
 {
 	eb.SetPos(1000.0f, 1000.0f, 0.0f);//位置を設定
+	eb.SetAngle(0);
 	Ed_Animation_end_flg = false; // アニメーション終了フラグをリセット
 	e_Running_flg = false;       // 次の行動を許可
 	eb.SetEndflg(false);
+
+	ad.AdReset();
+	Ad_Animation_end_flg = false; // アニメーション終了フラグをリセット
+	e_Running_flg = false;       // 次の行動を許可
+	ad.SetEndflg(false);
+	Died_Player = false;
+	SetFlg = false;
 }
 
-
+bool TestEnemy::GetDied_Player()
+{
+	return Died_Player;
+}
 
 
 //Object TestEnemy::GetInstance()

@@ -33,7 +33,7 @@ public:
 
     //ReflectionŠÖŒW‚Ìˆ—-----------------------------------------------
     int GetReflectionAtk(void);
-
+    //void SetAttack(bool);
 
 
     //-----------------------------------------------
